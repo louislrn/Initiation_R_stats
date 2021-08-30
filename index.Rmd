@@ -1,15 +1,27 @@
 ---
-title: <p class="title">Introduction à R</p><hr class="lign"><p class="title2">Statistique descriptive univariée et bivariée</p>
-author: Hugues Pecout (FR CIST, CNRS)  <br>  Timothée Giraud (UMS RIATE, CNRS)
-date: Master G2M, 7-9 septembre 2020
-css: style_new.css
+title: "Introduction à R"
+subtitle: "Statistique descriptive univariée et bivariée"
+date: "Master G2M, 6-8 septembre 2021"
+author: 
+ - name: Hugues Pecout
+   affiliation: FR CIST, CNRS
+ - name: Timothée Giraud
+   affiliation: UMS RIATE, CNRS
+image: "featured.png"   
+logo: "figures/rzine.png"  
 output:
-  rmdformats::readthedown:
-    self_contained: true
-    thumbnails: false
-    lightbox: true
-    gallery: true
-    highlight: tango
+  rzine::readrzine:
+    highlight: kate
+    number_sections: true
+csl: Rzine_citation.csl
+css: style_new.css
+bibliography: biblio.bib
+nocite: |
+  @*
+link-citations: true
+licence: "[![licensebuttons by-sa](https://licensebuttons.net/l/by-sa/3.0/88x31.png)](https://creativecommons.org/licenses/by-sa/4.0)"
+giturl: "[![Code source on GitHub](https://badgen.net/badge/Code%20source%20on%20/GitHub/blue?icon=github)](https://github.com/HuguesPecout/Initiation_R_stats)"
+#doi: "[![DOI:xxx](https://zenodo.org/badge/DOI/xxx.svg)](https://doi.org/xxx)"
 --- 
 
 ```{r klippy, echo=FALSE, include=TRUE}
@@ -19,30 +31,24 @@ options("scipen" = 10)
 
 <br/>
 
-<div id="important_ok">
-
-<p class="objectif1">Objectifs :  </p>
-
-<p class="objectif2"> --  **Acquérir les bases du logiciel/language R et de son environnement RStudio** </p>
-<p class="objectif2"> --  **Acquérir les bases de la statistique descriptive univariée et bivariée sur R**</p>
-<p class="objectif2"> --  **Comprendre les atouts de R pour la gestion, l'analyse et la représentation de données**</p>
-
-</div> 
-
+<div class="alert alert-danger" role="alert">
+<center>**Objectifs de ce cours**</center> 
 <br/>
+**1) Acquérir les bases du logiciel/language R et de son environnement RStudio**<br/> 
+**2) Réviser les bases de la statistique descriptive univariée et bivariée en géographie**<br/>
+**3) Comprendre les atouts de R pour la gestion, l'analyse et la représentation de données**
+</div>
 
-
-# Introduction
 
 
 <br/>
 
-<p class="objectif3"><img src="figures/diapo.png" width="170"/></a></p>
-<p class="objectif3">[Consulter le diaporama d'introduction](https://hpecout.gitpages.huma-num.fr/R_presentation_FR/#/){target="_blank"}</p>
+**Avant de démarrer la pratique, nous allons introduire la logicel/langage R et l'IDE Rstudio**. Pour cela, nous utiliserons deux diaporamas :
+
+-> Partie 1 : [Contextualisation et présentation de R et Rstudio](https://huguespecout.github.io/R_presentation_FR/#/)   
+-> Partie 2 : [Base du langage, packages, Rstudio et documentation](https://huguespecout.github.io/Intro_R_Rstudio_FR/#/)
 
 <br/>
-<br/>
-
 
 ```{r warning=FALSE, message=FALSE, eval=TRUE, include= TRUE, echo=FALSE}
 
@@ -72,22 +78,17 @@ test <- test2[,c(1:3)]
 
 nb_function_base <- length(c(lsf.str("package:base"), lsf.str("package:graphics"), lsf.str("package:grDevices"), lsf.str("package:methods"), lsf.str("package:stats"), lsf.str("package:utils")))
 
-
-
-
-
-
 ```
 
 
 
 
 
-# 1. Prise en main
+# Prise en main
 
 <br/>
 
-## 1.0 L'interface Rstudio
+## L'interface Rstudio
 
 **L'interface de RStudio se présente sous la forme d’une unique fenêtre découpée en quatre zones** que l’on peut redimensionner, masquer ou maximiser selon ses préférences :
 
@@ -142,7 +143,7 @@ RStudio propose de nombreux raccourcis clavier intéressants, exemple :
 
 
 
-## 1.1 Paramètres généraux
+## Paramètres généraux
 
 Pour éviter des problèmes d'encodage des scripts ou le chargement incessant de données à chaque nouvelle instance de Rstudio, **il est necessaire de modifier certains paramètres globaux**. Pour cela, cliquez sur *tools* puis sur *Global Options* pour ouvrir la fenêtre des paramètre généraux de Rstudio. 
 
@@ -164,7 +165,7 @@ Puis, dans l'onglet *code* et le sous-onglet *saving*, **paramétrez l'encodage 
 
 
 
-## 1.2 Les projets
+## Les projets
 
 Cette fonctionnalité permet d'organiser son travail en différents projets. L’idée principale est de réunir tous les fichiers relatifs à un même projet (quelque soit leur format) dans un répertoire dédié. **Le menu "Project" est accessible via une icône dédiée située tout en haut à droite** :
 
@@ -195,7 +196,7 @@ Dans un nouveau répertoire, créez un projet vide. Indiquez le nom de votre pro
 
 
 
-## 1.3 Les objets
+## Les objets
 
 Tout ce qui est créé et manipulé sous R est un objet. Ces objets permettent de stocker et de structurer les données.    
 Les objets peuvent stocker différents types de données. Voici les principaux :
@@ -227,7 +228,7 @@ Une variable booléenne est une variable qui ne prend que deux valeurs : *true* 
 
 Un objet peut être créé avec l'opérateur « assigner » (`<-`), une flèche composée du signe inférieur (`<`) accolé à un tiret (`-`). Si l'objet existe déjà, sa valeur précédente est remplacée par la nouvelle. La valeur renvoyée peut être le résultat d'une opération et/ou d'une fonction :
 
-```{r warning=FALSE, message=FALSE}
+```{r class.source="bg-primary", class.output="bg-warning", warning=FALSE, message=FALSE}
 
 n <- "chaîne de caractères"
 
@@ -595,7 +596,7 @@ my_factor[7:13, drop=TRUE]
 <br/>
 
 
-## 1.4 Les opérateurs
+## Les opérateurs
 
 
 ### Arithémtiques
@@ -685,7 +686,7 @@ mtcars[mtcars$mpg %in% c(21.0,14.3,22.8,19.2) | mtcars$hp != 123 | mtcars$wt >= 
 <br/>
 
 
-## 1.5 Les packages
+## Les packages
 
 
 R fourni directement **un important nombre de fonctions pré-installées, stockées dans ce qui est appelé le <span style="color:#4B0082"><a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/00Index.html" onclick="window.open(this.href); return false;">R Base Package</a></span>**. Il n'est pas nécessaire de les installer ou de les charger, elles sont imédiatement utilisables. À ce jour, **`r nb_function_base` fonctions sont proposées par le le R-base**.
@@ -746,7 +747,7 @@ data(Nom_objet)
 
 
 
-## 1.6 Aide et documentation
+## Aide et documentation
 
 Il y a plusieurs façons d'obtenir de l'aide avec R studio. **Vous pouvez utiliser l'onglet d'aide proposé par Rstudio** et accéder à la documentation d'une fonction :
 
@@ -794,7 +795,7 @@ Enfin, **internet est une ressource documentaire trés riche pour R**. Vous y tr
 
 <br/>
 
-## 1.7 Règles de codage
+## Règles de codage
 
 Les [**règles de codage**](https://fr.wikipedia.org/wiki/R%C3%A8gles_de_codage) permettent d'écrire un code plus clair et plus lisible pour soi et pour les autres. 
 Vous pourrez trouver plusieurs propositions de *coding style* car il n'existe pas de style officiel pour le logiciel R. Quelque soit le style choisi l'idée est de conserver le même tout au long d'un programme.   
@@ -858,7 +859,7 @@ mean(c(1,7,3,2,8,9,2,3))
 
 <br/>
 
-## 1.8 Manipulations basiques
+## Manipulations basiques
 
 ### Sauvegarder et supprimer des objets
 
@@ -1571,11 +1572,11 @@ Essayer-le... pas plus de 2-3 minutes :-) )
 
 <br/>
 
-# 2. Statistique univariée
+# Statistique univariée
 
 <br/>
 
-## 2.1 Vocabulaire
+## Vocabulaire
 
 
 
@@ -1808,7 +1809,7 @@ $$Y_{i} =\frac{X_{i} - \bar{x}}{\sigma^x }$$
 <br/>
 
 
-## 2.2 Résumer une variable
+## Résumer une variable
 
 Avant de résumer une ou plusieurs variables statistiques, **il est important d'explorer et de visualiser les données. Cela permet de détécter les caractèristiques des données étudiées, et de les traiter correctement**.
 
@@ -1945,7 +1946,7 @@ sd(mtcars$hp) / mean(mtcars$hp) *100
 <br/>
 
 
-## 2.3 Discrétiser une variable
+## Discrétiser une variable
 
 **Pour réaliser une discétisation correcte, il est necéssaire de définir la forme de la distribution à discrétiser**.    
 Ci-dessous, quelques formes classiques de distribution statistique :
@@ -2055,7 +2056,7 @@ table(POP16_mtq$CLASS_TX_0014)
 <br/>
 
 
-## 2.4 Représentation graphique
+## Représentation graphique
 
 <br/>
 
@@ -2262,12 +2263,12 @@ merge()
 
 <br/>
 
-# 3. Statistique bivariée
+# Statistique bivariée
 
 <br/>
 
 
-## 3.1 Vocabulaire
+## Vocabulaire
 
 <div class="div_voc">
 
@@ -2317,7 +2318,7 @@ merge()
 
 
 
-## 3.1 Deux variables qualitatives
+## Deux variables qualitatives
 
 **Un couple de variables qualitatives se décrit par ses fréquences conjointes dans un tableau *tris croisés* **.
 Les fréquences obtenues peuvent être calculées par rapport à l’effectif total ou par rapport aux effectifs marginaux (effectif en ligne et colonne).
@@ -2510,7 +2511,7 @@ barplot(cprop(t(as.matrix(df)))[1:2,1:2])
 
 <br/>
 
-## 3.2 Qualitatif vs Quantitatif
+## Qualitatif vs Quantitatif
 
 ### Représentations graphiques
 
@@ -2638,7 +2639,7 @@ tapply(hdv2003$age, hdv2003$sport, mean)
 
 <!-- <br/> -->
 
-## 3.3 Deux variables quantitatives
+## Deux variables quantitatives
 
 
 ### Représentation graphique
