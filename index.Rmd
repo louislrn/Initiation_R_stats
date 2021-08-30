@@ -228,14 +228,10 @@ Une variable booléenne est une variable qui ne prend que deux valeurs : *true* 
 
 Un objet peut être créé avec l'opérateur « assigner » (`<-`), une flèche composée du signe inférieur (`<`) accolé à un tiret (`-`). Si l'objet existe déjà, sa valeur précédente est remplacée par la nouvelle. La valeur renvoyée peut être le résultat d'une opération et/ou d'une fonction :
 
-```{r class.source="bg-primary", class.output="bg-warning", warning=FALSE, message=FALSE}
-
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 n <- "chaîne de caractères"
-
 n
-
 n <- 15 + 9
-
 n
 
 ```
