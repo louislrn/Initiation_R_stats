@@ -1,0 +1,335 @@
+
+
+#table-of-contents {
+    background: black;
+}
+
+
+.lign {
+    padding:0 20px 0 20px;
+    margin:0 30px 0 30px;
+}
+
+.title {
+    background-color: #0162b1;
+    color : white;
+    text-align:center;
+    padding: 10px 0 12px 0;
+    margin-top:0;
+    margin-bottom:0;
+    border-radius: 10px;	
+    font-weight: bold;
+    font-size:21px;
+}
+
+
+.title2 {
+    background-color: #0162b1;
+    color : white;
+    margin-top:0;
+    margin-bottom:0;
+    text-align:center;
+    padding: 11px 0 5px 0;
+    border-radius: 10px;	
+    font-weight: bold;
+    font-style: italic;
+    font-size:16px;
+}
+
+
+#table-of-contents h2{
+    background-color: #0162b1;
+}
+
+#table-of-contents li{
+    font-size:15px;  
+}
+
+#table-of-contents li a:hover{
+background-color: #0162b1;
+color:white;
+}
+
+#content pre {
+background-color:#E6E6E6;
+}
+
+
+#main p{
+   font-size:14px; 
+}
+
+
+#main a{
+    color:#0162b1;
+    padding: 0;
+    background-image: none;
+    margin:0;
+}
+
+
+#main a:hover{
+    color:#488fc9;
+    font-weight: bold;
+}
+
+
+
+h1 {
+    background-color: #0162b1;
+    color : white;
+    text-align:center;
+    padding: 15px;
+    border-radius: 10px;	
+    font-weight: bold;
+  font-size:20px;
+}
+
+
+h2 {
+  text-align: left;
+  font-size:19px;
+  font-weight: bold;
+  color:#0162b1;
+  margin-bottom:15px;
+}
+
+
+h3 {
+  text-align: left;
+  font-size:16px;
+  font-weight: bold;
+  color:black;
+}
+
+
+h4 {
+  text-align: left;
+  font-size:15px;
+  font-weight: bold;
+  color: #0162b1;
+  padding-bottom:5px;
+}
+
+li {
+  text-align: left;
+  font-size:15px;
+  font-weight: bold;
+  color: #0162b1;
+  padding-bottom:5px;
+}
+
+#important_ok{
+  background-color:  #e6f2ff;
+  border-style: solid;
+  border-color: #0162b1;
+  padding: 15px 15px 20px 15px;
+
+}
+
+#important_ok .objectif1 {
+  text-align: center;
+  font-weight: bold;
+  font-size:130%;
+  color: #0162b1;
+  padding:0;
+  margin:0 0 10px 0;
+}
+
+
+#important_ok .objectif2 {
+  text-align:left;
+  font-weight: bold;
+  font-size:110%;
+  padding: 0 0 0 45px;
+  margin:0;
+  color: #4d4d4d
+}
+
+
+#main .objectif3 {
+  text-align:center;
+  font-weight: black;
+  padding: 0 0 0 0 ;
+  font-size:130%;
+  color: #4d4d4d
+}
+
+#main .objectif4{
+  text-align:center;
+  font-weight: black;
+  padding: 0 0 0 0 ;
+  font-size:150%;
+  color: #4d4d4d
+}
+
+.center {
+  text-align: center;
+}
+
+.bilbi {
+  text-align: left;
+  font-size:12px;
+  color: black;
+}
+
+.author {
+  text-align: center;
+  color: #AAAAAA;
+  font-style: italic;
+  font-size:9px;
+  padding:0;
+  margin:0;
+}
+
+.date {
+  color: #AAAAAA;
+  text-align: center;
+  font-size:9px;
+    padding:0;
+  margin-top:10px;
+}
+
+.Exercice{
+  background-color: #e6f2ff;
+  border-style: solid;
+  border-width:0.5px;
+  border-color: #494949;
+  padding: 15px 10px 10px 10px
+}
+
+.center {
+  text-align: center;
+}
+
+.center2 {
+  text-align: center;
+  font-size:17px;
+  font-weight: bold;
+  
+}
+
+.center3 {
+  text-align: center;
+  font-size:23px;
+  font-weight: bold;
+  
+}
+
+.bilbi {
+  text-align: left;
+  font-size:12px;
+  color: black;
+}
+
+
+
+.auteur {
+  text-align: center;
+  color: grey;
+  font-style: italic;
+  font-size:13px;
+}
+
+.licence {
+  text-align: center;
+  color: grey;
+  font-style: italic;
+  font-size:12px;
+  
+}
+
+
+
+
+.source{
+  
+  color: grey;
+  font-size:14px;
+}
+
+
+.important{
+  
+  background-color: white;
+  border-style: solid;
+  border-color: #0162b1;
+    padding: 15px 10px 10px 10px;
+  
+}
+
+.important2{
+  
+  background-color: white;
+  border-style: solid;
+  border-color: #8C001A;
+    padding: 10px 10px 3px 10px;
+  
+}
+
+.div_def{
+  background-color: #f1f1f1;
+    padding: 15px 10px 10px 10px;
+  
+}
+
+
+.div_voc{
+  
+  background-color: LightGrey;
+  padding: 15px 10px 10px 10px;
+  
+}
+
+
+.titre_def{
+  
+  text-align: left;
+  font-size:18px;
+  font-weight:bold;
+  color:black;
+  
+}
+
+.def{
+  
+  text-align: left;
+  font-size:15px;
+  color: black;
+  
+}
+
+
+.methode{
+  text-decoration: underline #0162b1;
+  text-align: left;
+  font-weight:bold;
+  font-size:16px;
+  color: #0162b1;figure {     display: inline-block;     margin: 20px; /* adjust as needed */ } figure img {     vertical-align: top; } figure figcaption {     font-size: 14px;     margin-top: 15px;     font-weight: bold;     text-align: center; } 
+    
+}
+
+.package{
+  font-weight:bold;
+  color: #ee2570;
+    
+}
+
+
+.fonction{
+  font-style: italic;
+  color: #56c9f4;
+    
+}
+
+#auto {
+  text-align:center;
+  font-style: italic;
+  padding: 15px 0 1px 0 ;
+  font-size:90%;
+  color: #4d4d4d
+}
+
+
+
+
