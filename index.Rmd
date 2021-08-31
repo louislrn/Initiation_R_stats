@@ -44,11 +44,11 @@ options("scipen" = 10)
 <br/>
 
 <center>**DIAPORAMA D'INTRODUCTION** : </center>
-</br>
+<br/>
 <center>[Contextualisation et présentation de R et Rstudio](https://huguespecout.github.io/R_presentation_FR/#/) </center>  
-</br>
+<br/>
 <center><img src="figures/diapo.png" width="170"/></center>
-</br>
+<br/>
 <center>Diaporama bonus (équivalent "*Quelques fondamentaux*") : [Base du langage, packages, Rstudio et documentation](https://huguespecout.github.io/Intro_R_Rstudio_FR/#/)</center>
 
 <br/>
@@ -85,11 +85,9 @@ nb_function_base <- length(c(lsf.str("package:base"), lsf.str("package:graphics"
 
 
 
-
+<br/>
 
 # Quelques fondamentaux
-
-<br/>
 
 ## L'interface Rstudio
 
@@ -387,18 +385,6 @@ read.dbf("D:/users/geographie/Documents/nom_fichier.dbf", as.is = FALSE)
 mon_vecteur <- c(1,2,3,4,5,6,7,8,9)
 mon_vecteur <- c("A","B","C","D","E")
 mon_vecteur <- c("nom", "prenom", 10, 20.78, TRUE)
-mon_vecteur
-
-# Créer une séquence complexe dans un vecteur
-mon_vecteur <- c(seq(2, 3, by=0.5))
-mon_vecteur
-
-# Répeter un vecteur
-mon_vecteur <- c(rep(1:2, times=3))
-mon_vecteur
-
-# Répeter chaque éléments
-mon_vecteur <- c(rep(1:2, each=3))
 mon_vecteur
 
 # Créer un séquence de nombre entier
@@ -720,6 +706,7 @@ install.packages("remotes")
 library(remotes)
 install_github("riatelab/MTA")
 
+
 ```
 
 Une fois installé, **un <span style="color:#4B0082">package</span> doit être chargé à chaque nouvelle session de R pour être utilisé**. A un package est systématiquement associée de la documentation permettant de comprendre son contenu et aider à sa prise en main. 
@@ -744,6 +731,14 @@ data(Nom_objet)
 </p>
 
 
+**Pour supprimer un package**, vous pouvez utiliser la fonction suivante :
+
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE,eval=FALSE}
+
+remove.packages("mapsf")
+
+```
+
  
 <br/>
 
@@ -759,19 +754,19 @@ Il y a plusieurs façons d'obtenir de l'aide avec R studio. **Vous pouvez utilis
 Il est possible d'**obtenir de la documentation en utilisant des fonctions**, Ex :
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=TRUE, include=FALSE}
-library(cartography)  
+library(mapsf)  
 ```
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE,eval=FALSE}
 
 # Documentation des packages
-help("cartography") 
+help("mapsf") 
 
 # Accèder à la documentation d'une fonction
-?choroLayer
+?mf_map
 
 # Accèder à une vignette (falcutatif) de package
-vignette(topic = "cartography", package = "cartography")
+vignette(topic = "mapsf", package = "mapsf")
 
 # Accèder à une cheatsheet (falcutatif) de package
 vignette(topic = "cheatsheet", package = "cartography") 
@@ -859,117 +854,26 @@ mean(c(1,7,3,2,8,9,2,3))
 ```
 
 
+**Ces règles de codages sont à appliquer durant les exercices !**
+
 <br/>
 
 # Prise en main
 
-Avant de commencer, **créez un nouveau projet à l'emplacement de votre choix** ([cf. *Les projets*](#les-projets)). Puis, **téléchargez** [**ces données**](https://github.com/HuguesPecout/Initiation_R_stats/raw/main/data.zip), et décompressez l'archive à la racine de votre répertoire projet.
+<div class="alert alert-danger" role="alert">    
 
-Il s'agit de données sur la structure de la population des communes de la Martinique en 2011 et 2016 et d'une couche géographique associée.     
-<p class="source"> Source : INSEE - Recensement de population & IGN, BD ADMIN EXPRESS</p> 
-<br/>
-
-3) Chargez le fichier *INSEE_COM_972.csv* dans un objet.
-
-```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE}
-
-# Fonctions possibles
-read.csv()
-read.table()
-
-# Quelques arguments utiles...
-header=TRUE
-sep=";"
-stringsAsFactors=FALSE
-
-```
-<br/>
-
-4) Visualisez et interrogez votre objet data frame, en ligne de code ET depuis l'interface RStudio.
-
-```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE}
-
-# Fonctions possibles :
-View()
-head()
-dim()
-str()
-summary()
-class()
-colnames()
-
-
-# Depuis l'interface : onglet 'Environnement' (en haut à droite)
-# Puis cliquer sur l'objet souhaité
-
-```
-<br/>
-
-5) Corrigez la classe de données de certaines variables
-
-```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE}
-
-# Convertissez 'CODGEO, 'DEP', 'REG', 'CATAEU2010' en caractère
-# Convertissez les variables stockées en facteur en caractére
-as.character()
-
-```
-<br/>
-
-6) Séléctionnez les communes isolées hors influence des pôles (CATAEU2010 == 400) de plus de 2000 habitants en 2016 (P16_POP).
-
-```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE}
-
-# Un début de solution possible :
-tableau[tableau$CATAEU2010==400 & ... , ]
-
-```
-<br/>
-
-
-7) Créez une nouvelle variable contenant la part de la population agée de 0 à 14 ans en 2016 (P16_POP0014 / P16_POP * 100)
-
-```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE}
-
-# Assigner les valeur dans une nouvelle colonne
-tableau$Ma_variable <- ... ?
-
-```
-<br/>
-
-8) Chargez la couche géographique *martinique.shp* dans un objet.
-
-```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE}
-
-# Utilisez une fonction de la library sf
-st_read()
-
-
-```
-<br/>
-
-9) Réalisez une jointure entre la couche géographique et votre tableau de données
-
-```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE}
-
-# Pour réaliser une jointure
-merge()
-
-```
-
-Puis, **appliquez la fonction plot()** au résultat...
-
-
+A) **Créez un nouveau projet** à l'emplacement de votre choix ([cf. *Les projets*](#les-projets)).    
+B) **Téléchargez** [**ces données**](https://github.com/HuguesPecout/Initiation_R_stats/raw/main/data.zip) de recensement **(INSEE, 2016)** pour les communes de la Martinique en 2011 et 2016, associées à une couche géographique **(IGN - BD ADMIN EXPRESS, 2016)**. 
+C) **Décompressez l'archive** à la racine de votre répertoire projet.   
+D) **Créez un nouveau ficher .R** (*File > New File > R Script*), puis **enregistrez-le**. Vous pourrez ainsi écrire du code R dans ce fichier, et sauvegarder votre travail.
 
 </div>
 
-<br/>
-
-
 ## Import/export de données
 
-Il est possible d'importer et d'exporter des données de différents formats. Pour cela, une série de <span style="color:#8C001A">fonctions</span> (primitives ou non) peut être utilisées.
-Quelques exemples :
+De nombreuses de <span style="color:#8C001A">fonctions</span> (primitives ou non) peuvent être utilisées pour importer et exporter des données de différents formats.
+
+### Import
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE,eval=FALSE}
 
@@ -979,7 +883,7 @@ read.csv()   # Fichier csv
 read.xlsx()  # Fichier Excel = library(xlsx) 
 read_sas()   # Fichier sas = library(haven)
 read.dbf()   # Fichier dbf = library(foreign)
-read_sf()    # Données géographiques (shape, GeoJson...) = library(sf)
+st_read()    # Données géographiques (shape, GeoJson...) = library(sf)
 
 ```
 
@@ -999,8 +903,21 @@ stringsAsFactors=FALSE, encoding="UTF-8")
 
 ```
 
+Il est également possible de télécharger un fichier en ligne, avec la fonction suivante :
+
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE,eval=FALSE}
+
+# Télécharger un fichier
+download.file()
+
+# Décompressez une archive
+?unzip()
+
+```
 
 <br/>
+
+### Export
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE,eval=FALSE}
 
@@ -1009,7 +926,7 @@ stringsAsFactors=FALSE, encoding="UTF-8")
 ## Table de données
 write.table(Mon_Objet, "c:/mydata.txt", sep="\t") 
 
-# fomrat csv
+# format csv
 write.csv(Mon_Objet, file = "MyData.csv")
 
 # format Excel -> library(xlsx)
@@ -1021,6 +938,15 @@ write.foreign(Mon_Objet, "c:/mydata.txt", "c:/mydata.sps",   package="SPSS")
 
 # format shape
 st_write()
+```
+
+<br/>
+
+### Image
+
+Les représentations graphiques peuvent également être exportées sous différents formats :
+
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE,eval=FALSE}
 
 ## Figures plot() 
 # format jpeg
@@ -1037,21 +963,30 @@ dev.off()
 
 ```
 
-Il est possible de télécharger un fichier mis à disposition en ligne, avec la fonction :
+<br/>
 
-```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE,eval=FALSE}
+### > Exercice
 
-# Télécharger un fichier
-download.file()
+**Importez le fichier** *INSEE_COM_972.csv*, et **stockez-le dans un objet**.
+
+```{r class.source="bg-danger", warning=FALSE, message=FALSE, eval=FALSE}
+
+# Fonctions possibles
+read.csv()
+read.table()
+
+# Quelques arguments utiles...
+header=TRUE
+sep=","
+stringsAsFactors=FALSE
 
 ```
-
 
 <br/>
 
 ## Interroger un objet
 
-Pour les exemples ci-dessous, l'objet dataframe *mtcars* est utilisé. Il s'agit d'un exemple de data frame, directement implanté dans R.
+Pour les exemples ci-dessous, l'objet dataframe *mtcars* est utilisé. Il s'agit d'un exemple de data frame implanté dans R.
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE}
 
@@ -1062,11 +997,19 @@ View(mtcars)
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
-# Aperçu rapide dans la console
+# Pour un aperçu rapide dans la console
 str(mtcars)
-# Premiers éléments (6 par défaut) de l'objet
+
+```
+
+Ces deux fonctions sont directement accessibles en clic-bouton depuis l'interface Rstudio. Il suffit de cliquer sur l'objet dans l'onglet *Environnement* situé en haut à droite de l'IDE Rstudio (équivalent à *View()*) ou sur la flêche à gauche du nom de l'objet (équivalent à *str()*).
+
+<center>![](figures/mtcars.png)</center>
+
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
+# Visualiser les premiers éléments (6 par défaut) de l'objet
 head(mtcars)
-# Derniers éléments (6 par défaut) de l'objet
+# Visualiser les derniers éléments (6 par défaut) de l'objet
 tail(mtcars)
 # Statistiques basiques
 summary(mtcars)
@@ -1076,9 +1019,8 @@ class(mtcars)
 length(mtcars)
 
 # Pour les objets à plusieurs dimensions :
-# Nom des colonnes / objets
+# Nom des colonnes
 colnames(mtcars)
-names(mtcars)
 # Nom des lignes
 row.names(mtcars)
 # Dimension de l'objet
@@ -1092,21 +1034,72 @@ nrow(mtcars)
 
 <br/>
 
+### > Exercice
+
+**Visualisez et interrogez votre data frame**, en ligne de code ET depuis l'interface RStudio.
+
+
+```{r class.source="bg-danger", warning=FALSE, message=FALSE, eval=FALSE}
+
+# Fonctions possibles :
+View()
+head()
+dim()
+str()
+summary()
+class()
+colnames()
+...
+
+```
+
+**Vérifiez le type de données stocké pour chaque variable**. Si nécessaire, **corrigez la classe de données des variables** '*CODGEO*, '*DEP*', '*REG*', '*CATAEU2010*' **de votre data frame comportant les données de recensement**. **N'oubliez pas d'assigner le résultat de la conversion :**
+
+```{r class.source="bg-danger", warning=FALSE, message=FALSE, eval=FALSE}
+
+# Convertissez le type de données d'une variable
+Mon_Objet$xxxx <- as.character(Mon_Objet$xxxx)
+
+```
+
+**Créez une nouvelle variable contenant la part de la population agée de 0 à 14 ans en 2016** (P16_POP0014 / P16_POP * 100) :
+
+```{r class.source="bg-danger", warning=FALSE, message=FALSE, eval=FALSE}
+
+# Assigner les valeur dans une nouvelle colonne
+mon_tableau$new_var <- ... ?
+
+```
+
+<br/>
 
 ## Séléction par attributs
 
-Comme pour toute les opérations dans R, il existe plusieurs solutions :
+Comme pour toutes les opérations dans R, **il existe plusieurs solutions**. Exemple :
+
+### Méthode 1 - Base
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
-# Methode 1 
 # df[ligne, colonne]
 mtcars[mtcars$cyl==4 & mtcars$wt > 3,  c(1:7) ]
 
-# Methode 2, fonction subset
+```
+
+### Méthode 2 - Fonction primitive
+
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
+
+# subset()
 subset(mtcars, cyl==4 & mtcars$wt > 3, select=c(1:7))
 
-# Methode 3, fonction filter() du package 'dplyr'
+```
+
+### Méthode 3 - Package dplyr
+
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
+
+# filter() du package 'dplyr'
 library(dplyr)
 mtcars %>% 
   select(1:6) %>%
@@ -1117,12 +1110,30 @@ mtcars %>%
 
 <br/>
 
-## Joindre
+### > Exercice
+
+
+**Séléctionnez les communes isolées hors influence des pôles** (CATAEU2010 == 400) **de plus de 2000 habitants** en 2016 (P16_POP).
+
+```{r class.source="bg-danger", warning=FALSE, message=FALSE, eval=FALSE}
+
+# Une de solution possible :
+tableau[tableau$CATAEU2010==400 & ... , ]
+
+```
+
+**Enregistrez le résultat de votre séléction par attribut dans un nouvel objet**.
+
+<br/>
+
+## Jointure
+
+La jointure, opération classique en géomatique, est très facile à réaliser avec R.
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
 # Construction de deux dataframe avec un identifiant commun
-ID <- as.character(c(1, 2, 3, 4))
+ID <- c("1", "2", "3", "4")
 Prenom <- c('John','Peter','Jolie','John')
 Nom <- c('Doe','Gynn','Hope','snow')
 
@@ -1136,89 +1147,107 @@ mon_tab_2 <- data.frame(ID, Nom)
 merge(mon_tab_1, mon_tab_2, by="ID")
 ```
 
+**Cela fonctionne également entre un objet sf (couche géographique) et un dataframe**.
 
-## Combiner
+<br/>
 
-```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
+### > Exercice
 
-# par les colonnes
-# les data frames doivent avoir le même nombre de lignes :
-cbind(mon_tab_1,mon_tab_2)
+**Chargez la couche géographique** *martinique.shp*, et **stockez-le dans un objet**.
 
-# Par les lignes
-# les data frames doivent avoir les mêmes colonnes (nom identiques) :
-colnames(mon_tab_1) <- colnames(mon_tab_2)
-rbind(mon_tab_1,mon_tab_2)
+```{r class.source="bg-danger", warning=FALSE, message=FALSE, eval=FALSE}
+
+# Utilisez la fonction du package sf :
+st_read()
 
 ```
+
+**Réalisez une jointure entre la couche géographique et votre tableau de données**, en assignant le résultat dans un nouvel objet. Utilisez le code INSEE des communes pour la jointure
+
+```{r class.source="bg-danger", warning=FALSE, message=FALSE, eval=FALSE}
+
+# Pour réaliser une jointure, utilisez la fonction :
+merge()
+
+# Préciser la variable de jointure pour les deux objets avec les arguments :
+by.x=
+by.y=
+
+```
+
 
 
 <br/>
 
 ## Regroupement
 
-Ci-dessous, deux solutions de regroupement possibles, avec opération sur une variable :
+**Le regroupement de ligne est une opération récurrente en gestion de base de données**. Plusieurs solutions sont possibles :
+
+### Méthode 1 - Fonction primitive
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
-# METHODE 1 -> Fonction primitive aggregate(), fonction applicable sur une seule variable
-# Regroupement des lignes en fonction des valeurs des variables disp et cyl
-# + somme des valeurs de la variable vs
+# Regroupement des lignes en fonction des valeurs des variables "disp" et "cyl"
+# + somme des valeurs de la variable "vs"
 aggregate(data = mtcars, disp ~ cyl + vs, sum)
 
-# METHODE 2 -> Utilisation du package dplyr
-# + calcul d'une somme, d'une moyenne et d'un nombre de ligne pour des valeurs regroupées
+```
+
+### Méthode 2 - Package tidyverse
+
+
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
+
+# Package dplyr
+# Permet facilement le calcul sur plusieurs champs
 library(dplyr)
 mtcars %>% 
   group_by(cyl, vs) %>% 
-  summarise(sum_disp=sum(disp), moy_hp=mean(hp), nb_element=length(cyl) )
+  summarise(sum_disp=sum(disp), 
+            moy_hp=mean(hp), 
+            nb_element=length(cyl))
+
+```
+
+### Méthode 2 - Package data.table
+
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
+
+library(data.table)
+mtcars2 <- data.table(mtcars)
+mtcars2[, .( sum_disp=sum(disp), moy_hp=mean(hp), nb_element=length(cyl) ), by=list(cyl, vs)]
 
 ```
 
 <br/>
 
-## Manipulation de data frame
+### > Exercice
 
-```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
+**Commencez par calculer la somme de la population totale de la Martinique** à l'aide la fonction suivante :
 
-# Construction data frame
-mydata <- data.frame(id=c(1,1,2,2),
-                     time=c(1,2,1,2), 
-                     x1=c(5,3,6,2), 
-                     x2=c(6,5,1,4))
+```{r class.source="bg-danger", warning=FALSE, message=FALSE, eval=FALSE}
 
-mydata
+sum()
 
+```
 
-# TRANSPOSITION
-t(mydata)
+**Puis calculez la somme de la population 2016 pour chaque catégorie de commune du zonage en aire urbaine de 2010** (CATAEU2010):
+
+```{r class.source="bg-danger", warning=FALSE, message=FALSE, eval=FALSE}
+
+# Une solution
+aggregate()
+
+# Nom des variables à utiliser
+P16_POP ~ CATAEU2010
 
 ```
 
 <br/>
 
-Le package <span style="color:#4B0082">reshape2</span> contient plusieurs fonctions de remodelage de data frame :
+## Trier les données
 
-```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
-library(reshape2)
-
-# Fonction melt() 
-mydata_melt <-melt(mydata, id=c("id","time"))
-mydata_melt
-
-#  fonction dcast(data, formula, function) - s'applique sur des 'melted data'
-mydata_melt_cast <- dcast(mydata_melt, id~variable, mean)
-mydata_melt_cast 
-
-
-```
-
-
-Il est aussi possible d'utiliser des fonctions du package <span style="color:#4B0082">tidyr</span>, developpé par Rstudio. 
-
-<br/>  
-
-## Trier des données
+Deux fonctions primitives sont à connaître pour trier des valeurs :
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
@@ -1227,62 +1256,30 @@ my_vector <- c(7,9,4,5,2,3,6,1)
 sort(my_vector)
 
 # Fonction order()
-order_mtcars <- mtcars[order(mtcars$cyl, -mtcars$disp, mtcars$carb, decreasing = TRUE), ]
-head(order_mtcars)
+mtcars[order(mtcars$cyl, mtcars$disp, decreasing = TRUE), ]
+
 
 ```
+
+**Vous devez assigner le résultat dans un objet pour enregister le nouvel ordre !**
 
 <br/>
 
-## Boucle itérative 
+### > Exercice
 
-**Une boucle est une série d'instructions exécutées jusqu'à ce qu'un résultat particulier soit obtenu ou qu'une condition pré-déterminée soit remplie**. Les boucles permettent de ré-utiliser des séries d'instructions et permettent ainsi de limiter le nombre d'instructions.
+**Triez votre tableau de données en fonction de la population de 2016** (croissant) :
 
-```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE}
+```{r class.source="bg-danger", warning=FALSE, message=FALSE, eval=FALSE}
 
-# Structure d'une boucle
-for (variable in vecteur) {
-  instruction
-}
+order()
 
 ```
 
-```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
-
-# Exemple
-for (i in 1:5) {
-  print(paste0("Passage n°", i))
-}
-
-```
-
-<br/>
-
-## Fonctions apply
-
-L'utilisation d'une boucle est très fréquente en traitement de données. Une boucle peut permettre d'effectuer des traitements sur des objets de structure multidimensionnelle (data frame, matrice, array, sf...). Mais pour cela, la boucle for n'est pas la technique otpimum. Les concepteurs de R ont développé des fonctions spécialement prévu à cet effet. 
-
-```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
-
-# Appliquer une fonction sur les lignes :
-apply(mtcars,1,mean)
-
-# Appliquer une fonction sur les colonnes :
-apply(mtcars,2,sum)
-
-# Appliquer une fonction sur chaque items (sortie vector) :
-sapply(mtcars$mpg, function(x) x/100)
-
-# Appliquer une fonction sur chaque items (sortie list)
-Resultat_lapply <- lapply(mtcars$mpg, function(x) x/100)
-Resultat_lapply[1:5]
-
-```
 <br/>
 
 ## Test conditionnel
 
-Un test conditionnel permet d'exécuter une portion de code ou non en fonction du résultat de variables booléennes.
+**Un test conditionnel permet d'exécuter une portion de code ou non en fonction du résultat de variables booléennes**.
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE}
 
@@ -1325,9 +1322,72 @@ if (is.character(x)){
 
 <br/>
 
-## Gestion de chaîne de caractères
+### > Exercice
 
-Il existe de nombreuses fonctions primitives pour gérer les chaînes de caractère. Quelques exemples : 
+**Testez si votre tableau de données est bien un objet dataframe**, et **affichez le résultat dans la console** avec la fonction *print()* :
+
+```{r class.source="bg-danger", warning=FALSE, message=FALSE, eval=FALSE}
+
+if (is.data.frame()) { print() } else { print() }
+
+```
+
+<br/>
+
+## Boucle itérative 
+
+**Une boucle est une série d'instructions exécutées jusqu'à ce qu'un résultat particulier soit obtenu ou qu'une condition pré-déterminée soit remplie**. Les boucles permettent de ré-utiliser des séries d'instructions et permettent ainsi de limiter le nombre d'instructions.
+
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE}
+
+# Structure d'une boucle
+for (variable in vecteur) {
+  instruction
+}
+
+```
+
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
+
+# Exemple
+for (i in 1:5) {
+  print(paste0("Passage n°", i))
+}
+
+```
+
+<br/>
+
+## Fonctions apply
+
+L'utilisation d'une boucle est très fréquente en traitement de données. Une boucle peut permettre d'effectuer des traitements sur des objets de structure multidimensionnelle (data frame, matrice, array, sf...). Mais pour cela, la boucle for n'est pas la technique otpimum. Les concepteurs de R ont développé des fonctions spécialement prévu à cet effet. 
+
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
+
+# Appliquer une fonction sur les lignes :
+apply(mtcars,1,mean)
+
+# Appliquer une fonction sur les colonnes :
+apply(mtcars,2,sum)
+
+# Appliquer une fonction sur chaque items (sortie vector) :
+sapply(mtcars, function(x) x/100)
+
+
+# Appliquer une fonction sur chaque items (sortie list)
+Resultat_lapply <- lapply(mtcars, function(x) x/100)
+Resultat_lapply[1:3]
+
+```
+<br/>
+
+
+
+## Chaîne de caractères
+
+De nombreuses fonctions primitives existent pour gérer les chaînes de caractères. Quelques exemples :
+
+### Concatener
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
@@ -1339,63 +1399,87 @@ paste0("Champions", "du", "monde")
 
 ```
 
-```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE}
+
+### Gérer la casse
+
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=TRUE}
 
 # Gérer la casse
 text <- "champion Du MONDEEEEEE !"
 
+```
+
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=TRUE}
 # tout en minuscule
 tolower(text)
+```
 
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=TRUE}
 # tout en majuscule
 toupper(text)
 
 ```
-```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE}
+
+### Compter
+
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=TRUE}
 
 # Nombre de caractères
 nchar(text)
 
 ```
 
-```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE}
+### Modifier
+
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=TRUE}
 
 # Scinder une chaîne en fonction d'un caractère
 strsplit(text, split = " ", fixed = TRUE)
+
+```
+
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=TRUE}
 
 # Remplacer un (ou plusieurs) caractère(s) par un autre
 gsub("ion", "ionne", text)
 
 ```
 
-Si vous souhaitez réaliser des traitements complexes sur des chaînes de caractère, vous pouvez utilisez la librairie de référence <span style="color:#8C001A">stringr</span> vous permettra de réaliser toutes les opérations les plus complexes. Quelques exemples :
+### Package stringr
+
+Si vous souhaitez réaliser des traitements complexes sur des chaînes de caractères, vous pouvez utiliser la **librairie de référence** <span style="color:#8C001A">stringr</span> qui vous permettra de réaliser des opérations plus complexes. Exemples :
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE}
 
-# Librairie de référence pour le gestion de chaîne de caractère
 library(stringr)
 
-# Détécter la présence d'un caractère ou d'une chaîne 
+# Détécter la présence d'un caractère ou d'une chaîne
+# Renvoie TRUE ou FALSE
 str_detect(text,  "E")
 
 # Position de la première occurrence d'un caractère ou d'une chaîne 
+# Renvoie la position du premier et dernier caractère
 str_locate(text, "pi")
 
-# Toutes les positions d'un caractère ou d'une chaîne 
+# Toutes les positions d'un caractère ou d'une chaîne
+# Renvoie toutes les positions
 str_locate_all(text, "E")
 
 # Extraire un segment de chaîne de caractère
+# Renvoie la chaîne de caractère extraite
 str_sub(text,  5, 9)
 
 # Suppression des espaces en début et fin de chaîne de caractère
-str_trim("  abc   ")
+str_trim("  abc    ")
 
 ```
 
 
+### Regex
+
 Il est possible de combiner l'**utilisation des expressions régulières avec toutes ces fonctions**. 
 
-**Les expressions régulières**, ou plus communément regex (contraction de regular expression) **permettent de représenter des modèles de chaînes de caractère. Ce sont des outils très puissants et très utilisés : on peut les retrouver dans de nombreux langages comme le PHP, MySQL, Javascript...** Si cet outil est très puissant, il est relativement difficile à appréhender au début car les expressions régulières peuvent prendre des formes complexe à interpreter. Ex :
+**Les expressions régulières**, ou plus communément REGEX (contraction de *regular expression*) **permettent de représenter des modèles de chaînes de caractères. Ce sont des outils très puissants et très utilisés : on peut les retrouver dans de nombreux langages comme le PHP, MySQL, Javascript...** Si cet outil est très puissant, il est relativement difficile à appréhender au début car les expressions régulières peuvent prendre des formes complexe à interpreter. Ex :
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
@@ -1420,11 +1504,25 @@ grep(regex, emails_list, ignore.case=TRUE)
 
 ```
 
+
 <br/>
+
+### > Exercice
+
+**Créez une nouvelle colonne** "***NOM***" dans votre objet sf, pour y stocker **le nom des communes en lettre CAPITALE**.
+
+```{r class.source="bg-danger", warning=FALSE, message=FALSE, eval=FALSE}
+
+# Fonction à utiliser :
+toupper()
+
+```
 
 ## Répresentations graphiques
 
-Réaliser des graphiques en utilisant des <span style="color:#8C001A">fonctions</span> primitives :
+### Fonction primitives
+
+Plusieurs <span style="color:#8C001A">fonctions</span> primitives permettent de réaliser des graphiques :
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE}
 
@@ -1452,21 +1550,22 @@ hist(mtcars$mpg,
 ```
 
 
-Toute **une série d'arguments permet d'ajuster les représentations**, ex :      
-**axes** : Afficher ou non les axes (TRUE ou FALSE)            
-**log** : Mettre les axes à l'echelle logarithmique ("x", "y", "xy")            
-**type** : Argument qui contrôle le type d'axe produit ("p"= points, "l" = ligne, "o" = point relier par ligne...)       
-...    
+Toute **une série d'arguments permet d'ajuster les représentations**, exemple :  
 
-**Plusieurs éléments peuvent être superposés** aux graphiques (en utilisant l'argument **add =TRUE**), ex :       
-**text()** : Ajouter du texte           
-**legend()** : Ajouter un légende        
-**abline()** : Ajouter une ligne     
-**axis()** : Ajouter un axe    
-...  
+- **axes** : Afficher ou non les axes (TRUE ou FALSE)              
+- **log** : Mettre les axes à l'echelle logarithmique ("x", "y", "xy")               
+- **type** : Argument qui contrôle le type d'axe produit ("p"= points, "l" = ligne, "o" = point relier par ligne...)           
+- ...      
+
+**Plusieurs éléments peuvent être superposés en utilisant l'argument** "***add =TRUE***"), ex :                   
+- **text()** : Ajouter du texte            
+- **legend()** : Ajouter un légende                   
+- **abline()** : Ajouter une ligne               
+- **axis()** : Ajouter un axe               
+- ...  
 
 
-**Il est possible d'afficher plusieurs graphiques en même temps**, à l'aide des fonctions **par()** ou **layout()**. Ex : 
+**Il est possible d'afficher plusieurs graphiques en même temps**, à l'aide des fonctions **par()**. Ex : 
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
@@ -1481,16 +1580,58 @@ boxplot(mtcars$wt, main="Graph 4")
 
 ```
 
+### Plot(sf)
 
-**Pour réaliser des graphiques plus spécifiques** (et plus beau !), **utilisez la librarie de référence** <span style="color:#8C001A">**ggplot2**</span>. Ex :
+La fonction *plot()* permet l'affichage d'un objet sf (couche géographique) dans la fenêtre graphique.
+
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
+
+library(mapsf)
+
+# Utilisation d'un objet sf stocké dans le package mapsf
+mtq <- mf_get_mtq()
+
+# Affichage de l'objet sf
+plot(mtq)
+```
+
+Attention, le fonction *plot()* réalise par défaut une représentation pour chaque variable de l'objet sf.     
+**Pour afficher uniquement la géométrie, il est nécessaire d'utiliser la fonction** ***st_geometry()*** du <span style="color:#4B0082">package<span> sf :
+
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
+
+library(sf)
+
+# Affichage de la géométrie d'un objet sf
+plot(st_geometry(mtq))
+
+```
+
+Pour **représenter les valeurs d'une variable de votre objet sf**, utilisez la syntaxe suivante :
+
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
+
+# Représentation visuelle
+plot(mtq["POP"])
+
+```
+
+**Attention, ceci n'est pas une carte ! A n'utiliser que pour explorer les données.**
+
+### ggplot2
+
+Il existe de **très nombreux** <span style="color:#4B0082">package</span> **pour réaliser des représentations graphiques** (oint fort du langage R).
+
+**Le plus célèbre est** <span style="color:#8C001A">**ggplot2**</span>. Il permet de réaliser de très nombreux types de représentation graphique. Ce package est développé par Hadley Wickham (Rstudio) et **fonctionne avec un syntaxe particulière basée sur la** ***grammaire des graphiques***, théorisée par **Leland Wilkinson**. Exemple :
+
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
 library(ggplot2)
 
 # Exemple : Density plots
-g <- ggplot(mpg, aes(cty))
-g + geom_density(aes(fill=factor(cyl)), alpha=0.8) + 
+ggplot(mpg, aes(cty)) +
+  geom_density(aes(fill=factor(cyl)), alpha=0.8) + 
   labs(title="Density plot", 
        subtitle="City Mileage Grouped by Number of cylinders",
        caption="Source: data R mtcars",
@@ -1501,11 +1642,54 @@ g + geom_density(aes(fill=factor(cyl)), alpha=0.8) +
 
 <br/>
 
+### > Exercice
 
-## Sauvegarder et supprimer des objets
+**Construisez un histogramme de la variable** '***C16_POP15P_CS7***' (nombre de retraités) .
+
+```{r class.source="bg-danger", warning=FALSE, message=FALSE, eval=FALSE}
+
+# Fonction à utiliser :
+hist()
+
+```
+
+**Représentez les valeurs de cette variable en aplat de couleur sur la géométrie de votre objet sf**.
+
+```{r class.source="bg-danger", warning=FALSE, message=FALSE, eval=FALSE}
+
+# Fonction à utiliser :
+plot()
+
+```
+
+```{r class.source="bg-danger", warning=FALSE, message=FALSE, eval=FALSE}
+# Fonctions possibles
+ test <-  read.csv("data/INSEE_COM_972.csv", header=TRUE, sep=",", stringsAsFactors=FALSE)
+ test$CODGEO <- as.character(test$CODGEO) 
+library(sf)
+ test2 <- st_read("data/martinique.shp")
+ 
+test3 <-  merge(test2, test, by.x="INSEE_COM" , by.y="CODGEO")
+
+aggregate(data = test3, P16_POP ~ CATAEU2010, sum)
+
+test3[order(test3$P16_POP, decreasing = FALSE), ]
+test3$NOM <- toupper(test3$LIBGEO.x)
+
+hist(test3$C16_POP15P_CS7, 
+     breaks=12, 
+     col="red",
+     xlab= "mpg",
+     ylab = "Fréquence",
+     main = "Distribution de la série statistique 'mpg'")
+```
+
+<br/>
+
+## Sauvegarder des objets
 
 Il est possible de supprimer tous les objets crées en cliquant sur l'icône `r knitr::include_graphics('figures/clear.png')` dans la fenêtre de l'espace de travail. 
-Plusieurs fonction permettent également de gérer les objets. En voici quelques-unes :
+Plusieurs fonctions permettent également de gérer les objets. En voici quelques-unes :
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE,eval=FALSE}
 
@@ -1545,33 +1729,55 @@ mon_objet_new <- readRDS("Nom_du_fichier")
 
 <br/>
 
+### > Exercice
 
 
+**Sauvegardez votre objet sf joint aux données de recensement dans le repértoire de votre projet Rstudio**.
 
-### Bonus
+```{r class.source="bg-danger", warning=FALSE, message=FALSE, eval=FALSE}
 
-<div  class="Exercice">
+# Fonction à utiliser :
+saveRDS()
 
-
-1) Installez le package <span style="color:#4B0082">Rcade</span> développé par Romain Lesur.
-
-Ce <span style="color:#4B0082">package</span> se trouve-t-il sur le CRAN ? 
-Où se trouve-t-il et pourquoi ?
-
-2) Installez le package
-
-Essayer-le... pas plus de 2-3 minutes :-) )
-
-3) Supprimez le package  
+```
 
 
-</div>
+Puis, **supprimez tous les objets chargés dans votre environnement Rstudio**
+
+```{r class.source="bg-danger", warning=FALSE, message=FALSE, eval=FALSE}
+
+# Fonctions à utiliser :
+rm() et ls()
+
+```
+
+Enfin, **rechargez l'objet enregistré en dur** dans votre environnemnt Rstudio:
+
+```{r class.source="bg-danger", warning=FALSE, message=FALSE, eval=FALSE}
+
+# Fonction à utiliser :
+readRDS()
+
+```
+
+
+<br/>
+
+## Bonus
+
+**R est un langage très polyvalent... Voici un petit exercice pour le prouver :**
+
+1) **Trouvez où est mis à dipsosition le package** <span style="color:#4B0082">**Rcade**</span>, développé par Romain Lesur  
+2) **Installez-le**   
+3) **Essayer-le**... Pas plus de 2-3 minutes :-) )   
+4) **Supprimez le package**    
+
+
 
 <br/>
 
 # Statistique univariée
 
-<br/>
 
 ## Vocabulaire
 
@@ -2013,11 +2219,11 @@ POP16_mtq$TX_0014 <- 100 * POP16_mtq$P16_POP0014/POP16_mtq$P16_POP
 
 <br/>
 
-Pour discrétiser les valeurs de cette série statistique, utilisez la fonction <span style="color:#8C001A">getBreaks()</span> du package cartography :
+Pour discrétiser les valeurs de cette série statistique, utilisez la fonction <span style="color:#8C001A">mf_get_breaks()</span> du package mapsf :
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
-# Construction d'un vecteur avec les bornes de chaque classe - getBreaks() / library(cartography)
+# Construction d'un vecteur avec les bornes de chaque classe - mf_get_breaks() / library(mapsf)
 # method :
 # Amplitude égale = "equal" 
 # Discrétisation standardisée = "sd"
@@ -2032,8 +2238,8 @@ Pour discrétiser les valeurs de cette série statistique, utilisez la fonction 
 # my_discretisation <- c(1.00, 60.00, 190.00, 368.25, 697.50, 930.00, 1168.50, 1842.00, 8027.00)
 # OU - 
 
-library(cartography)
-my_discretisation <- getBreaks(POP16_mtq$TX_0014 , nclass = NULL, method = "quantile", k = 1, middle = FALSE)
+library(mapsf)
+my_discretisation <- mf_get_breaks(POP16_mtq$TX_0014 , breaks = "quantile")
 my_discretisation
 
 # Afficher votre discrétisation sur l'histogramme de la distribution
@@ -2106,7 +2312,7 @@ rug(mtcars$qsec)
 
 
 **En fonction de la nature des variables à représenter, on ne doit pas utiliser les mêmes méthodes de représentation**. 
-Cependant, pour réaliser toute sortes de cartes statistiques, vous pouvez n'utiliser qu'un seul package : '**<span style="color:#4B0082">cartography</span>**'
+Cependant, pour réaliser toute sortes de cartes statistiques, vous pouvez n'utiliser qu'un seul package : '**<span style="color:#4B0082">mapsf</span>**'
 
 <br/>
 
@@ -2137,6 +2343,7 @@ mtq <- st_read("data/martinique.shp")
 # Jointure avec un tableau de données :
 mtq <- merge(mtq, POP16_mtq, by.x="INSEE_COM", by.y="CODGEO")
 
+library(cartography)
 # création d'une palette de couleur en N classe
 cols <- carto.pal(pal1 = "wine.pal", n1 = 6)
 
@@ -2154,7 +2361,7 @@ propSymbolsChoroLayer(x = mtq, # sf object
                       var2 = "TX_0014", #  field used to plot the colors
                       col = cols, # symbols colors
                       inches = 0.3, # radius of the largest circle
-                      method = "quantile", # discretization method (?getBreaks)
+                      method = "quantile", # discretization method (?mf_get_breaks)
                       border = "grey50", # color of circle borders
                       lwd = 1, # width of the circle borders
                       legend.var.pos = "topright", # position of the first legend
@@ -2210,7 +2417,7 @@ Comment résumer la distribution de cette variable par un graphique ? (plusieurs
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE}
 
 # Utilisez
-getBreaks()
+mf_get_breaks()
 
 ```
 <br/>
@@ -2420,7 +2627,7 @@ tab.chi2$residuals
 
 ```
 
-</br>       
+<br/>       
 
 Il est possible d'**affiner l’interprétation du test en déterminant dans quelle case l’écart à l’indépendance est le plus significatif en utilisant les résidus du test**. Ceux-ci sont notamment affichables avec la fonction **<span style="color:#8C001A">chisq.residuals()</span>** de la librairie 'questionr' :
 
@@ -2431,7 +2638,7 @@ chisq.residuals(tab)
 
 ```
 
-</br>  
+<br/>  
 
 ### Représentations graphiques
 
@@ -2471,10 +2678,10 @@ Dans le le tableau ci-dessous figurent en colonnes le nombre de réponses à la 
 ![](figures/chi2.png?style=centerme)
 </p>
 
-</br>
+<br/>
 
 1) Construire le data.frame dans R.   
-</br>
+<br/>
 
 ```{r class.source="bg-info", class.output="bg-warning",, echo=FALSE, eval=FALSE}
 
@@ -2493,7 +2700,7 @@ x$residuals
 
 Attention, vous devez dans un premier temps convertir votre data.frame en matrix...     
 Vous pouvez également essayer de représenter graphiquement vos pourcentages à l'aide de la fonction <span style="color:#8C001A">barplot()</span>.    
-</br>
+<br/>
 
 ```{r class.source="bg-info", class.output="bg-warning",, fig.width=5, echo=FALSE, eval=FALSE}
 
@@ -2781,7 +2988,7 @@ Le coefficient de détermination (R2) est une mesure de la qualité de la prédi
 summary(lm(rp2012$cadres ~ rp2012$dipl_sup))
 ```
 
-</br>  
+<br/>  
 
 #### Représentation graphique
 
@@ -2817,7 +3024,7 @@ residus <- data.frame(scaledRes = scale(my_reg$residuals), nom = row.names(rp201
 
 ```
 
-</br> 
+<br/> 
 
 **Représenter les résidus :**
 
@@ -2837,7 +3044,7 @@ text(x= 1:nrow(residus), y = residus$scaledRes, labels = residus$nom, pos = 4,
 
 ```
 
-</br> 
+<br/> 
 
 
 ## > Exercice
