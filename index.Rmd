@@ -43,10 +43,13 @@ options("scipen" = 10)
 
 <br/>
 
-**Avant de démarrer la pratique, nous allons introduire la logicel/langage R et l'IDE Rstudio**. Pour cela, nous utiliserons deux diaporamas :
-
--> Partie 1 : [Contextualisation et présentation de R et Rstudio](https://huguespecout.github.io/R_presentation_FR/#/)   
--> Partie 2 : [Base du langage, packages, Rstudio et documentation](https://huguespecout.github.io/Intro_R_Rstudio_FR/#/)
+<center>**DIAPORAMA D'INTRODUCTION** : </center>
+</br>
+<center>[Contextualisation et présentation de R et Rstudio](https://huguespecout.github.io/R_presentation_FR/#/) </center>  
+</br>
+<center><img src="figures/diapo.png" width="170"/></center>
+</br>
+<center>Diaporama bonus (équivalent "*Quelques fondamentaux*") : [Base du langage, packages, Rstudio et documentation](https://huguespecout.github.io/Intro_R_Rstudio_FR/#/)</center>
 
 <br/>
 
@@ -84,7 +87,7 @@ nb_function_base <- length(c(lsf.str("package:base"), lsf.str("package:graphics"
 
 
 
-# Prise en main
+# Quelques fondamentaux
 
 <br/>
 
@@ -92,16 +95,16 @@ nb_function_base <- length(c(lsf.str("package:base"), lsf.str("package:graphics"
 
 **L'interface de RStudio se présente sous la forme d’une unique fenêtre découpée en quatre zones** que l’on peut redimensionner, masquer ou maximiser selon ses préférences :
 
-<li>L’éditeur de code</li> 
+<li>**L’éditeur de code**</li> 
 Cette zone permet l’édition de fichiers source R (avec coloration syntaxique et autocomplétion).
 
-<li>La console</li>
+<li>**La console**</li>
 La console avec la session R en cours d’exécution. La console affiche à la fois le code exécuté, ses résultats associés, ainsi que les avertissements (warnings) et messages d'erreur éventuels (errors). 
 
-<li>L’espace de travail</li>
+<li>**L’espace de travail**</li>
 Cette zone permet de lister, typer et visualiser les objets créés par l'exécution du code R.
 
-<li> Une quatrième zone pemettant de basculer entre :</li>
+<li> **Une quatrième zone** pemettant de basculer entre :</li>
 Un explorateur de fichiers, une fenêtre graphique, une fenêtre de gestion des packages et de la documentation associée aux fonctions et packages.
 
 
@@ -115,22 +118,22 @@ Un explorateur de fichiers, une fenêtre graphique, une fenêtre de gestion des 
 
 
 <ul>
-<li>La création de projet</li> 
+<li>**La création de projet**</li> 
 
 RStudio dispose d’une fonctionnalité très pratique pour **organiser son travail en différents projets**. L’idée principale est de réunir tous les fichiers et documents relatifs à un même projet (que ce soit les données, les scripts, les rapports automatisés…) dans un répertoire dédié. L’onglet Projects est situé en haut à droite de l’interface.
 
 
-<li>Les boutons raccourcis</li> 
+<li>**Les boutons raccourcis**</li> 
 
-**Plusieurs actions** comme la création et le chargement de programme, l'import de données, l'installation et le chargement de packages, l'accés à la documentation, la visualisation des objets, l'export de figures... **sont exécutables en un simple clic**.
-
-
-<li>L'autocomplétion</li>
-
-RStudio présente aussi la capacité de compléter automatiquement les termes en cours d’écriture.  **L’autocomplétion  fonctionne  avec  la  touche Tab du  clavier**. Cela aide l'utilisateur dans la saisi des noms d'objet, de fonction, de variable, et même des arguments de fonction.
+Plusieurs actions comme la création et le chargement de programme, l'import de données, l'installation et le chargement de packages, l'accés à la documentation, la visualisation des objets, l'export de figures... sont exécutables en un simple clic.
 
 
-<li>Raccourcis clavier</li>
+<li>**L'autocomplétion**</li>
+
+RStudio présente aussi la capacité de compléter automatiquement les termes en cours d’écriture.  L’autocomplétion  fonctionne  avec  la  touche ***Tab*** du  clavier. Cela aide l'utilisateur dans la saisi des noms d'objet, de fonction, de variable, et même des arguments de fonction.
+
+
+<li>**Raccourcis clavier**</li>
 
 RStudio propose de nombreux raccourcis clavier intéressants, exemple : 
 
@@ -145,7 +148,7 @@ RStudio propose de nombreux raccourcis clavier intéressants, exemple :
 
 ## Paramètres généraux
 
-Pour éviter des problèmes d'encodage des scripts ou le chargement incessant de données à chaque nouvelle instance de Rstudio, **il est necessaire de modifier certains paramètres globaux**. Pour cela, cliquez sur *tools* puis sur *Global Options* pour ouvrir la fenêtre des paramètre généraux de Rstudio. 
+Pour éviter des problèmes d'encodage des scripts ou le chargement incessant de données à chaque nouvelle instance de Rstudio, **il est necessaire de modifier certains paramètres globaux**. Pour cela, cliquez sur "*tools*" puis sur "*Global Options*" pour ouvrir la fenêtre des paramètre généraux de Rstudio. 
 
 
 Dans un premier temps, **décochez les options de restoration et de sauvegarde de données** à l'ouverture et à la fermeture de session :
@@ -155,7 +158,7 @@ Dans un premier temps, **décochez les options de restoration et de sauvegarde d
 
 <br/>
 
-Puis, dans l'onglet *code* et le sous-onglet *saving*, **paramétrez l'encodage en UTF-8** pour que les scripts crées s'affichent correctement en cas d'ouverture dans un autres systèmes d'exploitation :
+Puis, dans l'onglet "*code*" et le sous-onglet "*saving*", **paramétrez l'encodage en UTF-8** pour que les scripts crées s'affichent correctement en cas d'ouverture dans un autres systèmes d'exploitation :
 
 <p class="center">![](figures/encodage.png)
 </p>
@@ -167,7 +170,7 @@ Puis, dans l'onglet *code* et le sous-onglet *saving*, **paramétrez l'encodage 
 
 ## Les projets
 
-Cette fonctionnalité permet d'organiser son travail en différents projets. L’idée principale est de réunir tous les fichiers relatifs à un même projet (quelque soit leur format) dans un répertoire dédié. **Le menu "Project" est accessible via une icône dédiée située tout en haut à droite** :
+Cette fonctionnalité permet d'organiser son travail en différents projets. L’idée principale est de réunir tous les fichiers relatifs à un même projet (quelque soit leur format) dans un répertoire dédié. **Le menu** "***Project***" **est accessible via une icône dédiée située tout en haut à droite** :
 
 <br/>
 
@@ -176,7 +179,7 @@ Cette fonctionnalité permet d'organiser son travail en différents projets. L�
 
 <br/>
 
-Dans le menu **Project**, sélectionnez l’option **New project** :
+Dans le menu "***Project***", sélectionnez l’option "***New project***" :
 
 <br/>
 
@@ -198,27 +201,26 @@ Dans un nouveau répertoire, créez un projet vide. Indiquez le nom de votre pro
 
 ## Les objets
 
-Tout ce qui est créé et manipulé sous R est un objet. Ces objets permettent de stocker et de structurer les données.    
-Les objets peuvent stocker différents types de données. Voici les principaux :
+Tout ce qui est créé et manipulé sous R est un objet. Ces objets permettent de stocker et de structurer les données. **Les objets peuvent stocker différents types de données**. Voici les principaux :
 
-- La chaine de caractères (*string*)    
+- **La chaine de caractères** (*string*)    
 
 Il s'agit d'une suite ordonnée de caractères. Ex : *"Ma chaîne de caractères"* ou "*234*"
 
 
-- Nombre entier (*integer*)    
+- **Nombre entier** (*integer*)    
 
 Il s'agit d'un nombre sans décimale (sans virgule). Ex : *347*
 
 
--  Nombre réel (*numeric*)   
+-  **Nombre réel** (*numeric*)   
 
 Il s'agit d'un nombre décimale. Ex : *86.6*
 
 
-- Valeur logique ou booléenne (*logical*)   
+- **Valeur logique ou booléenne** (*logical*)   
 
-Une variable booléenne est une variable qui ne prend que deux valeurs : *true* (vrai) et *false* (faux) ou *O* et *1*
+Une variable booléenne est une variable qui ne prend que deux valeurs : *true* (vrai) et *false* (faux) ou *0* et *1*
 
 <br/>
 
@@ -230,15 +232,18 @@ Un objet peut être créé avec l'opérateur « assigner » (`<-`), une flèche 
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 n <- "chaîne de caractères"
+
 n
+
 n <- 15 + 9
+
 n
 
 ```
 
 **On peut également écrire une expression sans assigner son résultat ou sa valeur à un objet**, le résultat est alors affiché à l'écran mais n'est pas stocké dans un objet en mémoire :
 
-```{r warning=FALSE, message=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
 (10 + 2) * 5
 
@@ -252,9 +257,9 @@ Mon_objet <- (10 + 2) * 5
 
 ### La fonction
 
-Le logiciel R dispose de fonctions préprogrammées appelées fonctions primitives ou basiques et regroupés dans le package <span style="color:#4B0082">base</span> qui est automatiquement chargé. Pour connaître toutes les fonctions primitives, utilisez la fonction <span style="color:#8C001A">library(help = "base")</span> :
+Le logiciel R dispose de fonctions préprogrammées appelées **fonctions primitives ou basiques** et regroupés dans le package <span style="color:#4B0082">base</span> qui est automatiquement chargé. Pour connaître toutes les fonctions primitives, utilisez la fonction <span style="color:#8C001A">library(help = "base")</span> :
 
-```{r warning=FALSE, message=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
 library(help = "base")
 
@@ -272,9 +277,9 @@ library(help = "base")
 
 Exemple de <span style="color:#8C001A">fonctions</span> permettant d'assigner ou de modifier la classe d'un objet :
 
-```{r warning=FALSE, message=FALSE, eval=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE}
 
-# Les différentes fonctions permettant de modifier la classe de l'objet 'mon_objet' :
+# Les différentes fonctions permettant de convertir la classe de l'objet 'mon_objet' :
 as.vector(x='mon_objet')
 as.data.frame(x='mon_objet')
 as.matrix(x='mon_objet')
@@ -284,7 +289,7 @@ as.factor(x='mon_objet')
 
 ```
 
-```{r warning=FALSE, message=FALSE, eval=TRUE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=TRUE}
 
 # Exemple
 mon_objet <- "20345"
@@ -298,12 +303,12 @@ class(mon_objet)
 ```
 
 
-Dans la plupart des cas, les arguments d'une fonction sont prédéfinis. Il est donc important de **se renseigner sur les différents arguments d'une fonction et ses valeurs paramétrées par défault**. Attention, certains arguments n'ont pas de valeur prédéfinie mais doivent obligatoirement être renseigné.
+Une fonction est paramétrable, ajustable à l'aide d'**arguments**. Trés souvent, les arguments d'une fonction sont prédéfinis. Il est donc important de **se renseigner sur les différents arguments d'une fonction et ses valeurs paramétrées par défault**. Cependant, certains arguments n'ont pas toujours de valeur prédéfinie et doivent être renseignés.
 
 Exemple avec la fonction <span style="color:#8C001A">mean()</span> :
 
 
-```{r warning=FALSE, message=FALSE, eval=TRUE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=TRUE}
 
 notes <- c(11,13,15,17,10,8,14,13,12,15,19,NA)
 
@@ -314,7 +319,7 @@ mean(notes)
 
 La fonction <span style="color:#8C001A">mean()</span> retourne NA car la série statistique présente une valeur manquante (NA). **L'arguments na.rm (= FALSE par défault) permet de ne pas prendre en compte les valeurs manquantes** :
 
-```{r warning=FALSE, message=FALSE, eval=TRUE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=TRUE}
 
 # na.rm (= FALSE par défault) permet de prendre en compte ou non les valeurs NA
 mean(notes, na.rm = TRUE)
@@ -324,7 +329,7 @@ mean(notes, na.rm = TRUE)
 L'utilisateur a  également la possibilité de définir ses propres fonctions. 
 Une fonction est mise dans une variable contenant un bloc d'instructions introduit par la commande <span style="color:#8C001A">function()</span>. La syntaxe générale est :
 
-```{r warning=FALSE, message=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
 nom_de_fonction <- function(arguments) { instructions }
 
@@ -332,7 +337,7 @@ nom_de_fonction <- function(arguments) { instructions }
 
 Exemple :
 
-```{r warning=FALSE, message=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
 # Ecriture une fonction
 carre <- function(x) {
@@ -353,9 +358,9 @@ carre(3)
 
 ```
 
-Si vous souhaitez utiliser une fonction issue d'un package spécifique, vous devez d'abord installer le package et chargez la library :
+En plus des fonction primitives, des fonctions que vous pouvez vous même créer, **il est trés simple d'utiliser des fonctions mises à disposition par l'intermédiaire de package**. Pour cela, vous devez d'abord **installer le package et chargez la library** :
 
-```{r warning=FALSE, message=FALSE, eval=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE}
 
 # Installation du package
 install.packages("foreign")
@@ -369,13 +374,14 @@ read.dbf("D:/users/geographie/Documents/nom_fichier.dbf", as.is = FALSE)
 
 ```
 
+
 <br/>
 
 ### Le vecteur
 
 **Un vecteur permet de regrouper des éléments d'une même classe**.
 
-```{r warning=FALSE, message=FALSE }
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE }
 
 # Joindre des éléments dans un vecteur
 mon_vecteur <- c(1,2,3,4,5,6,7,8,9)
@@ -419,7 +425,7 @@ mon_vecteur[c(2,5)]
 
 Un data frame est utilisé pour stocker une table de données. Il s'agit d'une liste de vecteurs de même longueur.
 
-```{r warning=FALSE, message=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
 # Construction de trois vecteurs
 personne <- c('John Doe','Peter Gynn','Jolie Hope','John snow')
@@ -455,7 +461,7 @@ mon_tableau$personne[4]
 
 **Une liste est un vecteur d'objets**. Il permet de stocker différents types d'objets dans un seul objet.
 
-```{r warning=FALSE, message=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
 ma_fonction <- function() {cat("hello")}
 mon_vecteur1 <- c('John Doe','Peter Gynn','Jolie Hope','John snow')
@@ -489,7 +495,7 @@ ma_liste[[3]][2]
 
 Une matrice est un **tableau d'objet de même type, à double entrée**.
 
-```{r warning=FALSE, message=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
 ma_matrice <- matrix(c(1:16), nrow=4, ncol=4) 
 
@@ -500,7 +506,7 @@ ma_matrice[4,3]
 
 De nombreuses opérations et <span style="color:#8C001A">fonctions</span> primitives sont applicables à cet objet. Quelques exemples :
 
-```{r warning=FALSE, message=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
 # Multiplication de matrice, élément par élément.
 ma_matrice * ma_matrice 
@@ -523,7 +529,7 @@ colSums(ma_matrice)
 
 **L'objet sf est en quelque sorte une table de données géographique**. Il permet de gérer de l'information spatiale. Il s'agit tout simplement d'un dataframe qui stocke également des geométries.
 
-```{r warning=FALSE, message=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
 # Création d'un vecteur de nombre (1 à 10)
 ID <-seq(1:10)
@@ -558,7 +564,7 @@ plot(st_geometry(mes_donnees_SF))
 
 **Un facteur (factor) est un vecteur contenant uniquement certaines valeurs prédéfinies**. Les valeurs pré-définies sont appelées des **levels**.
 
-```{r warning=FALSE, message=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
 
 my_factor <- sample(x = c("North", "East", "South", "West"), size = 13, replace = TRUE)
@@ -597,7 +603,7 @@ my_factor[7:13, drop=TRUE]
 
 ### Arithémtiques
 
-```{r warning=FALSE, message=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
 # Addition
 5 + 5
@@ -621,7 +627,7 @@ my_factor[7:13, drop=TRUE]
 
 ### Relationel
 
-```{r warning=FALSE, message=FALSE, eval=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE}
 
   <    # inférieur à 
   >    # supérieur à 
@@ -635,7 +641,7 @@ my_factor[7:13, drop=TRUE]
 
 
 
-```{r warning=FALSE, message=FALSE}   
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}   
 
 # Exemple
 5 == 5
@@ -649,7 +655,7 @@ c(1,2,3) %in% c(2,7,5)
 ### Logique
 
 
-```{r warning=FALSE, message=FALSE, eval=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE}
 
   !         # Négation
   &, &&     # ET 
@@ -664,7 +670,7 @@ c(1,2,3) %in% c(2,7,5)
 
 
 
-```{r warning=FALSE, message=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
 # Exemples
 
@@ -694,11 +700,11 @@ Il est également possible d'installer des packages en cours de développement e
 
 Installer un <span style="color:#4B0082">package</span> en language R :
 
-```{r warning=FALSE, message=FALSE,eval=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE,eval=FALSE}
 
 # Pour les packages disponibles sur le CRAN :
-install.packages("cartography") # Installer un package
-update.packages("cartography")  # Mettre à jour un package
+install.packages("mapsf") # Installer un package
+update.packages("mapsf")  # Mettre à jour un package
 
 # Pour obtenir le chemin de la librarie contenant les packages installés
 .libPaths() 
@@ -718,13 +724,13 @@ install_github("riatelab/MTA")
 
 Une fois installé, **un <span style="color:#4B0082">package</span> doit être chargé à chaque nouvelle session de R pour être utilisé**. A un package est systématiquement associée de la documentation permettant de comprendre son contenu et aider à sa prise en main. 
 
-```{r warning=FALSE, message=FALSE,eval=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE,eval=FALSE}
 
 # Charger un package pour en utiliser ses fonctions
-library(cartography)  
+library(mapsf)  
 
 # Utiliser directement une fonction d'un package
-cartography::propSymbolsChoroLayer()
+mapsf::mf_map()
 
 # Pour charger des données implementées dans un package
 data(Nom_objet)
@@ -752,11 +758,11 @@ Il y a plusieurs façons d'obtenir de l'aide avec R studio. **Vous pouvez utilis
 
 Il est possible d'**obtenir de la documentation en utilisant des fonctions**, Ex :
 
-```{r warning=FALSE, message=FALSE, eval=TRUE, include=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=TRUE, include=FALSE}
 library(cartography)  
 ```
 
-```{r warning=FALSE, message=FALSE,eval=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE,eval=FALSE}
 
 # Documentation des packages
 help("cartography") 
@@ -806,7 +812,7 @@ Voir par exemple :
 
 - Eviter les lignes de plus de 80 charactères.    
 - Utiliser un espace avant et après les opérateurs :
-```{r warning=FALSE, message=FALSE, eval=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE}
 
 # Préférez
 x  <-  12
@@ -821,7 +827,7 @@ average<-mean(feet/12+inches,na.rm=TRUE)
 ```
 
 - Eviter les lignes avec plus d'une opération :
-```{r warning=FALSE, message=FALSE, eval=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE}
 
 ### Il est possible d'écrire plusieurs opération sur une me ligne, en les séparant d'un ;
 # Exemple
@@ -839,7 +845,7 @@ sd(notes)
 
 **L'intégration de commentaire dans le code est également une pratique appréciée**. Pour cela, **insérer un # en début de ligne**.
 
-```{r warning=FALSE, message=FALSE, eval=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE}
 
 # Les caractères suivants seront considérés comme du commentaire
 # Vous pouvez écrire ce que vous voulez, mais toujours précédé d'un #
@@ -855,66 +861,125 @@ mean(c(1,7,3,2,8,9,2,3))
 
 <br/>
 
-## Manipulations basiques
+# Prise en main
 
-### Sauvegarder et supprimer des objets
+Avant de commencer, **créez un nouveau projet à l'emplacement de votre choix** ([cf. *Les projets*](#les-projets)). Puis, **téléchargez** [**ces données**](https://github.com/HuguesPecout/Initiation_R_stats/raw/main/data.zip), et décompressez l'archive à la racine de votre répertoire projet.
 
-Il est possible de supprimer tous les objets crées en cliquant sur l'icône `r knitr::include_graphics('figures/clear.png')` dans la fenêtre de l'espace de travail. 
-Plusieurs fonction permettent également de gérer les objets. En voici quelques-unes :
+Il s'agit de données sur la structure de la population des communes de la Martinique en 2011 et 2016 et d'une couche géographique associée.     
+<p class="source"> Source : INSEE - Recensement de population & IGN, BD ADMIN EXPRESS</p> 
+<br/>
 
-```{r warning=FALSE, message=FALSE,eval=FALSE}
+3) Chargez le fichier *INSEE_COM_972.csv* dans un objet.
 
-# lister tous les objets crées
-ls()    
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE}
 
-# Supprimer un objet, ex : rm(mon_objet)
-rm()    
+# Fonctions possibles
+read.csv()
+read.table()
 
-# Supprimer tous les objets
-rm(list=ls()) 
+# Quelques arguments utiles...
+header=TRUE
+sep=";"
+stringsAsFactors=FALSE
 
-# Sauvegarder un objet dans un fichier (format rds)
-saveRDS() 
+```
+<br/>
 
-# Lire un fichier rds pour charger l'objet stocké
-readRDS() 
+4) Visualisez et interrogez votre objet data frame, en ligne de code ET depuis l'interface RStudio.
+
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE}
+
+# Fonctions possibles :
+View()
+head()
+dim()
+str()
+summary()
+class()
+colnames()
+
+
+# Depuis l'interface : onglet 'Environnement' (en haut à droite)
+# Puis cliquer sur l'objet souhaité
+
+```
+<br/>
+
+5) Corrigez la classe de données de certaines variables
+
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE}
+
+# Convertissez 'CODGEO, 'DEP', 'REG', 'CATAEU2010' en caractère
+# Convertissez les variables stockées en facteur en caractére
+as.character()
+
+```
+<br/>
+
+6) Séléctionnez les communes isolées hors influence des pôles (CATAEU2010 == 400) de plus de 2000 habitants en 2016 (P16_POP).
+
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE}
+
+# Un début de solution possible :
+tableau[tableau$CATAEU2010==400 & ... , ]
+
+```
+<br/>
+
+
+7) Créez une nouvelle variable contenant la part de la population agée de 0 à 14 ans en 2016 (P16_POP0014 / P16_POP * 100)
+
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE}
+
+# Assigner les valeur dans une nouvelle colonne
+tableau$Ma_variable <- ... ?
+
+```
+<br/>
+
+8) Chargez la couche géographique *martinique.shp* dans un objet.
+
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE}
+
+# Utilisez une fonction de la library sf
+st_read()
+
+
+```
+<br/>
+
+9) Réalisez une jointure entre la couche géographique et votre tableau de données
+
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE}
+
+# Pour réaliser une jointure
+merge()
 
 ```
 
-Exemple pratique :
+Puis, **appliquez la fonction plot()** au résultat...
 
-```{r warning=FALSE, message=FALSE,eval=FALSE}
 
-mon_objet <- c("un", "deux", "trois")
 
-# Sauvegarde d'un objet dans un fichier
-saveRDS(mon_objet, file="Nom_du_fichier")
-
-# Suppression de l'objet TEMPORAIRE
-rm(mon_objet) 
-
-# Lecture du fichier et assignation dans un objet
-mon_objet_new <- readRDS("Nom_du_fichier") 
-
-```
+</div>
 
 <br/>
 
 
-### Import/export de données
+## Import/export de données
 
-Il est possible d'importer et d'exporter des données sous différents format. Pour cela, une série de <span style="color:#8C001A">fonctions</span> (primitives ou non) peut être utilisées.
+Il est possible d'importer et d'exporter des données de différents formats. Pour cela, une série de <span style="color:#8C001A">fonctions</span> (primitives ou non) peut être utilisées.
 Quelques exemples :
 
-```{r warning=FALSE, message=FALSE,eval=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE,eval=FALSE}
 
 ### IMPORTER
 read.table() # Importer une table (format multiple)
 read.csv()   # Fichier csv
-read.xlsx()  # Fichier Excel -> library(xlsx) 
-read_sas()   # Fichier sas -> library(haven)
-read.dbf()   # Fichier dbf -> library(foreign)
-read_sf()    # Fchier shape <- library(sf)
+read.xlsx()  # Fichier Excel = library(xlsx) 
+read_sas()   # Fichier sas = library(haven)
+read.dbf()   # Fichier dbf = library(foreign)
+read_sf()    # Données géographiques (shape, GeoJson...) = library(sf)
 
 ```
 
@@ -925,7 +990,7 @@ Pour que l'import soit correct, il est souvent nécessaire de renseigner un cert
 **stringsAsFactor** = Le données de type caractère sont transformées (par défaut) en facteur.<br/>
 **Encoding** = Indique l'encodage utilisé pour les chaînes de caractères.<br/>
 
-```{r warning=FALSE, message=FALSE,eval=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE,eval=FALSE}
 
 # Import d'un fichier 
 # not run
@@ -937,7 +1002,7 @@ stringsAsFactors=FALSE, encoding="UTF-8")
 
 <br/>
 
-```{r warning=FALSE, message=FALSE,eval=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE,eval=FALSE}
 
 ### EXPORTER
 
@@ -974,7 +1039,7 @@ dev.off()
 
 Il est possible de télécharger un fichier mis à disposition en ligne, avec la fonction :
 
-```{r warning=FALSE, message=FALSE,eval=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE,eval=FALSE}
 
 # Télécharger un fichier
 download.file()
@@ -984,18 +1049,18 @@ download.file()
 
 <br/>
 
-### Interroger un objet
+## Interroger un objet
 
 Pour les exemples ci-dessous, l'objet dataframe *mtcars* est utilisé. Il s'agit d'un exemple de data frame, directement implanté dans R.
 
-```{r warning=FALSE, message=FALSE, eval=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE}
 
 # Pour visualiser le data frame
 View(mtcars)
 
 ```
 
-```{r warning=FALSE, message=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
 # Aperçu rapide dans la console
 str(mtcars)
@@ -1028,11 +1093,11 @@ nrow(mtcars)
 <br/>
 
 
-### Séléction par attributs
+## Séléction par attributs
 
 Comme pour toute les opérations dans R, il existe plusieurs solutions :
 
-```{r warning=FALSE, message=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
 # Methode 1 
 # df[ligne, colonne]
@@ -1052,9 +1117,9 @@ mtcars %>%
 
 <br/>
 
-### Joindre
+## Joindre
 
-```{r warning=FALSE, message=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
 # Construction de deux dataframe avec un identifiant commun
 ID <- as.character(c(1, 2, 3, 4))
@@ -1072,9 +1137,9 @@ merge(mon_tab_1, mon_tab_2, by="ID")
 ```
 
 
-### Combiner
+## Combiner
 
-```{r warning=FALSE, message=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
 # par les colonnes
 # les data frames doivent avoir le même nombre de lignes :
@@ -1090,11 +1155,11 @@ rbind(mon_tab_1,mon_tab_2)
 
 <br/>
 
-### Regroupement
+## Regroupement
 
 Ci-dessous, deux solutions de regroupement possibles, avec opération sur une variable :
 
-```{r warning=FALSE, message=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
 # METHODE 1 -> Fonction primitive aggregate(), fonction applicable sur une seule variable
 # Regroupement des lignes en fonction des valeurs des variables disp et cyl
@@ -1112,9 +1177,9 @@ mtcars %>%
 
 <br/>
 
-### Manipulation de data frame
+## Manipulation de data frame
 
-```{r warning=FALSE, message=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
 # Construction data frame
 mydata <- data.frame(id=c(1,1,2,2),
@@ -1134,7 +1199,7 @@ t(mydata)
 
 Le package <span style="color:#4B0082">reshape2</span> contient plusieurs fonctions de remodelage de data frame :
 
-```{r warning=FALSE, message=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 library(reshape2)
 
 # Fonction melt() 
@@ -1153,9 +1218,9 @@ Il est aussi possible d'utiliser des fonctions du package <span style="color:#4B
 
 <br/>  
 
-### Trier des données
+## Trier des données
 
-```{r warning=FALSE, message=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
 # Fonction sort()
 my_vector <- c(7,9,4,5,2,3,6,1)
@@ -1169,11 +1234,11 @@ head(order_mtcars)
 
 <br/>
 
-### Boucle itérative 
+## Boucle itérative 
 
 **Une boucle est une série d'instructions exécutées jusqu'à ce qu'un résultat particulier soit obtenu ou qu'une condition pré-déterminée soit remplie**. Les boucles permettent de ré-utiliser des séries d'instructions et permettent ainsi de limiter le nombre d'instructions.
 
-```{r warning=FALSE, message=FALSE, eval=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE}
 
 # Structure d'une boucle
 for (variable in vecteur) {
@@ -1182,7 +1247,7 @@ for (variable in vecteur) {
 
 ```
 
-```{r warning=FALSE, message=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
 # Exemple
 for (i in 1:5) {
@@ -1193,11 +1258,11 @@ for (i in 1:5) {
 
 <br/>
 
-### Fonctions apply
+## Fonctions apply
 
 L'utilisation d'une boucle est très fréquente en traitement de données. Une boucle peut permettre d'effectuer des traitements sur des objets de structure multidimensionnelle (data frame, matrice, array, sf...). Mais pour cela, la boucle for n'est pas la technique otpimum. Les concepteurs de R ont développé des fonctions spécialement prévu à cet effet. 
 
-```{r warning=FALSE, message=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
 # Appliquer une fonction sur les lignes :
 apply(mtcars,1,mean)
@@ -1215,11 +1280,11 @@ Resultat_lapply[1:5]
 ```
 <br/>
 
-### Test conditionnel
+## Test conditionnel
 
 Un test conditionnel permet d'exécuter une portion de code ou non en fonction du résultat de variables booléennes.
 
-```{r warning=FALSE, message=FALSE, eval=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE}
 
 # Test simple
 if (condition){action}
@@ -1233,7 +1298,7 @@ if (condition){
 
 ```
 
-```{r warning=FALSE, message=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 # Exemple
 x <- "chaîneDeCaractères"
 x <- TRUE
@@ -1260,11 +1325,11 @@ if (is.character(x)){
 
 <br/>
 
-### Gestion de chaîne de caractères
+## Gestion de chaîne de caractères
 
 Il existe de nombreuses fonctions primitives pour gérer les chaînes de caractère. Quelques exemples : 
 
-```{r warning=FALSE, message=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
 # Concaténation de chaîne de caractère, AVEC séparateur
 paste("Champions", "du", "monde", sep=" ")
@@ -1274,7 +1339,7 @@ paste0("Champions", "du", "monde")
 
 ```
 
-```{r warning=FALSE, message=FALSE, eval=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE}
 
 # Gérer la casse
 text <- "champion Du MONDEEEEEE !"
@@ -1286,14 +1351,14 @@ tolower(text)
 toupper(text)
 
 ```
-```{r warning=FALSE, message=FALSE, eval=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE}
 
 # Nombre de caractères
 nchar(text)
 
 ```
 
-```{r warning=FALSE, message=FALSE, eval=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE}
 
 # Scinder une chaîne en fonction d'un caractère
 strsplit(text, split = " ", fixed = TRUE)
@@ -1305,7 +1370,7 @@ gsub("ion", "ionne", text)
 
 Si vous souhaitez réaliser des traitements complexes sur des chaînes de caractère, vous pouvez utilisez la librairie de référence <span style="color:#8C001A">stringr</span> vous permettra de réaliser toutes les opérations les plus complexes. Quelques exemples :
 
-```{r warning=FALSE, message=FALSE, eval=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE}
 
 # Librairie de référence pour le gestion de chaîne de caractère
 library(stringr)
@@ -1332,7 +1397,7 @@ Il est possible de combiner l'**utilisation des expressions régulières avec to
 
 **Les expressions régulières**, ou plus communément regex (contraction de regular expression) **permettent de représenter des modèles de chaînes de caractère. Ce sont des outils très puissants et très utilisés : on peut les retrouver dans de nombreux langages comme le PHP, MySQL, Javascript...** Si cet outil est très puissant, il est relativement difficile à appréhender au début car les expressions régulières peuvent prendre des formes complexe à interpreter. Ex :
 
-```{r warning=FALSE, message=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
 # EXEMPLE d'utilisation d'expression régulière (regex)
 
@@ -1357,11 +1422,11 @@ grep(regex, emails_list, ignore.case=TRUE)
 
 <br/>
 
-### Répresentations graphiques
+## Répresentations graphiques
 
 Réaliser des graphiques en utilisant des <span style="color:#8C001A">fonctions</span> primitives :
 
-```{r warning=FALSE, message=FALSE, eval=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE}
 
 plot()
 hist()
@@ -1374,7 +1439,7 @@ legend()
 
 ```
 
-```{r warning=FALSE, message=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
 # Exemple
 hist(mtcars$mpg, 
@@ -1403,7 +1468,7 @@ Toute **une série d'arguments permet d'ajuster les représentations**, ex :
 
 **Il est possible d'afficher plusieurs graphiques en même temps**, à l'aide des fonctions **par()** ou **layout()**. Ex : 
 
-```{r warning=FALSE, message=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
 # Division de la fenêtre graphique en 2 lignes et 2 colonnes
 par(mfrow=c(2,2))
@@ -1419,7 +1484,7 @@ boxplot(mtcars$wt, main="Graph 4")
 
 **Pour réaliser des graphiques plus spécifiques** (et plus beau !), **utilisez la librarie de référence** <span style="color:#8C001A">**ggplot2**</span>. Ex :
 
-```{r warning=FALSE, message=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
 library(ggplot2)
 
@@ -1436,115 +1501,51 @@ g + geom_density(aes(fill=factor(cyl)), alpha=0.8) +
 
 <br/>
 
-## > Exercice
 
-<div  class="Exercice">
+## Sauvegarder et supprimer des objets
 
+Il est possible de supprimer tous les objets crées en cliquant sur l'icône `r knitr::include_graphics('figures/clear.png')` dans la fenêtre de l'espace de travail. 
+Plusieurs fonction permettent également de gérer les objets. En voici quelques-unes :
 
-1) Créez un nouveau projet à l'emplacement de votre choix.    
-<br/>
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE,eval=FALSE}
 
-2) Récupérez les données. 
+# lister tous les objets crées
+ls()    
 
-Téléchargez <a href="https://gitlab.huma-num.fr/hpecout/init_stat_descript_r/-/raw/master/data.zip?inline=false" onclick="window.open(this.href); return false;">ces données</a> et décompressez l'archive dans le repertoire de votre projet. Il s'agit de données sur la structure de la population des communes de la Martinique en 2011 et 2016 et d'une couche géographique associée.     
-<p class="source"> Source : INSEE - Recensement de population & IGN, BD ADMIN EXPRESS</p> 
-<br/>
+# Supprimer un objet, ex : rm(mon_objet)
+rm()    
 
-3) Chargez le fichier *INSEE_COM_972.csv* dans un objet.
+# Supprimer tous les objets
+rm(list=ls()) 
 
-```{r warning=FALSE, message=FALSE, eval=FALSE}
+# Sauvegarder un objet dans un fichier (format rds)
+saveRDS() 
 
-# Fonctions possibles
-read.csv()
-read.table()
-
-# Quelques arguments utiles...
-header=TRUE
-sep=";"
-stringsAsFactors=FALSE
-
-```
-<br/>
-
-4) Visualisez et interrogez votre objet data frame, en ligne de code ET depuis l'interface RStudio.
-
-```{r warning=FALSE, message=FALSE, eval=FALSE}
-
-# Fonctions possibles :
-View()
-head()
-dim()
-str()
-summary()
-class()
-colnames()
-
-
-# Depuis l'interface : onglet 'Environnement' (en haut à droite)
-# Puis cliquer sur l'objet souhaité
-
-```
-<br/>
-
-5) Corrigez la classe de données de certaines variables
-
-```{r warning=FALSE, message=FALSE, eval=FALSE}
-
-# Convertissez 'CODGEO, 'DEP', 'REG', 'CATAEU2010' en caractère
-# Convertissez les variables stockées en facteur en caractére
-as.character()
-
-```
-<br/>
-
-6) Séléctionnez les communes isolées hors influence des pôles (CATAEU2010 == 400) de plus de 2000 habitants en 2016 (P16_POP).
-
-```{r warning=FALSE, message=FALSE, eval=FALSE}
-
-# Un début de solution possible :
-tableau[tableau$CATAEU2010==400 & ... , ]
-
-```
-<br/>
-
-
-7) Créez une nouvelle variable contenant la part de la population agée de 0 à 14 ans en 2016 (P16_POP0014 / P16_POP * 100)
-
-```{r warning=FALSE, message=FALSE, eval=FALSE}
-
-# Assigner les valeur dans une nouvelle colonne
-tableau$Ma_variable <- ... ?
-
-```
-<br/>
-
-8) Chargez la couche géographique *martinique.shp* dans un objet.
-
-```{r warning=FALSE, message=FALSE, eval=FALSE}
-
-# Utilisez une fonction de la library sf
-st_read()
-
-
-```
-<br/>
-
-9) Réalisez une jointure entre la couche géographique et votre tableau de données
-
-```{r warning=FALSE, message=FALSE, eval=FALSE}
-
-# Pour réaliser une jointure
-merge()
+# Lire un fichier rds pour charger l'objet stocké
+readRDS() 
 
 ```
 
-Puis, **appliquez la fonction plot()** au résultat...
+Exemple pratique :
 
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE,eval=FALSE}
 
+mon_objet <- c("un", "deux", "trois")
 
-</div>
+# Sauvegarde d'un objet dans un fichier
+saveRDS(mon_objet, file="Nom_du_fichier")
+
+# Suppression de l'objet TEMPORAIRE
+rm(mon_objet) 
+
+# Lecture du fichier et assignation dans un objet
+mon_objet_new <- readRDS("Nom_du_fichier") 
+
+```
 
 <br/>
+
+
 
 
 ### Bonus
@@ -1814,7 +1815,7 @@ Comment sont nommées les individus et les variables ?
 Quelle est la classe de données des différentes variables (numérique, chaîne de caractère, booléenne...) ?  
 Quelles sont les types des variables stockées (quantitative, qualitative...) ?      
 
-```{r warning=FALSE, message=FALSE,eval=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE,eval=FALSE}
 
 # Vous pouvez utiliser le jeu de donnée exemple "hdv2003" du package questionr
 library(questionr)
@@ -1844,7 +1845,7 @@ Pour cela, il est necessaire de calculer la **table de fréquence**, qui s'effec
 
 #### Variable qualitative : fréquence des individus par modalités.
 
-```{r warning=FALSE, message=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
 # Jeu de données exemple :
 library(questionr)
@@ -1874,7 +1875,7 @@ Pour faciliter l'interpretation de la fréquence d'une variable quantitative, il
 Il est trés simple de réaliser l'histogramme d'une distribution discrétisée en plusieurs classes d'amplitude égale avec la **fonction <span style="color:#4B0082">hist()</span>**.
 
 
-```{r warning=FALSE, message=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
 # Vous pouvez utiliser le jeu de donnée exemple "mtcars"
 data(mtcars)
@@ -1894,7 +1895,7 @@ Pour les variables quantitatives, des résumés numériques (valeurs centrales, 
 <br/>
 
 
-```{r warning=FALSE, message=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
 # Moyenne -> mean()
 mean(mtcars$hp)
@@ -1917,7 +1918,7 @@ result[order(result$Freq, decreasing = TRUE),]
 Les **paramètres de dispersion absolue** se calculent uniquement sur les **variables quantitatives**.
 
 
-```{r warning=FALSE, message=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
 # Minimum
 min(mtcars$hp)
@@ -1990,7 +1991,7 @@ Les classes sont établies **selon une progression arithmétique**.
 
 **Exemple pratique de discrétisation d'une variable** :
 
-```{r warning=FALSE, message=FALSE, include=FALSE }
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, include=FALSE }
 
 # Chargement des données
 POP16_mtq <- read.csv("data/INSEE_COM_972.csv")
@@ -2000,7 +2001,7 @@ POP16_mtq$TX_0014 <- 100 * POP16_mtq$P16_POP0014/POP16_mtq$P16_POP
 
 ```
 
-```{r warning=FALSE, message=FALSE, eval=FALSE }
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE }
 
 # Chargement des données
 POP16_mtq <- read.csv("data/INSEE_COM_972.csv")
@@ -2014,7 +2015,7 @@ POP16_mtq$TX_0014 <- 100 * POP16_mtq$P16_POP0014/POP16_mtq$P16_POP
 
 Pour discrétiser les valeurs de cette série statistique, utilisez la fonction <span style="color:#8C001A">getBreaks()</span> du package cartography :
 
-```{r warning=FALSE, message=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
 # Construction d'un vecteur avec les bornes de chaque classe - getBreaks() / library(cartography)
 # method :
@@ -2058,7 +2059,7 @@ table(POP16_mtq$CLASS_TX_0014)
 
 1) L'histogramme
 
-```{r warning=FALSE, message=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
 # Sous forme d'histogramme
 hist(mtcars$qsec, breaks=10, col="grey", Freq=FALSE, main= "Distribution  variable quantitative continue 'qsec'")
@@ -2081,7 +2082,7 @@ rug(mtcars$qsec, col="blue")
 
 
 
-```{r warning=FALSE, message=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
 # Boite à moustache
 boxplot(mtcars$qsec,
@@ -2115,7 +2116,7 @@ Cependant, pour réaliser toute sortes de cartes statistiques, vous pouvez n'uti
 <p align="center"> Source : https://www.rdocumentation.org/packages/cartography/versions/2.1.1</p>
 
 <br/>
-```{r warning=FALSE, message=FALSE, include=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, include=FALSE}
 
 # Chargement d'une couche géographique
 library(sf)
@@ -2123,7 +2124,7 @@ mtq <- st_read("data/martinique.shp")
 
 ```
 
-```{r warning=FALSE, message=FALSE, eval=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE}
 
 # Chargement d'une couche géographique
 library(sf)
@@ -2131,7 +2132,7 @@ mtq <- st_read("data/martinique.shp")
 
 ```
 
-```{r warning=FALSE, message=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
 # Jointure avec un tableau de données :
 mtq <- merge(mtq, POP16_mtq, by.x="INSEE_COM", by.y="CODGEO")
@@ -2206,7 +2207,7 @@ Comment résumer la distribution de cette variable par un graphique ? (plusieurs
 <br/>
 
 6) Discrétisez la variable TX_CS1_2016
-```{r warning=FALSE, message=FALSE, eval=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE}
 
 # Utilisez
 getBreaks()
@@ -2217,7 +2218,7 @@ getBreaks()
 
 7) Créez une variable qualitative à partir des valeurs de la variable TX_CS1_2016
 
-```{r warning=FALSE, message=FALSE, eval=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE}
 
 # Si TX_CS1_2016 < ..., alors CAT_CS1_2016 == "FAIBLE"
 # Si TX_CS1_2016 < ...  & > ... , alors CAT_CS1_2016 == "MOYEN"
@@ -2232,7 +2233,7 @@ cut()
 
 8) Joingnez le tableau à la couche géographique de la Martinique. 
 
-```{r warning=FALSE, message=FALSE, eval=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE}
 
 # Importer le shape
 st_read()
@@ -2247,7 +2248,7 @@ merge()
 9) Cartographiez la part d'agriculteurs et exploitant dans la population active. 
 
 
-```{r warning=FALSE, message=FALSE, eval=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE}
 
 # Utilisez une fonction du package cartography :
 ?choroLayer()
@@ -2325,7 +2326,7 @@ Les fréquences obtenues peuvent être calculées par rapport à l’effectif to
 
 La manière la plus simple d’obtenir un tableau croisé est d’utiliser la fonction **<span style="color:#8C001A">table()</span>. 
 
-```{r warning=FALSE, message=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
 # Utilisation d'un jeu de donnéesdu package 'questionr'
 head(hdv2003,3)
@@ -2335,7 +2336,7 @@ table(hdv2003$sport, hdv2003$qualif)
 
 ```
 
-```{r warning=FALSE, message=FALSE, eval=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE}
 
 # Croiser trois variables ou plus
 table(hdv2003$sport, hdv2003$cuisine, hdv2003$sexe)
@@ -2346,7 +2347,7 @@ table(hdv2003$sport, hdv2003$cuisine, hdv2003$sexe)
 
 Il est cependant difficile de comparer à partir des effectifs. **Le package **<span style="color:#4B0082">questionr()</span>** fournit des fonctions permettant de calculer facilement les pourcentages lignes, colonnes et totaux d’un tableau croisé**. Les pourcentages en lignes ou en colonne s’obtiennent avec les fonctions **<span style="color:#8C001A">lprop()</span>** et **<span style="color:#8C001A">cprop()</span>**. Celles-ci s’appliquent au tableau croisé généré par **<span style="color:#8C001A">table()</span>** :
 
-```{r warning=FALSE, message=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
 # Pourcentage en ligne d'un tableau croisé table(), avec lprop() du package 'questionnr'
 lprop(table(hdv2003$sport, hdv2003$cuisine))
@@ -2358,7 +2359,7 @@ cprop(table(hdv2003$sport, hdv2003$cuisine))
 
 Les pourcentages totaux s’obtiennent avec la fonction **<span style="color:#8C001A">prop()</span>**
 
-```{r warning=FALSE, message=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
 # Pourcentages totaux d'un tableau croisé
 prop(table(hdv2003$sport, hdv2003$cuisine), 
@@ -2395,7 +2396,7 @@ Cela consiste à **comparer la répartition observée à une répartition théor
 L’objet créé par la fonction **<span style="color:#8C001A">chisq.test()</span>** est une liste qui contient tous les éléments nécessaires à l’analyse du khi-2 : effectifs théoriques, résidus bruts ou résidus relatifs :
 
 
-```{r warning=FALSE, message=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
 tab <- table(hdv2003$sport, hdv2003$qualif)
 tab.chi2 <- chisq.test(tab)
@@ -2407,7 +2408,7 @@ Le test nous donne la **statistique du χ2**(chi-squared), le **degré de libert
 
 **La probabilité d’obtenir une valeur du Khi-2 observée aussi élevée dans un échantillon de la taille observée sous l’hypothèse d’indépendance des deux variables est inférieure à 0.001%. Il est donc possible de rejeter l’hypothèse d’indépendance.** Il semble bien exister une relation entre la csp et la pratique du sport.
 
-```{r warning=FALSE, message=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 # effectifs observés
 tab.chi2$observed
 
@@ -2423,7 +2424,7 @@ tab.chi2$residuals
 
 Il est possible d'**affiner l’interprétation du test en déterminant dans quelle case l’écart à l’indépendance est le plus significatif en utilisant les résidus du test**. Ceux-ci sont notamment affichables avec la fonction **<span style="color:#8C001A">chisq.residuals()</span>** de la librairie 'questionr' :
 
-```{r warning=FALSE, message=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
 # Résidus du test khi-2
 chisq.residuals(tab)
@@ -2435,7 +2436,7 @@ chisq.residuals(tab)
 ### Représentations graphiques
 
 
-```{r warning=FALSE, message=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 tab <-  table(hdv2003$sport, hdv2003$qualif)
 
 # Diagramme en bâton
@@ -2447,7 +2448,7 @@ legend("topright", c("NON", "OUI"), fill=c(col="grey40", col="grey90"), cex=0.8)
 <br/>
 
 
-```{r warning=FALSE, message=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
 # Fonction mosaicplot()
 mosaicplot(qualif ~ sport, data = hdv2003, shade = TRUE, main = "Graphe en mosaïque", cex=0.6)
@@ -2475,7 +2476,7 @@ Dans le le tableau ci-dessous figurent en colonnes le nombre de réponses à la 
 1) Construire le data.frame dans R.   
 </br>
 
-```{r, echo=FALSE, eval=FALSE}
+```{r class.source="bg-info", class.output="bg-warning",, echo=FALSE, eval=FALSE}
 
 mon_tableau <- data.frame(oui=c(68, 37), non=c(60,14), row.names=c("dom", "sec"))
 
@@ -2494,7 +2495,7 @@ Attention, vous devez dans un premier temps convertir votre data.frame en matrix
 Vous pouvez également essayer de représenter graphiquement vos pourcentages à l'aide de la fonction <span style="color:#8C001A">barplot()</span>.    
 </br>
 
-```{r, fig.width=5, echo=FALSE, eval=FALSE}
+```{r class.source="bg-info", class.output="bg-warning",, fig.width=5, echo=FALSE, eval=FALSE}
 
 barplot(cprop(t(as.matrix(df)))[1:2,1:2])
 
@@ -2513,7 +2514,7 @@ barplot(cprop(t(as.matrix(df)))[1:2,1:2])
 
 Dans un premier temps, il s'agit de **résumer visuellement la distribution statistique d’une variable quantitative autour de différentes mesures de centralité et de dispersion**. La boîte à moustache **<span style="color:#8C001A">boxplot()</span>** montre la distribution de la variable quantitative pour chacune des modalités de la variable qualitative.
 
-```{r warning=FALSE, message=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
 # Fonction mosaicplot()
 boxplot(hdv2003$heures.tv ~ hdv2003$qualif, 
@@ -2527,7 +2528,7 @@ boxplot(hdv2003$heures.tv ~ hdv2003$qualif,
 
 Si une variable qualitative ne présente que deux modalités, la representation côte à côte des deux distributions permet  d'observer facilement leurs différences :
 
-```{r warning=FALSE, message=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
 # Construction du tableau croisé, en format data.frame
 tab <- as.data.frame(lprop(table(hdv2003$sport, hdv2003$age)))
@@ -2550,7 +2551,7 @@ On peut vouloir **comparer certains indicateurs (moyenne, médiane) d’une vari
 
 Pour cela, il suffit de ventiler notre population en autant de sous-populations qu’il y a de modalités dans la variable qualitative. Vous pouvez par exemple utiliser la fonction **<span style="color:#8C001A">filter()</span>** du package <span style="color:#4B0082">dplyr</span> :
 
-```{r warning=FALSE, message=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
 library(dplyr)
 # On crée deux tables. Une avec la population qui fait du sport et l'autre qui n'en fait pas.
@@ -2567,7 +2568,7 @@ mean(hdv2003_nonsport$age)
 
 Plus simplement, vous pouvez utiliser la **fonction <span style="color:#8C001A">tapply()</span>**, qui prend en paramètre une variable quantitative, qualitative et une fonction, puis applique automatiquement la fonction aux valeurs de la variables quantitative pour chaque niveau de la variable qualitative. Ex :
 
-```{r warning=FALSE, message=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
 # Fonction tapply()
 tapply(hdv2003$age, hdv2003$sport, mean)
@@ -2582,7 +2583,7 @@ tapply(hdv2003$age, hdv2003$sport, mean)
 
 <!-- Tout d'abords, **vérifier la normalité des deux distributions avec le test de Shapiro** : -->
 
-<!-- ```{r warning=FALSE, message=FALSE} -->
+<!-- ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE} -->
 
 <!-- # Fonction shapiro.test() -->
 <!-- shapiro.test(hdv2003_sport$age) -->
@@ -2598,7 +2599,7 @@ tapply(hdv2003$age, hdv2003$sport, mean)
 <!-- Si le teste avait validé la normalité des deux distributions. Nous aurions pu effectuer le **test du t de student à l’aide de la fonction t.test()**. Ainsi, on aurait pu tester l’hypothèse d’égalité des âges moyens selon la pratique ou non d’un sport. -->
 
 
-<!-- ```{r warning=FALSE, message=FALSE} -->
+<!-- ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE} -->
 
 <!-- # Test du t de student -->
 <!-- t.test(hdv2003$age ~ hdv2003$sport) -->
@@ -2609,7 +2610,7 @@ tapply(hdv2003$age, hdv2003$sport, mean)
 
 <!-- Mais dans notre cas, ou les deux distributions ne sont pas normales, on doit faire appel à un test non-paramétrique, qui ne fait donc pas d’hypothèses sur les lois de distribution des variables testées. **Il s'agit du test des rangs de Wilcoxon, fonction wilcox.test()** : -->
 
-<!-- ```{r warning=FALSE, message=FALSE} -->
+<!-- ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE} -->
 <!-- wilcox.test(hdv2003$age ~ hdv2003$sport) -->
 <!-- ``` -->
 
@@ -2623,7 +2624,7 @@ tapply(hdv2003$age, hdv2003$sport, mean)
 <!-- L'analyse de la variance se nomme souvent **ANOVA** (abrégé du terme anglais * **an**alysis **o**f **v**ariance *) -->
 
 
-<!-- ```{r warning=FALSE, message=FALSE} -->
+<!-- ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE} -->
 
 <!-- # ANOVA (Analyse de la variance) - fonction native aov() -->
 <!-- fit <- aov(age ~ sport, data=hdv2003)  -->
@@ -2654,7 +2655,7 @@ Lorsque l'on croise deux variables quantitatives, l’idéal est de faire une re
 
 Le jeu de données hdv2003 comportant assez peu de variables quantitatives, on va s’intéresser maintenant à un jeu de données du recensement de la population de 2012 (rp2012) :
 
-```{r warning=FALSE, message=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 library(questionr)
 data(rp2012)
 ```
@@ -2664,7 +2665,7 @@ data(rp2012)
 
 **Représentation du nuage de point :**
 
-```{r warning=FALSE, message=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
 # fonction plot()
 plot(rp2012$cadres, rp2012$dipl_sup)
@@ -2675,7 +2676,7 @@ plot(rp2012$cadres, rp2012$dipl_sup)
 
 Il s'agit de la représentation la plus simple. Mais il est possible de fortement **personnaliser ce graphique :** 
 
-```{r warning=FALSE, message=FALSE, fig.width=5, fig.height=5}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, fig.width=5, fig.height=5}
 
 # Representation en nuage de points
 # fonction plot()
@@ -2715,7 +2716,7 @@ En plus d’une représentation graphique, on peut calculer **certains indicateu
 **La corrélation est une mesure du lien d’association linéaire entre deux variables quantitatives**. **Sa valeur varie entre -1 et 1**. Si la corrélation vaut -1, il s’agit d’une association linéaire négative parfaite. Si elle vaut 1, il s’agit d’une association linéaire positive parfaite. **Si elle vaut 0, il n’y a aucune association linéaire entre les variables.**
 Le calcul du coéfficient linéaire pet se fair à l'aide de la **fonction <span style="color:#8C001A">cor.test()</span>**.
 
-```{r warning=FALSE, message=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
 # Fonction primitive cor.test()
 cor.test(rp2012$cadres, rp2012$dipl_sup) 
@@ -2736,7 +2737,7 @@ Ainsi, si la valeur la plus basse de la première variable est associée à la v
 
 Pour calculer une corrélation de Spearman, **on utilise la fonction <span style="color:#8C001A">cor()</span> mais avec l’argument method = "spearman"** :
 
-```{r warning=FALSE, message=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 # Calcul coefficient de Corrélation de Spearman
 cor(rp2012$cadres, rp2012$dipl_sup, method = "spearman")
 ```
@@ -2752,7 +2753,7 @@ Dans le cas particulier où l'**on a pu mettre en évidence l'existence d'une re
 La régression consiste à évaluer les paramètres d’une fonction linéaire, puis d'estimer à l’aide de cette fonction les valeurs de la variable à expliquer et à tester si les différences (= les résidus) entre valeurs mesurées et valeurs estimées s’écartent de manière significative de 0.
 
 
-```{r warning=FALSE, message=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 # ?lm
 # Regression linéaire - fonction lm()
 lm(rp2012$cadres ~ rp2012$dipl_sup)
@@ -2775,7 +2776,7 @@ lm(rp2012$cadres ~ rp2012$dipl_sup)
 
 Le coefficient de détermination (R2) est une mesure de la qualité de la prédiction d’une regression linéaire. Il donne la part de la variance expliquée par l’équation de la régression dans la variance totale du nuage de points.  
 
-```{r warning=FALSE, message=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 # Pour des résultats plus détaillés, fonction summary :
 summary(lm(rp2012$cadres ~ rp2012$dipl_sup))
 ```
@@ -2786,7 +2787,7 @@ summary(lm(rp2012$cadres ~ rp2012$dipl_sup))
 
 On peut enfin **représenter la droite de régression** sur notre nuage de points à l’aide de la **fonction <span style="color:#8C001A">abline()</span>** :
 
-```{r warning=FALSE, message=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
 # plot()
 plot(rp2012$dipl_sup, rp2012$cadres)
@@ -2806,7 +2807,7 @@ Plus un individu aura des résidus fort (positifs ou négatif), moins sa positio
 
 **Calculer les résidus :**
 
-```{r warning=FALSE, message=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
 # Regression lineaire
 my_reg <- lm(rp2012$cadres ~ rp2012$dipl_sup)
@@ -2820,7 +2821,7 @@ residus <- data.frame(scaledRes = scale(my_reg$residuals), nom = row.names(rp201
 
 **Représenter les résidus :**
 
-```{r warning=FALSE, message=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 # on ne garde que le nom des individus ayant des résidus trés élevés (sup à 4 ecarts-type)
 residus[residus$scaledRes < 4 & residus$scaledRes > -4, "nom"] <- NA
 
@@ -2849,11 +2850,12 @@ text(x= 1:nrow(residus), y = residus$scaledRes, labels = residus$nom, pos = 4,
 2) Décrivez le jeu de données "women"      
 
 Le jeu de données women est un jeu de données fourni par le package `datasets` installé par défaut.   
-```{r warning=FALSE, message=FALSE, eval=FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE}
 
 ?women
 data(women)
 head(women)
+
 
 ```
 Quelles sont les unités de mesure des variables?   
