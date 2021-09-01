@@ -1781,8 +1781,6 @@ readRDS()
 
 ## Vocabulaire
 
-
-
 <div class="div_voc">
 
 
@@ -1791,7 +1789,16 @@ readRDS()
 <div class="div_def"><p class="def">Tout nombre, calculé à propos d’une population et qui contribue à décrire un aspect de cette population, est une statistique. Fréquences, médianes, quartiles, déciles, moyennes, variances, etc. sont des statistiques.  
 La statistique descriptive regroupe l'ensemble des techniques pour décrire numériquement une distribution.</p></div>
 
+</div>
+
 <br/>
+
+<p class="center">![](figures/vocabulaire.png)
+</p>
+
+<br/>
+
+<div class="div_voc">
 
 <p class="titre_def">Population (p) et Individu (i)</p>
 <div class="div_def"><p class="def">Une population est un ensemble d'individus (ou unités statistiques) sur lesquels porte l'étude statistique.</p>
@@ -1848,20 +1855,7 @@ Il faut bien distinguer la nature de la variable de son format de stockage (clas
 
 <br/>
 
-</div>
 
-
-
-<br/>
-
-<p class="center">  Figure : Les différents éléments d'une population </p>
-
-<p class="center">![](figures/vocabulaire.png)
-</p>
-
-<br/>
-
-<div class="div_voc">
 
 
 <p class="titre_def">Fréquence (f) ou proportion</p>
