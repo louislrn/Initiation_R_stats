@@ -42,6 +42,7 @@ options("scipen" = 10)
 
 
 <br/>
+<br/>
 
 <center>**DIAPORAMA D'INTRODUCTION** : </center>
 <br/>
@@ -49,11 +50,11 @@ options("scipen" = 10)
 <br/>
 <center><img src="figures/diapo.png" width="170"/></center>
 <br/>
-<center>Diaporama bonus (équivalent "*Quelques fondamentaux*") : [Base du langage, packages, Rstudio et documentation](https://huguespecout.github.io/Intro_R_Rstudio_FR/#/)</center>
+<center>Bonus : [Base du langage, packages, Rstudio et documentation](https://huguespecout.github.io/Intro_R_Rstudio_FR/#/)</center>
 
-<br/>
 
-```{r warning=FALSE, message=FALSE, eval=TRUE, include= TRUE, echo=FALSE}
+
+```{r warning=FALSE, message=FALSE, eval=TRUE, include= TRUE, echo=FALSE, cache=TRUE}
 
 library('rvest')
 url <- "https://cran.r-project.org/web/packages/available_packages_by_date.html"
@@ -2008,80 +2009,95 @@ $$Y_{i} =\frac{X_{i} - \bar{x}}{\sigma^x }$$
 
 ## Résumer une variable
 
-Avant de résumer une ou plusieurs variables statistiques, **il est important d'explorer et de visualiser les données. Cela permet de détécter les caractèristiques des données étudiées, et de les traiter correctement**.
+Avant de décrire, analyser une ou plusieurs variables statistiques, **il est indispensable de contrôler et d'explorer les données. Cela permet de détécter des incohérences et les caractèristiques des données étudiées, afin de correctement les traiter**.
 
-Comment se structure la table de données ? Est-elle correctement construite et renseignée ?   
+**Comment se structure la table de données** ? Est-elle correctement construite et renseignée ?   
 Comment sont nommées les individus et les variables ?   
-Quelle est la classe de données des différentes variables (numérique, chaîne de caractère, booléenne...) ?  
-Quelles sont les types des variables stockées (quantitative, qualitative...) ?      
+**Quelle est la classe de données** des différentes variables (numérique, chaîne de caractère, booléenne...) ?  
+**Quelles sont les types des variables** stockées (quantitative, qualitative...) ? 
+
+Dans un premier temps, nous utiliserons des données mises à disposition par la package <span style="color:#4B0082">questionr</span>, qui contient des variables qualitatives. **Installez** ce package, puis **chargez la librairie et les données associées** "*hdv2003*" :
+
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE,eval=TRUE}
+# install.packages("questionr")
+library(questionr)
+
+# Chargement des données fournies par le package questionr
+data(hdv2003)
+```
+
+**Prenez quelques minutes pour explorer ce tableau de données**. Vous pouvez utiliser l'interface Rstudio, mais également un certain nombre de fonctions primitives :
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE,eval=FALSE}
 
-# Vous pouvez utiliser le jeu de donnée exemple "hdv2003" du package questionr
-library(questionr)
-data(hdv2003)
-
-# 1) Utilisation de l'interface RStudio
-
-# 2) ET Fonctions possibles (cf. 1.5 'Interroger un obet')
+# Quelques exemple
 View()
 str()
 colnames()
-names()
 row.names()
 dim()
 class()
 is.na()
 colSums(is.na())
 
+
 ```
+
+**Les données vous semblent-elles cohérentes et correctement typées dans R ?**
 
 <br/>
 
 ### La distribution
 
-Lorsque l'on étudie une variable, Il est important de s'intérresser à **la distribution de sa série statistique**.
-Pour cela, il est necessaire de calculer la **table de fréquence**, qui s'effectue différement selon le type de variable :
+Lorsque l'on étudie une variable, on s'intérresse rapidement à **la distribution de sa série statistique**.
+Pour cela, on peut calculer la **table de fréquence** (nombre d'individus par valeur, classe de valeur ou par modalité).
+Sous R, le procédé est différent selon le type de variable étudié :
 
 #### Variable qualitative : fréquence des individus par modalités.
 
+Utilisez les fonctions ***table()*** ou ***prop.table()*** :
+
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
-# Jeu de données exemple :
-library(questionr)
-data(hdv2003)
-
-# Effectifs par modalité -> table()
+# Nb d'individus par modalité
 table(hdv2003$occup)
 
-# Effectifs relatifs -> prop.table()
+# Effectifs relatifs (%)
 prop.table(table(hdv2003$occup))
-
-# Réprésenter sur un diagramme circulaire ->  pie ()
-# Réprésenter sur un diagramme -> barplot()
-library("RColorBrewer")
-barplot(table(hdv2003$occup), col=brewer.pal(n = 9,  "Paired"), las=2 ,cex.names=0.6)
 
 ```
 
-Pour une **variable qualitative ordinale**, il est également possible de **calculer la fréquence cumulée** (cf. ci dessous).
+
+Pour **représenter graphiquement votre table de fréquence** :
+
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
+
+# Utilisation d'une librairie de palettes de couleur
+# install.packages("RColorBrewer")
+library("RColorBrewer")
+
+# Diagramme circulaire (Pas optimal...)
+pie(table(hdv2003$occup), col=brewer.pal(n = 9,  "Paired"))
+
+# Histogramme
+barplot(table(hdv2003$occup), col=brewer.pal(n = 9,  "Paired"), las=2 ,cex.names=0.6)
+
+```
 
 <br/>
 
 #### Variable quantitative: fréquence des individus par classe.
 
-Pour faciliter l'interpretation de la fréquence d'une variable quantitative, il est souvent nécessaire de discrétiser la série statistique en plusieurs classes d'amplitude égale, car (en général) aucune valeur n'est identique.
+Pour faciliter l'exploration de la distribution d'une variable quantitative, **il est souvent nécessaire de discrétiser la série statistique** en plusieurs classes d'amplitude égale, **car (en général) aucune valeur n'est identique**.
 
-Il est trés simple de réaliser l'histogramme d'une distribution discrétisée en plusieurs classes d'amplitude égale avec la **fonction <span style="color:#4B0082">hist()</span>**.
+**Pour construire l'histogramme d'une distribution discrétisée en plusieurs classes d'amplitude égale, utilisez la fonction** **<span style="color:#4B0082">hist()</span>**.
 
+Dans l'exemple ci-dessous, nous utilisons la variable quantitative "*heures.tv*" :
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
-# Vous pouvez utiliser le jeu de donnée exemple "mtcars"
-data(mtcars)
-
 # Pour représenter la distribution d'une série statistique sans la discrétiser préalablement -> hist()
-hist(mtcars$mpg, breaks=12, probability = TRUE)
+hist(mtcars$hp, breaks=12, probability = TRUE)
 
 ```
 
@@ -2090,24 +2106,38 @@ hist(mtcars$mpg, breaks=12, probability = TRUE)
 
 ### Les valeurs centrales
 
-Pour les variables quantitatives, des résumés numériques (valeurs centrales, paramètres de dispersion absolue et relative) peuvent être calculés.**Le mode** peut être également calculé pour les variables **qualitatives ordinales et nominales**, et **la médianne** peut être calculé pour les variables **qualitatives ordinales**.
+En plus de l'histogramme, **des résumés numériques (valeurs centrales, paramètres de dispersion absolue et relative) peuvent être calculés pour les variables quantitatives**.
 
-<br/>
+A noter que **le mode** peut être également calculé pour les variables **qualitatives ordinales et nominales**, et **la médianne** peut être calculé pour les variables **qualitatives ordinales**.
 
+
+#### Moyenne
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
-# Moyenne -> mean()
 mean(mtcars$hp)
 
-# Médiane -> median()
+```
+
+
+#### Médianne
+
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
+
 median(mtcars$hp)
+
+```
+
+#### Mode
+
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
 # Mode = Valeurs qui a la fréquence la plus élévée
 result <-  as.data.frame(table(mtcars$hp))
 
 # Trier les valeurs par leur fréquence -> order()
 result[order(result$Freq, decreasing = TRUE),]
+
 
 ```
 
@@ -2117,26 +2147,67 @@ result[order(result$Freq, decreasing = TRUE),]
 
 Les **paramètres de dispersion absolue** se calculent uniquement sur les **variables quantitatives**.
 
+#### Minimum
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
-# Minimum
 min(mtcars$hp)
-# Maximum 
+
+```
+
+#### Maximum
+
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
+
 max(mtcars$hp)
-# Etendue/Amplitude
+
+```
+
+#### Amplitude (étendue)
+
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
+
 max(mtcars$hp) - min(mtcars$hp)
-# Quartiles
+```
+
+#### Quartiles
+
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
+
 quantile(mtcars$hp)
-# Quartiles + moyenne
+
+```
+
+#### Quartiles, Moyenne et NA's
+
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
+
 summary(mtcars$hp)
-# Intervalle inter-quartile (Q3 - Q1)
+```
+
+#### Intervalle inter-quartile (Q3 - Q1)
+
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
+
 summary(mtcars$hp)[5] - summary(mtcars$hp)[2]
-# Variance
+```
+
+#### Variance
+
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 var(mtcars$hp)
-# Ecart-type 
+```
+
+#### Ecart-type
+
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 sd(mtcars$hp) 
-# Coefficient de variation (en %) - Ecart-type/moyenne * 100
+```
+
+#### Coefficient de variation (en %) - 
+
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
+# = Ecart-type/moyenne * 100
 sd(mtcars$hp) / mean(mtcars$hp) *100
 ```
 
@@ -2145,8 +2216,9 @@ sd(mtcars$hp) / mean(mtcars$hp) *100
 
 ## Discrétiser une variable
 
-**Pour réaliser une discétisation correcte, il est necéssaire de définir la forme de la distribution à discrétiser**.    
-Ci-dessous, quelques formes classiques de distribution statistique :
+**Il est nécessaire de définir la forme d'une la distribution pour la discrétiser correctement**.   
+
+Ci-dessous, quelques **formes classiques de distribution statistique** :
 
 <br/>
 
@@ -2185,101 +2257,83 @@ Les classes sont établies **selon une progression arithmétique**.
 
 <br/>
 
-**Le choix d'un méthode de discrétisation et du nombre de classes à un impact trés important sur l'interprétation de sa représentation visuelle. Cette <a href="http://mappemonde.mgm.fr/geovisu/119/" onclick="window.open(this.href); return false;">application</a>, proposée par Laurent Jégou (2017) en est une belle demonstration**.
-
+<div class="alert alert-danger" role="alert">
+**Le choix d'un méthode de discrétisation et du nombre de classes à un impact trés important sur l'interprétation de sa représentation visuelle. Cette <a href="http://mappemonde.mgm.fr/geovisu/119/" onclick="window.open(this.href); return false;"><b>application</b></a> (@geovisujegou) en est une belle demonstration**.</div>
 <br/>
 
-**Exemple pratique de discrétisation d'une variable** :
+Pour discrétiser une série statistique, vous pouvez utiliser la **fonction** **<span style="color:#4B0082">mf_get_breaks()</span>**, du package **<span style="color:#4B0082">mapsf</span>** (@mapsf).
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, include=FALSE }
-
-# Chargement des données
-POP16_mtq <- read.csv("data/INSEE_COM_972.csv")
-
-# Calcul d'un ratio, qui sera la variable quantitative continue à discrétiser
-POP16_mtq$TX_0014 <- 100 * POP16_mtq$P16_POP0014/POP16_mtq$P16_POP
-
-```
-
-```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE }
-
-# Chargement des données
-POP16_mtq <- read.csv("data/INSEE_COM_972.csv")
-
-# Calcul d'un ratio, qui sera la variable quantitative continue à discrétiser
-POP16_mtq$TX_0014 <- 100 * POP16_mtq$P16_POP0014/POP16_mtq$P16_POP
-
-```
-
-<br/>
-
-Pour discrétiser les valeurs de cette série statistique, utilisez la fonction <span style="color:#8C001A">mf_get_breaks()</span> du package mapsf :
-
-```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
-
-# Construction d'un vecteur avec les bornes de chaque classe - mf_get_breaks() / library(mapsf)
-# method :
-# Amplitude égale = "equal" 
-# Discrétisation standardisée = "sd"
-# Effectifs égaux = "quantile"
-# Q6 = "q6"
-# Fisher-Jenks = "fisher-jenks"
-# Progression géométrique = "geom"
-# Progression arithmétique = "arith"
-# ?? = "em"
-# ?? = "msd"
-
-# my_discretisation <- c(1.00, 60.00, 190.00, 368.25, 697.50, 930.00, 1168.50, 1842.00, 8027.00)
-# OU - 
-
+# install.packages("mapsf")
 library(mapsf)
-my_discretisation <- mf_get_breaks(POP16_mtq$TX_0014 , breaks = "quantile")
-my_discretisation
 
-# Afficher votre discrétisation sur l'histogramme de la distribution
-hist(POP16_mtq$TX_0014, breaks=20, col="grey", main= "Distribution de la variable")
-abline(v=mean(POP16_mtq$TX_0014), col="red", lwd=1 , lty=2,add=T)
-abline(v=my_discretisation,col="blue", lwd=2, lty=2)
-legend("topright", c("moyenne", "borne de classe"), fill=c(col="red", col="blue"), cex=0.8)
+ma_discretisation <- mf_get_breaks(mtcars$hp, breaks = "quantile", nbreaks = 6)
+ma_discretisation
 
-# Pour enregistrer l'appartenance de classe dans votre objet (sf ou data frame par ex) ->  cut()
-POP16_mtq$CLASS_TX_0014 <- cut(POP16_mtq$TX_0014, my_discretisation,  include.lowest = TRUE, right = TRUE)
+```
 
-# Visualiser le nombre d'éléments par classe
-table(POP16_mtq$CLASS_TX_0014)
+Vous pouvez choisir différentes méthodes de discrétisation avec l'argument '*breaks*'.
+
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval = FALSE}
+
+# Pour accéder à la documentation de la fonction :
+?mf_get_breaks
+
+```
+
+Pour **enregistrer l'appartenance des individus aux différentes classes en fonction de la discrétisation**, procédez de la manière suivante :
+
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval = FALSE}
+
+# Calcul des borne de classe
+ma_discretisation <- mf_get_breaks(mtcars$hp, breaks = "sd")
+
+# Utiliser la fonction cut()
+mtcars$hp_classe <- cut(mtcars$hp, ma_discretisation,  include.lowest = TRUE, right = TRUE)
+mtcars$hp_classe 
+
+# Changement des nom de classe
+levels(mtcars$hp_classe)<-c("A","B","C","D","E","F","G","H","I")
+mtcars$hp_classe
+
+# Visualiser le nombre d'éléments par classe - table()
+table(mtcars$hp_classe)
+
 
 ```
 
 <br/>
 
+### Représentation graphique
 
-## Représentation graphique
+#### L'histogramme
 
-<br/>
+```{r class.source="bg-info", class.output="bg-warning", warning=TRUE, message=FALSE, eval = TRUE}
 
-1) L'histogramme
-
-```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
-
-# Sous forme d'histogramme
-hist(mtcars$qsec, breaks=10, col="grey", Freq=FALSE, main= "Distribution  variable quantitative continue 'qsec'")
-abline(v=mean(mtcars$qsec), col="red4", lwd=2 , lty=1,add=T)
-abline(v=quantile(mtcars$qsec),col="red", lwd=1, lty=2)
-legend("topright", c("moyenne", "Quartiles"), fill=c(col="red4", col="red"), cex=0.8)
-rug(mtcars$qsec, col="blue")
+# Afficher l'histogramme de la distribution
+hist(mtcars$hp, breaks = 15, col = "grey", main = "Distribution de la variable hp")
+# Ajouter la moyenne
+abline(v=mean(mtcars$hp, na.rm=TRUE), col = "red", lwd = 4 , lty = 2 )
+# Ajouter les bornes des classes
+abline(v=ma_discretisation,col="blue", lwd = 2, lty = 2)
+# Ajouter une légende
+legend("topright", c("moyenne", "borne de classe"), fill= c(col="red", col="blue"), cex=0.8)
+# Affichage de chaque individu
+rug(mtcars$hp)
 
 ```
 
+
+
 <br/>
 
-2) La boite à moustaches (boxplot) :
+#### La boite à moustaches (boxplot) :
 
 <br/>
 
 <p class="center">
 ![](figures/boxplot.png?style=centerme){width=350px}
 </p>
-
 
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
@@ -2302,68 +2356,69 @@ rug(mtcars$qsec)
 
 
 
-3) La carte
+#### La carte
 
-
-**En fonction de la nature des variables à représenter, on ne doit pas utiliser les mêmes méthodes de représentation**. 
-Cependant, pour réaliser toute sortes de cartes statistiques, vous pouvez n'utiliser qu'un seul package : '**<span style="color:#4B0082">mapsf</span>**'
+**La carte permet d'explorer la répartition spatiale d'une distribution d'une variable géographique**.
+Plusieurs packages permettent de faire des carte avec R, **le package** **<span style="color:#4B0082">mapsf</span>** **est spécialisé dans la production de cartes thématique et statistiques**.
 
 <br/>
 
 <p class="center">
-![](figures/carto.png?style=centerme)
+<img src="figures/carto.png" alt="drawing" style="width:300px;"/>
 </p>
-<p align="center"> Source : https://www.rdocumentation.org/packages/cartography/versions/2.1.1</p>
+<p align="center"> Source : https://riatelab.github.io/mapsf/index.html</p>
 
 <br/>
-```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, include=FALSE}
 
-# Chargement d'une couche géographique
+**Un exemple d'utilisation...**
+
+
+1) Préparation des données :
+
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, include=TRUE}
+
+# Import de la couche géographique
 library(sf)
 mtq <- st_read("data/martinique.shp")
 
+# Import des données de recensement
+mtq_data <- read.csv("data/INSEE_COM_972.csv", header=TRUE, sep=",", stringsAsFactors=FALSE)
+
+# Jointure shapefile - data
+mtq <-  merge(mtq , mtq_data , by.x="INSEE_COM" , by.y="CODGEO")
+
+# Calcul d'une variable quantitative relative (Densité de population)
+mtq$POPDENS <- 1e6 * mtq$P16_POP / st_area(mtq)
+
+# Calcul discrétisation 
+ma_discretisation <- mf_get_breaks(mtq$POPDENS, breaks = "quantile")
 ```
 
-```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE}
+2) cartographie :
 
-# Chargement d'une couche géographique
-library(sf)
-mtq <- st_read("data/martinique.shp")
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=TRUE}
 
-```
+library(mapsf)
 
-```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
+# Choix d'un thème graphique
+mf_theme("iceberg")
 
-# Jointure avec un tableau de données :
-mtq <- merge(mtq, POP16_mtq, by.x="INSEE_COM", by.y="CODGEO")
+# Carte par aplat de couleur
+mf_map(x = mtq, 
+       var = "POPDENS",
+       type = "choro",
+       breaks = ma_discretisation,
+       pal = "Greens",
+       border = "white", 
+       lwd = 0.5,
+       leg_pos = "left", 
+       leg_title = "Population Density\n(people per km2)") 
 
-library(cartography)
-# création d'une palette de couleur en N classe
-cols <- carto.pal(pal1 = "wine.pal", n1 = 6)
-
-# gestion des marges
-opar <- par(mar = c(0,0,1.2,0))
-
-# Affichage communnes de la Martinique
-plot(st_geometry(mtq), col = "#5F799C", border = "white", 
-     bg = "#A6CAE0", lwd = 0.5, add = FALSE)
-
-library(cartography)
-# Affichage cercles proportionnels + choroplète
-propSymbolsChoroLayer(x = mtq, # sf object 
-                      var = "P16_POP", # field used to plot the symbols sizes
-                      var2 = "TX_0014", #  field used to plot the colors
-                      col = cols, # symbols colors
-                      inches = 0.3, # radius of the largest circle
-                      method = "quantile", # discretization method (?mf_get_breaks)
-                      border = "grey50", # color of circle borders
-                      lwd = 1, # width of the circle borders
-                      legend.var.pos = "topright", # position of the first legend
-                      legend.var2.pos = "left", # position of the second legend
-                      legend.var2.title.txt =  
-                        "Share of the\nyoung population\n(0 to 14 years old) (%)", 
-                      legend.var.title.txt = "Total population",
-                      legend.var.style = "c") # legend style
+# Mikse en page
+mf_layout(title = "Population Distribution in Martinique", 
+          credits = paste0("Sources: Insee and IGN, 2018\n",
+                           "mapsf ", 
+                           packageVersion("mapsf")))
 
 ```
 
@@ -2375,95 +2430,69 @@ propSymbolsChoroLayer(x = mtq, # sf object
 
 <div  class="Exercice">
 
-1) Créez un projet (ou réutilisez le projet créé durant l'exercice 1).     
+1) **Créez un nouveau projet **(ou réutilisez le projet créé durant l'exercice 1).     
 <br/>
 
-2) Charger de nouveau le fichier *INSEE_COM_972.csv*, stocké dans le repertoire de votre projet.    
+2) **Chargez de nouveau le fichier** ***INSEE_COM_972.csv***, stocké dans le sous-répertoire 'data' de votre projet.    
 <br/>
 
-3) Séléctionnez uniquement ces variables et créez un nouveau data frame.     
+3) **Séléctionnez uniquement ces variables** et créez un nouveau dataframe :     
 
-Code insee de la commune (**CODGEO**)    
-Nom de la commune (**LIBGEO**)    
-Libellé aire urbaine (**LIBAU2010**)    
-Catégorie commune dans aire urbaine (**CATAEU2010**)    
-Population total en 2016 (**P16_POP**)    
-Nombre de personnes de 15 ans et plus en 2016 (**C16_POP15P**)    
-Nombre d'agriculteurs et exploitants de 15 ans et plus (**C16_POP15P_CS1**)    
-Nombre de retraités de 15 ans et plus (**C16_POP15P_CS7**)    
-
-Les valeurs de ces variables sont-elles correctement stockées (Numerique ? caractère ? ...) 
+    - Code insee de la commune (**CODGEO**)    
+    - Nom de la commune (**LIBGEO**)    
+    - Libellé aire urbaine (**LIBAU2010**)    
+    - Catégorie commune dans aire urbaine (**CATAEU2010**)    
+    - Population total en 2016 (**P16_POP**)    
+    - Nombre de personnes de 15 ans et plus en 2016 (**C16_POP15P**)    
+    - Nombre d'agriculteurs et exploitants de 15 ans et plus (**C16_POP15P_CS1**)    
+    - Nombre de retraités de 15 ans et plus (**C16_POP15P_CS7**)    
 <br/>
 
-5) Créez une nouvelle variable avec la part de la population d'agriculteurs et exploitants dans la population active. Nommée cette nouvelle variable : TX_CS1_2016
+4) **Créez une nouvelle variable : la part de la population d'agriculteurs et exploitants dans la population active**, et **nommez cette nouvelle variable** ***TX_CS1_2016***
 
-Quel est le taux minimum ?  
-Quel est le taux maximum ?  
-Quel est l'amplitude de la variable ?   
-Quelle est la moyenne ? 
-Quelle indicateur divise la série statistique en deux ? Quelle est sa valeur ?   
-Quel est son écart-type, son intervalle interquartile ?   
+    - Quel est le taux minimum ?  
+    - Quel est le taux maximum ?  
+    - Quel est l'amplitude de la variable ?   
+    - Quelle est la moyenne ? 
+    - Quelle indicateur divise la série statistique en deux ? Quelle est sa valeur ?   
+    - Quel est son écart-type, son intervalle interquartile ?   
+    - **Représentez graphiquement la distribution** ? (plusieurs solutions sont possibles) 
 
-Comment résumer la distribution de cette variable par un graphique ? (plusieurs solutions sont possibles) 
 <br/>
 
-6) Discrétisez la variable TX_CS1_2016
-```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE}
+5) **Discrétisez la variable** ***TX_CS1_2016***. Quelle méthode choisissez-vous ? Pourquoi ?
 
-# Utilisez
-mf_get_breaks()
-
-```
 <br/>
 
+6) **Créez une variable qualitative à partir des valeurs de la variable** ***TX_CS1_2016**
 
-7) Créez une variable qualitative à partir des valeurs de la variable TX_CS1_2016
+```{r class.source="bg-danger", warning=FALSE, message=FALSE, eval=FALSE}
 
-```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE}
+### Deux solutions possibles :
+
+### 1) Utiliser la fonction cut() 
+
+### 2) Ou utiliser un opérateur relationnel... ;-)
 
 # Si TX_CS1_2016 < ..., alors CAT_CS1_2016 == "FAIBLE"
 # Si TX_CS1_2016 < ...  & > ... , alors CAT_CS1_2016 == "MOYEN"
 # Si TX_CS1_2016 > ... , alors CAT_CS1_2016 == "FORT"
 
-# Utilisez la fonction 
-cut() 
 
 ```
 <br/>
 
+7) **Réaliser uen jointure entre la couche géographique de la Martinique et le tableau de données INSEE**. 
 
-8) Joingnez le tableau à la couche géographique de la Martinique. 
-
-```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE}
-
-# Importer le shape
-st_read()
-
-# Puis, jointure shape-tableau
-merge()
-
-```
 <br/>
 
-
-9) Cartographiez la part d'agriculteurs et exploitant dans la population active. 
-
-
-```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE}
-
-# Utilisez une fonction du package cartography :
-?choroLayer()
-
-```
-<br/>
+8) **Cartographiez la part d'agriculteurs et exploitant dans la population active**. 
 
 </div>
 
 <br/>
 
 # Statistique bivariée
-
-<br/>
 
 
 ## Vocabulaire
@@ -2877,7 +2906,7 @@ plot(rp2012$cadres, rp2012$dipl_sup)
 
 Il s'agit de la représentation la plus simple. Mais il est possible de fortement **personnaliser ce graphique :** 
 
-```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, fig.width=5, fig.height=5}
+```{r class.source="bg-info", class.output="bg-warning", warning=TRUE, message=FALSE, fig.width=5, fig.height=5}
 
 # Representation en nuage de points
 # fonction plot()
@@ -3093,14 +3122,18 @@ Arrondir les valeurs pour une meilleur lisibilité (avec quelles fonction?).
 
 # Sources & références
 
-<br/>
+## Langage R
 
 Il existe de **trés nombreuses ressources documentaires sur R**, disponible **en libre accès** sur le web. 
-Plusieurs ressources de qualité, parfois largement **utilisées pour produire ce document**, sont référencées sur le site de partage et de diffusion [**Rzine**](http://rzine.fr/){target="_blank"} (onglet *ressources*) :
+De nombreuses ressources de qualité, parfois largement **utilisées pour produire ce document**, sont référencées sur le site de partage et de diffusion [**rzine.fr**](http://rzine.fr/){target="_blank"} (onglet ***ressources***).
 
+<center><p class="objectif3"><a href="https://rzine.fr/"><img src="figures/Rzine_logo.png" width="170"/></a></p></center>
 
-<p class="objectif3"><img src="figures/Rzine_logo.png" width="170"/></a></p>
-<p class="objectif4">[rzine.fr](http://rzine.fr/){target="_blank"}</p>
+<br/>
+
+## Statistique en géographie
+
+<div id="refs"></div>
 
 
 
