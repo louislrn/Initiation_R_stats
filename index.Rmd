@@ -13,6 +13,7 @@ output:
   rzine::readrzine:
     highlight: kate
     number_sections: true
+    toc_depth: 3
 csl: Rzine_citation.csl
 css: style_new.css
 bibliography: biblio.bib
