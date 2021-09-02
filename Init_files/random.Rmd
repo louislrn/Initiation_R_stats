@@ -1,0 +1,134 @@
+---
+title: "Examen"
+subtitle : "Introduction aux statistiques en géographie avec R"
+author: "H. Pecout & T. Giraud"
+date: "08/09/2021"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+```
+
+**Durée : 1 heure**  
+**Jusqu'à deux réponses correctes par question. Noircir le cercle devant la bonne réponse.**   
+**L'accès au support https://frama.link/r4stats est autorisé.**   
+
+
+# Questions sur R (10 pts / 1 pts par question)
+
+
+## 1) Laquelle (Lesquelles) de ces affirmations est(sont) correcte(s) ?
+
+O  R est un Environnement de Développement Intégré    
+O  R est un langage et un logiciel   
+O  RStudio est un langage et un logiciel    
+O  Rstudio est un Environnement de Développement Intégré   
+
+## 2) Qu’est-ce qu’un **package** R ?
+
+O Une fonction   
+O Une bibliothèque de fonctions   
+O Une commande   
+O Un répertoire de travail   
+
+## 3) Quel(les) fonctionnalités(s) apportent l’utilisation d’un projet Rstudio
+
+O Le répertoire de travail est prédéfini       
+O Tous les packages utiles sont automatiquement chargés        
+O L’échange et la portabilité de votre travail est facilité     
+O La correction des erreurs de votre programme est automatique     
+
+
+## 4) Quelle fonction permet de renvoyer simultanément le nombre de lignes et de colonnes d’un data frame ?
+
+O ncol()  
+O dim()  
+O nrow()  
+O lenght()  
+
+
+## 5) Comment sélectionner les 4 premières lignes et la quatrième colonne d’un data frame nommé « df »
+
+O `df[4, 1:4]`      
+O `df[c(1,2,3,4); 4 ]`    
+O `df[1:4, 4]`    
+O `df[c(1,4), 4]`   
+
+
+## 6) Quelle fonction permet de joindre deux dataframe à l'aide d'un identifiant commun ?
+
+O `cbind()`    
+O `merge()`    
+O `rbind()`    
+O `aggregate()`    
+
+## 7) Si on exécute ce code et que l’objet x est un nombre, quel mot s’affichera dans la console :
+
+``` r
+if (is.numeric(x)){
+  print("YOUPI")
+}else{
+  print("WOW")
+} 
+```
+
+O  "YOUPI"    
+O  "WOW"    
+O  ERROR    
+O  NULL 
+
+
+## 8) Quelle(s) fonction(s) permet(tent) de représenter graphiquement une distribution ?
+
+O `summary()`    
+O `hist()`    
+O `table()`    
+O `boxplot()`    
+
+## 9) Quelle fonction du package mapsf permet de discrétiser une variable ?
+
+O `breaks()`    
+O `discr()`    
+O `discretize()`    
+O `mf_get_breaks()`    
+
+## 10) Quelle(s) fonction(s) permet(tent) de calculer un coefficient de corrélation  entre deux variables quantitatives ?
+
+O `get.cor()`    
+O `chisq.test()`    
+O `lm()`    
+O `cor.test()`    
+
+\vspace{50pt}
+
+# Questions de statistiques (10 pts)
+
+\vspace{20pt}
+
+## 11) Qu’est-ce qu’une discrétisation par quartiles ? Développez. (2pts)
+
+\vspace{220pt}    
+
+
+## 12) Qualifiez cette forme de distribution. Quelles en sont les principales caractéristiques (2pts)
+
+\begin{center}
+\includegraphics[width=70mm]{distrib.png}
+\end{center}
+  
+\vspace{150pt} 
+
+
+## 13) Quel test permet de vérifier l’existence d’une relation statistique entre deux variables qualitatives ? Quel indicateur permet de vérifier la significativité de ce test ?  (2pts)
+
+\vspace{150pt} 
+
+## 14)  Décrivez la relation entre var1 et var2 en vous appuyant sur le graphique. Quelle hypothèse pouvez vous formuler ? Comment modéliser cette relation et quelle fonction utiliser avec R? Que pouvez vous dire de l’individu entouré par un cercle sur le graphique ? (4pts) 
+
+\begin{center}
+\includegraphics[width=130mm]{corr.png}
+\end{center}
+
+\vspace{150pt} 

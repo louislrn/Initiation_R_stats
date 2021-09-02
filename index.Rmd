@@ -966,7 +966,7 @@ dev.off()
 
 <br/>
 
-### > Exercice
+### Exercice
 
 **Importez le fichier** *INSEE_COM_972.csv*, et **stockez-le dans un objet**.
 
@@ -1035,7 +1035,7 @@ nrow(mtcars)
 
 <br/>
 
-### > Exercice
+### Exercice
 
 **Visualisez et interrogez votre data frame**, en ligne de code ET depuis l'interface RStudio.
 
@@ -1111,7 +1111,7 @@ mtcars %>%
 
 <br/>
 
-### > Exercice
+### Exercice
 
 
 **Séléctionnez les communes isolées hors influence des pôles** (CATAEU2010 == 400) **de plus de 2000 habitants** en 2016 (P16_POP).
@@ -1152,7 +1152,7 @@ merge(mon_tab_1, mon_tab_2, by="ID")
 
 <br/>
 
-### > Exercice
+### Exercice
 
 **Chargez la couche géographique** *martinique.shp*, et **stockez-le dans un objet**.
 
@@ -1222,7 +1222,7 @@ mtcars2[, .( sum_disp=sum(disp), moy_hp=mean(hp), nb_element=length(cyl) ), by=l
 
 <br/>
 
-### > Exercice
+### Exercice
 
 **Commencez par calculer la somme de la population totale de la Martinique** à l'aide la fonction suivante :
 
@@ -1266,7 +1266,7 @@ mtcars[order(mtcars$cyl, mtcars$disp, decreasing = TRUE), ]
 
 <br/>
 
-### > Exercice
+### Exercice
 
 **Triez votre tableau de données en fonction de la population de 2016** (croissant) :
 
@@ -1323,7 +1323,7 @@ if (is.character(x)){
 
 <br/>
 
-### > Exercice
+### Exercice
 
 **Testez si votre tableau de données est bien un objet dataframe**, et **affichez le résultat dans la console** avec la fonction *print()* :
 
@@ -1508,7 +1508,7 @@ grep(regex, emails_list, ignore.case=TRUE)
 
 <br/>
 
-### > Exercice
+### Exercice
 
 **Créez une nouvelle colonne** "***NOM***" dans votre objet sf, pour y stocker **le nom des communes en lettre CAPITALE**.
 
@@ -1643,7 +1643,7 @@ ggplot(mpg, aes(cty)) +
 
 <br/>
 
-### > Exercice
+### Exercice
 
 **Construisez un histogramme de la variable** '***C16_POP15P_CS7***' (nombre de retraités) .
 
@@ -1663,27 +1663,6 @@ plot()
 
 ```
 
-```{r class.source="bg-danger", warning=FALSE, message=FALSE, eval=FALSE}
-# Fonctions possibles
- test <-  read.csv("data/INSEE_COM_972.csv", header=TRUE, sep=",", stringsAsFactors=FALSE)
- test$CODGEO <- as.character(test$CODGEO) 
-library(sf)
- test2 <- st_read("data/martinique.shp")
- 
-test3 <-  merge(test2, test, by.x="INSEE_COM" , by.y="CODGEO")
-
-aggregate(data = test3, P16_POP ~ CATAEU2010, sum)
-
-test3[order(test3$P16_POP, decreasing = FALSE), ]
-test3$NOM <- toupper(test3$LIBGEO.x)
-
-hist(test3$C16_POP15P_CS7, 
-     breaks=12, 
-     col="red",
-     xlab= "mpg",
-     ylab = "Fréquence",
-     main = "Distribution de la série statistique 'mpg'")
-```
 
 <br/>
 
@@ -1730,7 +1709,7 @@ mon_objet_new <- readRDS("Nom_du_fichier")
 
 <br/>
 
-### > Exercice
+### Exercice
 
 
 **Sauvegardez votre objet sf joint aux données de recensement dans le repértoire de votre projet Rstudio**.
@@ -2258,10 +2237,10 @@ Les classes sont établies **selon une progression arithmétique**.
 <br/>
 
 <div class="alert alert-danger" role="alert">
-**Le choix d'un méthode de discrétisation et du nombre de classes à un impact trés important sur l'interprétation de sa représentation visuelle. Cette <a href="http://mappemonde.mgm.fr/geovisu/119/" onclick="window.open(this.href); return false;"><b>application</b></a> (@geovisujegou) en est une belle demonstration**.</div>
+**Le choix d'un méthode de discrétisation et du nombre de classes à un impact trés important sur l'interprétation de sa représentation visuelle. Cette <a href="http://mappemonde.mgm.fr/geovisu/119/" onclick="window.open(this.href); return false;"><b>application</b></a> [@geovisujegou] en est une belle demonstration**.</div>
 <br/>
 
-Pour discrétiser une série statistique, vous pouvez utiliser la **fonction** **<span style="color:#4B0082">mf_get_breaks()</span>**, du package **<span style="color:#4B0082">mapsf</span>** (@mapsf).
+Pour discrétiser une série statistique, vous pouvez utiliser la **fonction** **<span style="color:#4B0082">mf_get_breaks()</span>**, du package **<span style="color:#4B0082">mapsf</span>** [@mapsf].
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, include=FALSE }
 # install.packages("mapsf")
@@ -2283,7 +2262,7 @@ Vous pouvez choisir différentes méthodes de discrétisation avec l'argument '*
 
 Pour **enregistrer l'appartenance des individus aux différentes classes en fonction de la discrétisation**, procédez de la manière suivante :
 
-```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval = FALSE}
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval = TRUE}
 
 # Calcul des borne de classe
 ma_discretisation <- mf_get_breaks(mtcars$hp, breaks = "sd")
@@ -2359,7 +2338,7 @@ rug(mtcars$qsec)
 #### La carte
 
 **La carte permet d'explorer la répartition spatiale d'une distribution d'une variable géographique**.
-Plusieurs packages permettent de faire des carte avec R, **le package** **<span style="color:#4B0082">mapsf</span>** **est spécialisé dans la production de cartes thématique et statistiques**.
+Plusieurs packages permettent de faire des carte avec R, **le package** **<span style="color:#4B0082">mapsf</span>** **est spécialisé dans la production de cartes thématiques et statistiques**.
 
 <br/>
 
@@ -2425,10 +2404,10 @@ mf_layout(title = "Population Distribution in Martinique",
 
 <br/>
 
-## > Exercice
+## Exercice
 
 
-<div  class="Exercice">
+<div class="alert alert-danger" role="alert">
 
 1) **Créez un nouveau projet **(ou réutilisez le projet créé durant l'exercice 1).     
 <br/>
@@ -2456,34 +2435,20 @@ mf_layout(title = "Population Distribution in Martinique",
     - Quelle est la moyenne ? 
     - Quelle indicateur divise la série statistique en deux ? Quelle est sa valeur ?   
     - Quel est son écart-type, son intervalle interquartile ?   
-    - **Représentez graphiquement la distribution** ? (plusieurs solutions sont possibles) 
-
+    - **Représentez graphiquement la distribution** ? (plusieurs solutions sont possibles)       
 <br/>
 
-5) **Discrétisez la variable** ***TX_CS1_2016***. Quelle méthode choisissez-vous ? Pourquoi ?
 
+5) **Discrétisez la variable** ***TX_CS1_2016***. Quelle méthode choisissez-vous ? Pourquoi ?     
 <br/>
 
-6) **Créez une variable qualitative à partir des valeurs de la variable** ***TX_CS1_2016**
+6) **Créez une variable qualitative à partir des valeurs de la variable** ***TX_CS1_2016**. Plusieurs solutions sont possible, exemple :
 
-```{r class.source="bg-danger", warning=FALSE, message=FALSE, eval=FALSE}
-
-### Deux solutions possibles :
-
-### 1) Utiliser la fonction cut() 
-
-### 2) Ou utiliser un opérateur relationnel... ;-)
-
-# Si TX_CS1_2016 < ..., alors CAT_CS1_2016 == "FAIBLE"
-# Si TX_CS1_2016 < ...  & > ... , alors CAT_CS1_2016 == "MOYEN"
-# Si TX_CS1_2016 > ... , alors CAT_CS1_2016 == "FORT"
-
-
-```
+- Utiliser la fonction cut() 
+- Utiliser un opérateur relationnel... (si TX_CS1_2016 < ..., alors CAT_CS1_2016 == "FAIBLE"...)       
 <br/>
 
-7) **Réaliser uen jointure entre la couche géographique de la Martinique et le tableau de données INSEE**. 
-
+7) **Réaliser une jointure entre la couche géographique de la Martinique et le tableau de données INSEE**.        
 <br/>
 
 8) **Cartographiez la part d'agriculteurs et exploitant dans la population active**. 
@@ -2529,7 +2494,7 @@ mf_layout(title = "Population Distribution in Martinique",
 <p class="center">![](figures/contingency.png)
 </p>
 
-<p class="def">La construction d'un tableau de contingence est la première étape nécessaire pour évaluer la dépendance de deux variables qualitatives</p>
+<p class="def">La construction d'un tableau de contingence est la première étape nécessaire pour évaluer la dépendance de deux variables qualitatives.</p>
 </div>
 
 
@@ -2554,7 +2519,7 @@ Les fréquences obtenues peuvent être calculées par rapport à l’effectif to
 
 ### Tableaux croisés
 
-La manière la plus simple d’obtenir un tableau croisé est d’utiliser la fonction **<span style="color:#8C001A">table()</span>. 
+La manière la plus simple d’obtenir un tableau croisé est d’utiliser la fonction **<span style="color:#8C001A">table()</span>**. 
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
@@ -2575,12 +2540,12 @@ table(hdv2003$sport, hdv2003$cuisine, hdv2003$sexe)
 
 <br/>
 
-Il est cependant difficile de comparer à partir des effectifs. **Le package **<span style="color:#4B0082">questionr()</span>** fournit des fonctions permettant de calculer facilement les pourcentages lignes, colonnes et totaux d’un tableau croisé**. Les pourcentages en lignes ou en colonne s’obtiennent avec les fonctions **<span style="color:#8C001A">lprop()</span>** et **<span style="color:#8C001A">cprop()</span>**. Celles-ci s’appliquent au tableau croisé généré par **<span style="color:#8C001A">table()</span>** :
+Il est cependant difficile de comparer à partir des effectifs. **Le package** **<span style="color:#4B0082">questionr()</span>** fournit des fonctions permettant de calculer facilement les pourcentages lignes, colonnes et totaux d’un tableau croisé**. Les pourcentages en lignes ou en colonne s’obtiennent avec les fonctions** **<span style="color:#8C001A">rprop()</span>** et **<span style="color:#8C001A">cprop()</span>**. Celles-ci s’appliquent au tableau croisé généré par **<span style="color:#8C001A">table()</span>** :
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
 # Pourcentage en ligne d'un tableau croisé table(), avec lprop() du package 'questionnr'
-lprop(table(hdv2003$sport, hdv2003$cuisine))
+rprop(table(hdv2003$sport, hdv2003$cuisine))
 
 # Pourcentage en colonne d'un tableau croisé table(), avec cprop() du package 'questionnr'
 cprop(table(hdv2003$sport, hdv2003$cuisine))
@@ -2601,18 +2566,18 @@ prop(table(hdv2003$sport, hdv2003$cuisine),
 
 <br/>
 
-### Le khi2 et la mesure des écarts à l’indépendance
+### Le khi-2 (χ²) et la mesure des écarts à l’indépendance
 
-A partir d’un tableau croisée, **on peut tester l’existence d’un lien entre les modalités de deux variables** avec le **test du Khi-2** : 
+A partir d’un tableau croisée, **on peut tester l’existence d’un lien entre les modalités de deux variables** avec le **test du χ²**.
 
 
-<div class="important2">
+<div class="alert alert-danger" role="alert">
 
-Cela consiste à **comparer la répartition observée à une répartition théorique  sous  hypothèse d’indépendance**, c’est-à-dire la répartition qu’on observerait s’il n’y avait aucun lien entre les deux variables. Cette répartition théorique consiste donc à redistribuer les effectifs conjoints tout en conservant les effectifs marginaux.   
+Le **test du χ² consiste à comparer la répartition observée à une répartition théorique  sous  hypothèse d’indépendance**, c’est-à-dire la répartition qu’on observerait s’il n’y avait aucun lien entre les deux variables. Cette répartition théorique consiste donc à redistribuer les effectifs conjoints tout en conservant les effectifs marginaux.   
 
-**Le test du khi-2 permet d’établir à quel seuil de probabilité on peut rejeter l’hypothèse d’indépendance** entre des effectifs observés et des effectifs théoriques. **Plus le khi-2 est proche de zéro, plus le tableau des effectifs théoriques et celui des effectifs observées se confondent.**
+**Le test du χ² permet d’établir à quel seuil de probabilité on peut rejeter l’hypothèse d’indépendance** entre des effectifs observés et des effectifs théoriques. **Plus le χ² est proche de zéro, plus le tableau des effectifs théoriques et celui des effectifs observées se confondent.**
 
-**Un test de khi-2 s’applique uniquement sur des tableaux de contingence :**     
+**Un test de χ² s’applique uniquement sur des tableaux de contingence :**     
 - ayant **au moins 2 lignes et 2 colonnes**     
 - contenant des **valeurs positives entières**     
 - ayant au **minimum 5 observations par cases** du tableau et/ou dans le tableau des effectifs théoriques.     
@@ -2623,41 +2588,62 @@ Cela consiste à **comparer la répartition observée à une répartition théor
 
 <br/>
 
-L’objet créé par la fonction **<span style="color:#8C001A">chisq.test()</span>** est une liste qui contient tous les éléments nécessaires à l’analyse du khi-2 : effectifs théoriques, résidus bruts ou résidus relatifs :
+
+La fonction **<span style="color:#8C001A">chisq.test()</span>** permet de réaliser un test du du χ². Cette fonction renvoie une liste qui contient tous **les éléments nécessaires à l’analyse du χ² : effectifs théoriques, résidus bruts ou résidus relatifs** :
 
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
-
+# 1) construction du tableau de contigence avec les effectifs réels
 tab <- table(hdv2003$sport, hdv2003$qualif)
+
+# 2) Test du Khi-2 sur le tableau de contingence
 tab.chi2 <- chisq.test(tab)
 tab.chi2
-
 ```
 
-Le test nous donne la **statistique du χ2**(chi-squared), le **degré de liberté** associé au  test (le  produit du  nombre de modalités) et la **significativité de la relation (valeur p)**. 
+**La fonction** **<span style="color:#8C001A">chisq.test()</span>** renvoie automatiquement :     
 
-**La probabilité d’obtenir une valeur du Khi-2 observée aussi élevée dans un échantillon de la taille observée sous l’hypothèse d’indépendance des deux variables est inférieure à 0.001%. Il est donc possible de rejeter l’hypothèse d’indépendance.** Il semble bien exister une relation entre la csp et la pratique du sport.
+- la **statistique du χ2**(X-squared)   
+- le **degré de liberté** associé au  test (df)   
+- la **significativité de la relation** (p-value)   
+
+<div class="alert alert-danger" role="alert">
+
+**Interpréter les résultats ?**
+
+***"La probabilité d’obtenir une valeur du χ² observée aussi élevée dans un échantillon de la taille observée sous l’hypothèse d’indépendance des deux variables est inférieure à 0.001%. Il est donc possible de rejeter l’hypothèse d’indépendance"***. 
+
+Il semble bien exister une relation entre la CSP et la pratique du sport...
+
+</div>
+
+**L'objet liste renvoyé contient également :**
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
-# effectifs observés
+# Les effectifs observés
 tab.chi2$observed
 
-# effectifs théoriques
+# Les effectifs théoriques
 tab.chi2$expected
 
-# résidus
-tab.chi2$residuals
-
 ```
+
+**Pour correctement interpréter le résultat du test du χ², il est important de comprendre comment ces différentes valeurs sont calculées...** 
+
+--> [Le calcul du χ² et du degré de liberté ?](https://github.com/HuguesPecout/Initiation_R_stats/raw/main/Khi2.xls)    
+--> Le calcul de la valeur p ([table de la loi du χ² ?](https://jpcmanson.wordpress.com/2015/08/13/statistiques-les-omega-3-previennent-ils-lapparition-des-troubles-psychiatriques/khi2/))   
 
 <br/>       
 
-Il est possible d'**affiner l’interprétation du test en déterminant dans quelle case l’écart à l’indépendance est le plus significatif en utilisant les résidus du test**. Ceux-ci sont notamment affichables avec la fonction **<span style="color:#8C001A">chisq.residuals()</span>** de la librairie 'questionr' :
+Il est possible d'**affiner l’interprétation du test en déterminant dans quelle "case" l’écart à l’indépendance est le plus significatif en utilisant les résidus du test**. Ceux-ci sont notamment affichables avec la fonction **<span style="color:#8C001A">chisq.residuals()</span>** de la librairie **questionr** :
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
-# Résidus du test khi-2
+# Résidus (de Pearson) du test khi-2 = (obs - exp) / sqrt(exp)
+
+# tab.chi2$residuals fonctionne aussi !
 chisq.residuals(tab)
+
 
 ```
 
@@ -2665,37 +2651,65 @@ chisq.residuals(tab)
 
 ### Représentations graphiques
 
+#### Le tableau de contigence 
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 tab <-  table(hdv2003$sport, hdv2003$qualif)
 
-# Diagramme en bâton
-barplot(cprop(tab, total = FALSE), main = "Pratique du sport selon le niveau de qualification",las=2)
-legend("topright", c("NON", "OUI"), fill=c(col="grey40", col="grey90"), cex=0.8)
+# Diagramme en bâton - Effectifs observés
+barplot(tab, 
+        main = "Pratique du sport selon le niveau de qualification\nEffectifs observés", 
+        las=2)
+
+legend("topright", 
+       c("NON", "OUI"), 
+       fill=c(col="grey40", col="grey90"), 
+       cex=0.8)
+
+
+# Diagramme en bâton - Fréquence des effectifs observés
+barplot(cprop(tab, total = FALSE), 
+        main = "Pratique du sport selon le niveau de qualification\nFréquences relatives des effectifs",
+        las=2)
+
+legend("topright",
+       c("NON", "OUI"), 
+       fill=c(col="grey40", col="grey90"), 
+       cex=0.8)
+
 
 ```
 
 <br/>
+
+#### Les résidus Pearson d'un test du χ²
+
+La **fonction <span style="color:#8C001A">mosaicplot()</span>** permet un représentation graphique du tableau de contingence des effectifs observés et des résidus de Pearson du test du χ² ((obs - exp) / sqrt(exp)).
+
+la longueur des segments sur les deux axes correspond aux fréquences relatives correspondantes et **l’aire des rectangles est également proportionnelle à la fréquence relative de la sous-population représentée**. **La couleur de la case correspond aux résidus Pearson du test du χ²** : 
 
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
 # Fonction mosaicplot()
-mosaicplot(qualif ~ sport, data = hdv2003, shade = TRUE, main = "Graphe en mosaïque", cex=0.6)
+mosaicplot(qualif ~ sport, 
+           data = hdv2003, 
+           shade = TRUE, 
+           main = "Résidus de Pearson du test du χ²", 
+           cex=0.6)
 
 ```
 
-La **fonction <span style="color:#8C001A">mosaicplot()</span>** permet représentation graphique du tableau de contingence assez efficace : 
-la longueur des segments sur les deux axes correspond aux fréquences relatives correspondantes et l’aire des rectangles est également proportionnelle à la fréquence relative de la sous-population représentée. **La couleur de la case correspond au résidu du test du χ²** : les cases en rouge sont sous-représentées, les cases en bleu sur-représentées, et les cases blanches sont statistiquement proches de l’hypothèse d’indépendance.
+**les cases en rouge sont sous-représentées, les cases en bleu sur-représentées, et les cases blanches sont statistiquement proches de l’hypothèse d’indépendance.**
 
 <br/>
 
 
-## > Exercice
+## Exercice
 
-<div  class="Exercice">
 
-Dans le le tableau ci-dessous figurent en colonnes le nombre de réponses à la question “Faites-vous faire des recherches sur internet à vos élèves ?” posée à 179 enseignants de collèges en France :
+
+Dans le le tableau ci-dessous figurent en colonnes le nombre de réponses à la question "***Faites-vous faire des recherches sur internet à vos élèves ?***" posée à 179 enseignants de collèges en France :
 
 <p class="center">
 ![](figures/chi2.png?style=centerme)
@@ -2703,14 +2717,14 @@ Dans le le tableau ci-dessous figurent en colonnes le nombre de réponses à la 
 
 <br/>
 
-1) Construire le data.frame dans R.   
+<div class="alert alert-danger" role="alert"> 
+
+1) **Construire le data.frame dans R**.   
 <br/>
 
 ```{r class.source="bg-info", class.output="bg-warning",, echo=FALSE, eval=FALSE}
 
 mon_tableau <- data.frame(oui=c(68, 37), non=c(60,14), row.names=c("dom", "sec"))
-
-
 
 cprop(as.matrix(mon_tableau))
 
@@ -2719,20 +2733,23 @@ x$residuals
 
 ```
 
-2) Convertir les valeurs en pourcentage par ligne, colonne et total 
+2) **Convertissez les valeurs en fréquence relative** (en ligne, colonne et total).     
+<br/>
 
-Attention, vous devez dans un premier temps convertir votre data.frame en matrix...     
-Vous pouvez également essayer de représenter graphiquement vos pourcentages à l'aide de la fonction <span style="color:#8C001A">barplot()</span>.    
+3) **Représenter graphiquement les fréquence relatives** à l'aide de la fonction <span style="color:#8C001A">barplot()</span>.    
 <br/>
 
 ```{r class.source="bg-info", class.output="bg-warning",, fig.width=5, echo=FALSE, eval=FALSE}
 
+Attention, vous devez dans un premier temps convertir votre data.frame en matrix... 
 barplot(cprop(t(as.matrix(df)))[1:2,1:2])
 
 ```
 
-3) Existe-t-il un lien statistique entre ces deux variables?  
+4) **Réalisez un test du χ²**. **Existe-t-il un lien statistique entre ces deux variables ?**      
+<br/>
 
+5) **Représentez graphiquement les résidus de Pearson du test du χ²** avec la fonction <span style="color:#8C001A">mosaicplot()</span>.
 
 </div>
 
@@ -2740,9 +2757,78 @@ barplot(cprop(t(as.matrix(df)))[1:2,1:2])
 
 ## Qualitatif vs Quantitatif
 
+Il existe plusieurs méthodes statistiques pour mesurer la dépendance entre une variable qualitative et une variable quantitative, comme le test **t de student** ou  **l'analyse de variance (ANOVA)**. Cependant, **ces méthodes ne seront pas détaillé dans ce cours**...
+
+Exemple de calcul du test t de student avec R (<span style="color:#8C001A">t.test()</span>) :
+
+```{r class.source="bg-info", class.output="bg-warning",include=TRUE, fig.width=5, echo=TRUE, eval=TRUE}
+
+# Nécessite une variable qualitative binaire (deux modalités max)
+test.student <- t.test(age ~ sport, data = hdv2003)
+test.student
+
+```
+
+Exemple d'une analyse de variance avec R (<span style="color:#8C001A">aov()</span>) :
+
+```{r class.source="bg-info", class.output="bg-warning",include=TRUE, fig.width=5, echo=TRUE, eval=TRUE}
+
+# Nécessite une variable qualitative binaire (deux modalités max)
+anova <- aov(age ~ sport, data=hdv2003)
+anova
+
+```
+
+<br/>
+
+### Comparaison d’indicateurs
+
+**Comparer certains indicateurs (moyenne, médiane...) d’une variable quantitative selon les modalités d’une variable qualitative** permet de mesurer des différence entre plusieurs sous-population.
+
+Dans un premier temps, **ventilez votre population en autant de sous-populations qu’il y a de modalités dans la variable qualitative**. Pour cela, utilisez la fonction **<span style="color:#8C001A">subset()</span>** :
+
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
+
+# On crée deux tables de sous-population
+
+# Sous-population pratiquant du sport :
+hdv2003_sport <- subset(hdv2003, sport == "Oui")
+# Sous-population non-pratiquante :
+hdv2003_nonsport <- subset(hdv2003, sport == "Non")
+
+```
+
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
+
+# Moyenne d'age des pratiquants
+mean(hdv2003_sport$age)
+
+```
+
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
+
+# Moyenne d'age des non-pratiquants
+mean(hdv2003_nonsport$age)
+
+```
+
+Vous pouvez également utiliser la **fonction <span style="color:#8C001A">tapply()</span>**, qui prend en paramètre une variable quantitative, qualitative et une fonction, puis applique automatiquement la fonction aux valeurs de la variables quantitative pour chaque niveau de la variable qualitative. Ex :
+
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
+
+# Fonction tapply()
+tapply(hdv2003$age, hdv2003$sport, mean)
+
+```
+
+<br/>
+
+
 ### Représentations graphiques
 
-Dans un premier temps, il s'agit de **résumer visuellement la distribution statistique d’une variable quantitative autour de différentes mesures de centralité et de dispersion**. La boîte à moustache **<span style="color:#8C001A">boxplot()</span>** montre la distribution de la variable quantitative pour chacune des modalités de la variable qualitative.
+Il est possible de **résumer visuellement la distribution statistique d’une variable quantitative autour de différentes mesures de centralité et de dispersion en utilisant la "boîte à moustache" (*boxplot*).**
+
+**La fonction** **<span style="color:#8C001A">boxplot()</span>** **représente la distribution de la variable quantitative pour chacune des modalités de la variable qualitative :**
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
@@ -2756,7 +2842,7 @@ boxplot(hdv2003$heures.tv ~ hdv2003$qualif,
 
 <br/>
 
-Si une variable qualitative ne présente que deux modalités, la representation côte à côte des deux distributions permet  d'observer facilement leurs différences :
+**Dans le cas où une variable qualitative ne présente que deux modalités**, la representation côte à côte des deux distributions permet  d'observer facilement leurs différences :
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
@@ -2766,46 +2852,16 @@ colnames(tab) <- c("sport", "age", "Freq")
 tab <-  subset(tab , !(sport %in% "Ensemble"))
 
 # Utilisation de la fonction ggplot()
+library(ggplot2)
 ggplot(tab , aes(x = age, y = Freq, fill = factor(sport))) +
   geom_bar(stat = "identity", position = position_dodge(), las=2) +
-  ylab("Pourcentage")+
-  scale_x_discrete(breaks=seq(17,97,3), labels = seq(17,97,3))+
+  ylab("Pourcentage") +
+  scale_x_discrete(breaks=seq(17,97,3), labels = seq(17,97,3)) +
   scale_y_continuous(limit=c(0,3.3))
 ```
 
 <br/>
 
-### Calculs d’indicateurs
-
-On peut vouloir **comparer certains indicateurs (moyenne, médiane) d’une variable quantitative selon les modalités d’une variable qualitative**.
-
-Pour cela, il suffit de ventiler notre population en autant de sous-populations qu’il y a de modalités dans la variable qualitative. Vous pouvez par exemple utiliser la fonction **<span style="color:#8C001A">filter()</span>** du package <span style="color:#4B0082">dplyr</span> :
-
-```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
-
-library(dplyr)
-# On crée deux tables. Une avec la population qui fait du sport et l'autre qui n'en fait pas.
-hdv2003_sport <- filter(hdv2003, sport == "Oui")
-hdv2003_nonsport <- filter(hdv2003, sport == "Non")
-
-# Moyenne d'age des gens qui pratique du sport
-mean(hdv2003_sport$age)
-
-# Moyenne d'age des gens qui ne pratique pas de sport
-mean(hdv2003_nonsport$age)
-
-```
-
-Plus simplement, vous pouvez utiliser la **fonction <span style="color:#8C001A">tapply()</span>**, qui prend en paramètre une variable quantitative, qualitative et une fonction, puis applique automatiquement la fonction aux valeurs de la variables quantitative pour chaque niveau de la variable qualitative. Ex :
-
-```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
-
-# Fonction tapply()
-tapply(hdv2003$age, hdv2003$sport, mean)
-
-```
-
-<br/>
 
 <!-- ### Test statistique -->
 
@@ -2883,33 +2939,27 @@ Lorsque l'on croise deux variables quantitatives, l’idéal est de faire une re
 
 <br/>
 
-Le jeu de données hdv2003 comportant assez peu de variables quantitatives, on va s’intéresser maintenant à un jeu de données du recensement de la population de 2012 (rp2012) :
+**Commencez par charger le jeu de données du recensement de la population de 2012** (***rp2012***) mis à disposition par le package *questionr*.
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 library(questionr)
 data(rp2012)
 ```
 
-<br/>
-
-
-**Représentation du nuage de point :**
+Pour tracer un nuage de points, utilisez la **fonction** **<span style="color:#8C001A">plot()</span> :**
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
-# fonction plot()
 plot(rp2012$cadres, rp2012$dipl_sup)
 
 ```
 
 <br/>
 
-Il s'agit de la représentation la plus simple. Mais il est possible de fortement **personnaliser ce graphique :** 
+Il est possible de **personnaliser le graphique...** 
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=TRUE, message=FALSE, fig.width=5, fig.height=5}
 
-# Representation en nuage de points
-# fonction plot()
 par(bg = "ivory", mar = c(2,2,2,2), family="")
 plot(x = rp2012$cadres, y = rp2012$dipl_sup, asp = 1, pch = 21, col = "white", 
      ylim = c(0,60), cex = 0.5, bg = "red", lwd = 0.5, axes = F)
@@ -2926,25 +2976,27 @@ mtext(text = "Cadres (%)", side = 1, line = 1)
 
 <br/>
 
-Les différentes **formes classiques de relation entre 2 variables** :
 
-<p class="center">
-![](figures/correlation.png?style=centerme)
-</p>
-<p align="center"> Source : https://eric.univ-lyon2.fr/~ricco/cours/cours/Analyse_de_Correlation.pdf </p>
+### Interpréter un nuage de points
 
+Quelques **formes classiques de relation entre 2 variables** :
+
+<center>
+<img src="figures/correlation.png" alt="drawing" style="width:700px;"/>
+<p> Source : https://eric.univ-lyon2.fr/~ricco/cours/cours/Analyse_de_Correlation.pdf </p>
+</center>
 <br/>
 
 ### Calcul d’indicateurs
 
 En plus d’une représentation graphique, on peut calculer **certains indicateurs permettant de mesurer le degré d’association de deux variables quantitatives**. 
 
-<br/>
 
 #### Corrélation linéaire (Pearson)
 
 **La corrélation est une mesure du lien d’association linéaire entre deux variables quantitatives**. **Sa valeur varie entre -1 et 1**. Si la corrélation vaut -1, il s’agit d’une association linéaire négative parfaite. Si elle vaut 1, il s’agit d’une association linéaire positive parfaite. **Si elle vaut 0, il n’y a aucune association linéaire entre les variables.**
-Le calcul du coéfficient linéaire pet se fair à l'aide de la **fonction <span style="color:#8C001A">cor.test()</span>**.
+
+**Le calcul du coéfficient linéaire peut se faire avec la fonction <span style="color:#8C001A">cor.test()</span>** :
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
@@ -2965,7 +3017,7 @@ Plutôt que de se baser sur les valeurs des variables, **cette corrélation va s
 
 Ainsi, si la valeur la plus basse de la première variable est associée à la valeur la plus basse de la deuxième, et ainsi de suite jusqu’à la valeur la plus haute, on obtiendra une corrélation de 1. Si la valeur la plus forte de la première variable est associée à la valeur la plus faible de la seconde, et ainsi de suite, et que la valeur la plus faible de la première est associée à la plus forte de la deuxième, on obtiendra une corrélation de -1. Si les rangs sont “mélangés”, sans rapports entre eux, on obtiendra une corrélation autour de 0.
 
-Pour calculer une corrélation de Spearman, **on utilise la fonction <span style="color:#8C001A">cor()</span> mais avec l’argument method = "spearman"** :
+**Pour calculer une corrélation de Spearman, utilisez la fonction <span style="color:#8C001A">cor()</span>** (argument method = "spearman") :
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 # Calcul coefficient de Corrélation de Spearman
@@ -2976,7 +3028,8 @@ cor(rp2012$cadres, rp2012$dipl_sup, method = "spearman")
 
 ### Régression linéaire
 
-Dans le cas particulier où l'**on a pu mettre en évidence l'existence d'une relation linéaire significative entre deux caractères quantitatifs continus X et Y, on peut chercher à formaliser la relation moyenne qui unit ces deux variables** à l'aide des équations suivantes :  
+Dans le cas particulier où l'**on a pu mettre en évidence l'existence d'une relation linéaire significative entre deux caractères quantitatifs continus X et Y, on peut chercher à formaliser la relation moyenne qui unit ces deux variables** à l'aide des équations suivantes :     
+
 **Y = aX + b** =  droite de régression de Y en fonction de X  
 **X = aY + b** =  droite de régression de X en fonction de Y  
 
@@ -2984,27 +3037,29 @@ La régression consiste à évaluer les paramètres d’une fonction linéaire, 
 
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
-# ?lm
+
 # Regression linéaire - fonction lm()
 lm(rp2012$cadres ~ rp2012$dipl_sup)
 
 ```
 
-**lm() nous renvoit par défaut les coefficients de la droite de régression, où :**
+**<span style="color:#8C001A">lm()</span> nous renvoie les coefficients de la droite de régression, où :**
 
-**Y** = % de cadres
-**X** = % diplomé du supérieur
+**Y** = % de cadres   
+**X** = % diplomé du supérieur    
 
 **b** = **ordonnée à l’origine** (Intercept) vaut **0.92**<br/>
 **a** = **le coefficient** associé à dipl_sup vaut **1.08**<br/>        
 
-**La regression linéaire de Y en fonction de X**  ( Y = aX + b ) **équivaut donc à Y = 1.08X + 0.92**
+**La regression linéaire de Y en fonction de X**  ( Y = aX + b ) équivaut donc à **Y = 1.08X + 0.92**
 
 <br/>
 
 #### Coefficient de détermination (R2)
 
 Le coefficient de détermination (R2) est une mesure de la qualité de la prédiction d’une regression linéaire. Il donne la part de la variance expliquée par l’équation de la régression dans la variance totale du nuage de points.  
+
+**Pour calculer le R2, combinez les fonctions <span style="color:#8C001A">summary()</span> et <span style="color:#8C001A">lm()</span> :**
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 # Pour des résultats plus détaillés, fonction summary :
@@ -3019,9 +3074,8 @@ On peut enfin **représenter la droite de régression** sur notre nuage de point
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
-# plot()
+
 plot(rp2012$dipl_sup, rp2012$cadres)
-# Droite de regression - abline(lm())
 abline(lm(rp2012$cadres ~ rp2012$dipl_sup), col="red", lwd=2)
 text(6, 55, "y = 1.08x + 0.92", col="red")
 
@@ -3042,12 +3096,10 @@ Plus un individu aura des résidus fort (positifs ou négatif), moins sa positio
 # Regression lineaire
 my_reg <- lm(rp2012$cadres ~ rp2012$dipl_sup)
 
-# construction d'un data.frame des résidus normalisés
+# Construction d'un data.frame des résidus normalisés
 residus <- data.frame(scaledRes = scale(my_reg$residuals), nom = row.names(rp2012))
 
 ```
-
-<br/> 
 
 **Représenter les résidus :**
 
@@ -3070,49 +3122,45 @@ text(x= 1:nrow(residus), y = residus$scaledRes, labels = residus$nom, pos = 4,
 <br/> 
 
 
-## > Exercice
+## Exercice
 
-<div  class="Exercice">
+Pour cet exercice, utilisez le jeu de données ***women*** (R-base).   
 
-1) Créez un nouveau projet     
-<br/>
-
-2) Décrivez le jeu de données "women"      
-
-Le jeu de données women est un jeu de données fourni par le package `datasets` installé par défaut.   
-```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE}
+```{r class.source="bg-danger", warning=FALSE, message=FALSE, eval=FALSE}
 
 ?women
 data(women)
 head(women)
 
-
 ```
-Quelles sont les unités de mesure des variables?   
+
+<div class="alert alert-danger" role="alert"> 
+
+1) **Créez un nouveau projet.**           
 <br/>
 
-3) Créer deux nouvelles variables (taille et poids) dans des unités de mesures plus compréhensibles.    
-
-Arrondir les valeurs pour une meilleur lisibilité (avec quelles fonction?).     
+2) **Décrivez le jeu de données "women"**. Quelles sont les unités de mesure des variables ?     
 <br/>
 
-4) Créer un graphique mettant en relation les deux variables (poids et taille)  
+3) **Créer deux nouvelles variables (taille et poids)** dans des unités de mesures plus compréhensibles. Arrondissez les valeurs pour une meilleure lisibilité (avec quelles fonctions ?).        
+<br/>
+
+4) **Créez un graphique mettant en relation les deux variables** (poids et taille).     
 <br/>     
 
-5) Quelle hypothèse pouvons nous faire? Et comment la vérifier?   
+5) **Quelle hypothèse pouvons-nous faire ? Et comment la vérifier ?**       
 <br/>
 
-6) Quelle est la relation entre poids et taille.   
+6) **Quelle est la relation entre poids et taille ?**           
 <br/>
 
-7) Comment modéliser cette relation   
+7) **Comment modéliser cette relation ?**       
 <br/>
 
-8) Quel serait le poids d'une femme d'1.68 m?  
+8) **Quel serait le poids d'une femme d'1.68 m ?**       
 <br/>
 
-9) Afficher la droite de regression du modèle sur le graphique.   
-<br/>
+9) **Afficher la droite de regression** du modèle sur le graphique.   
 
 
 </div>
@@ -3125,15 +3173,14 @@ Arrondir les valeurs pour une meilleur lisibilité (avec quelles fonction?).
 ## Langage R
 
 Il existe de **trés nombreuses ressources documentaires sur R**, disponible **en libre accès** sur le web. 
-De nombreuses ressources de qualité, parfois largement **utilisées pour produire ce document**, sont référencées sur le site de partage et de diffusion [**rzine.fr**](http://rzine.fr/){target="_blank"} (onglet ***ressources***).
+De nombreuses ressources de qualité, parfois largement **utilisées pour produire ce document**, sont référencées sur le site de partage et de diffusion [**rzine.fr**](http://rzine.fr/){target="_blank"} (onglet ***ressources***).    
+<br/>
 
-<center><p class="objectif3"><a href="https://rzine.fr/"><img src="figures/Rzine_logo.png" width="170"/></a></p></center>
+<center><p class="objectif3"><a href="https://rzine.fr/"><img src="figures/Rzine_logo.png" width="200"/></a></p></center>
 
 <br/>
 
-## Statistique en géographie
+## Statistique en géographie (et R)
 
 <div id="refs"></div>
-
-
 
