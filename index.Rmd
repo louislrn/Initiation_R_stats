@@ -275,7 +275,7 @@ library(help = "base")
 
 **Pour utiliser une fonction, il suffit d'écrire son nom, puis de spécifier des arguments entre parenthèse**. 
 
-Exemple de <span style="color:#8C001A">fonctions</span> permettant d'assigner ou de modifier la classe d'un objet :
+Exemple de fonctions permettant d'assigner ou de modifier la classe d'un objet :
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE}
 
@@ -515,7 +515,7 @@ colSums(ma_matrice)
 
 ### Le Simple Feature data frame 
 
-**L'objet sf est en quelque sorte une table de données géographique**. Il permet de gérer de l'information spatiale. Il s'agit tout simplement d'un dataframe qui stocke également des géométries.
+**L'objet <span style="color:#4B0082">sf</span> est en quelque sorte une table de données géographiques**. Il permet de gérer de l'information spatiale. Il s'agit tout simplement d'un dataframe qui stocke également des géométries.
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
@@ -681,12 +681,12 @@ mtcars[mtcars$mpg %in% c(21.0,14.3,22.8,19.2) | mtcars$hp != 123 | mtcars$wt >= 
 
 R fourni directement **un important nombre de fonctions pré-installées, stockées dans ce qui est appelé le <span style="color:#4B0082"><a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/00Index.html" onclick="window.open(this.href); return false;">R Base Package</a></span>**. Il n'est pas nécessaire de les installer ou de les charger, elles sont immédiatement utilisables. À ce jour, **`r nb_function_base` fonctions sont proposées par le le R-base**.
 
-**Les fonctions du r-base permettent d'effectuer les manipulations de données les plus classiques**. Pour effectuer des traitements plus spécifiques, il est nécessaire d'installer des <span style="color:#4B0082">packages</span> mise à disposition par d'autres utilisateurs sur le <a href="https://cran.r-project.org/" onclick="window.open(this.href); return false;">CRAN</a>.     
-**Les <span style="color:#4B0082">packages</span> sont des collections de fonctions**, associées à de la documentation et parfois même à des données. **`r max(test2$cum)` <span style="color:#4B0082">packages</span> supplémentaires** étaient mis à disposition le `r format(Sys.time(), '%d %b %Y')` sur le <a href="https://cran.r-project.org/" onclick="window.open(this.href); return false;">CRAN</a>. Tous les packages disponibles sur <a href="https://cran.r-project.org/" onclick="window.open(this.href); return false;">**The Comprehensive R Archive Network**</a> ont été contrôlés. Leur fonctionnement technique (uniquement) est garanti, car il s'agit d'un dépôt officiel de packages.
+**Les fonctions du r-base permettent d'effectuer les manipulations de données les plus classiques**. Pour effectuer des traitements plus spécifiques, il est nécessaire d'installer des packages mis à disposition par d'autres utilisateurs sur le <a href="https://cran.r-project.org/" onclick="window.open(this.href); return false;">CRAN</a>.     
+**Les packages sont des collections de fonctions**, associées à de la documentation et parfois même à des données. **`r max(test2$cum)` packages supplémentaires** étaient mis à disposition le `r format(Sys.time(), '%d %b %Y')` sur le <a href="https://cran.r-project.org/" onclick="window.open(this.href); return false;">CRAN</a>. Tous les packages disponibles sur <a href="https://cran.r-project.org/" onclick="window.open(this.href); return false;">**The Comprehensive R Archive Network**</a> ont été contrôlés. Leur fonctionnement technique (uniquement) est garanti, car il s'agit d'un dépôt officiel de packages.
 
-Il est également possible d'installer des packages en cours de développement et mise à disposition sur un GIT ou d'installer un <span style="color:#4B0082">package</span> stocké en .tar.gz sur votre machine.
+Il est également possible d'installer des packages en cours de développement et mise à disposition sur un GIT ou d'installer un package stocké en .tar.gz sur votre machine.
 
-Installer un <span style="color:#4B0082">package</span> en langage R :
+Installer un package en langage R :
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE,eval=FALSE}
 
@@ -711,7 +711,7 @@ install_github("riatelab/MTA")
 
 ```
 
-Une fois installé, **un <span style="color:#4B0082">package</span> doit être chargé à chaque nouvelle session de R pour être utilisé**. A un package est systématiquement associée de la documentation permettant de comprendre son contenu et aider à sa prise en main. 
+Une fois installé, **un package doit être chargé à chaque nouvelle session de R pour être utilisé**. A un package est systématiquement associée de la documentation permettant de comprendre son contenu et aider à sa prise en main. 
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE,eval=FALSE}
 
@@ -727,7 +727,7 @@ data(Nom_objet)
 ```
 
 
-**L'interface RStudio permet également l'installation et le chargement manuel des <span style="color:#4B0082">packages</span>** :
+**L'interface RStudio permet également l'installation et le chargement manuel des packages** :
 
 <p class="center">![](figures/package.PNG)
 </p>
@@ -778,7 +778,7 @@ help.search("Map")
 
 ```
 
-Exemple de la *cheatsheet* (antisèche) du <span style="color:#4B0082">package</span> "cartography" :
+Exemple de la *cheatsheet* (antisèche) du package <span style="color:#4B0082">**sf**</span> :
 
 <p class="center">![](figures/cheatsheet.png)
 </p>
@@ -1149,7 +1149,7 @@ mon_tab_2 <- data.frame(ID, Nom)
 merge(mon_tab_1, mon_tab_2, by="ID")
 ```
 
-**Cela fonctionne également entre un objet sf (couche géographique) et un dataframe**.
+**Cela fonctionne également entre un objet <span style="color:#4B0082">sf</span> (couche géographique) et un dataframe**.
 
 <br/>
 
@@ -1449,7 +1449,7 @@ gsub("ion", "ionne", text)
 
 ### Package stringr
 
-Si vous souhaitez réaliser des traitements complexes sur des chaînes de caractères, vous pouvez utiliser la **librairie de référence** <span style="color:#8C001A">stringr</span> qui vous permettra de réaliser des opérations plus complexes. Exemples :
+Si vous souhaitez réaliser des traitements complexes sur des chaînes de caractères, vous pouvez utiliser la **librairie de référence** <span style="color:#4B0082">**stringr**</span> qui vous permettra de réaliser des opérations plus complexes. Exemples :
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE}
 
@@ -1511,7 +1511,7 @@ grep(regex, emails_list, ignore.case=TRUE)
 
 ### Exercice
 
-**Créez une nouvelle colonne** "***NOM***" dans votre objet sf, pour y stocker **le nom des communes en lettre CAPITALE**.
+**Créez une nouvelle colonne** "***NOM***" dans votre objet <span style="color:#4B0082">sf</span>, pour y stocker **le nom des communes en lettre CAPITALE**.
 
 ```{r class.source="bg-danger", warning=FALSE, message=FALSE, eval=FALSE}
 
@@ -1524,7 +1524,7 @@ toupper()
 
 ### Fonction primitives
 
-Plusieurs <span style="color:#8C001A">fonctions</span> primitives permettent de réaliser des graphiques :
+Plusieurs fonctions primitives permettent de réaliser des graphiques :
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE}
 
@@ -1560,14 +1560,14 @@ Toute **une série d'arguments permet d'ajuster les représentations**, exemple 
 - ...      
 
 **Plusieurs éléments peuvent être superposés en utilisant l'argument** "***add =TRUE***"), ex :                   
-- **text()** : Ajouter du texte            
-- **legend()** : Ajouter un légende                   
-- **abline()** : Ajouter une ligne               
-- **axis()** : Ajouter un axe               
+- <span style="color:#8C001A">**text()**</span> : Ajouter du texte            
+- <span style="color:#8C001A">**legend()**</span> : Ajouter un légende                   
+- <span style="color:#8C001A">**abline()**</span> : Ajouter une ligne               
+- <span style="color:#8C001A">**axis()**</span> : Ajouter un axe               
 - ...  
 
 
-**Il est possible d'afficher plusieurs graphiques en même temps**, à l'aide de la fonction <span style="color:#8C001A">par()</span>. Ex : 
+**Il est possible d'afficher plusieurs graphiques en même temps**, à l'aide de la fonction <span style="color:#8C001A">**par()**</span>. Ex : 
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
@@ -1584,7 +1584,7 @@ boxplot(mtcars$wt, main="Graph 4")
 
 ### Plot(sf)
 
-La fonction <span style="color:#8C001A">plot()</span> permet l'affichage d'un objet sf (couche géographique) dans la fenêtre graphique.
+La fonction <span style="color:#8C001A">plot()</span> permet l'affichage d'un objet <span style="color:#4B0082">sf</span> (couche géographique) dans la fenêtre graphique.
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
@@ -1597,8 +1597,8 @@ mtq <- mf_get_mtq()
 plot(mtq)
 ```
 
-Attention, le fonction <span style="color:#8C001A">plot()</span> réalise par défaut une représentation pour chaque variable de l'objet sf.     
-**Pour afficher uniquement la géométrie, il est nécessaire d'utiliser la fonction** <span style="color:#8C001A">**st_geometry()**</span> du <span style="color:#4B0082">package<span> sf :
+Attention, le fonction <span style="color:#8C001A">plot()</span> réalise par défaut une représentation pour chaque variable de l'objet <span style="color:#4B0082">sf</span>.     
+**Pour afficher uniquement la géométrie, il est nécessaire d'utiliser la fonction** <span style="color:#8C001A">**st_geometry()**</span> du package <span style="color:#4B0082">sf</span> :
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
@@ -1609,7 +1609,7 @@ plot(st_geometry(mtq))
 
 ```
 
-Pour **représenter les valeurs d'une variable de votre objet sf**, utilisez la syntaxe suivante :
+Pour **représenter les valeurs d'une variable de votre objet <span style="color:#4B0082">sf</span>**, utilisez la syntaxe suivante :
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
@@ -1622,9 +1622,9 @@ plot(mtq["POP"])
 
 ### ggplot2
 
-Il existe de **très nombreux** <span style="color:#4B0082">package</span> **pour réaliser des représentations graphiques** (oint fort du langage R).
+Il existe de **très nombreux** package **pour réaliser des représentations graphiques** (oint fort du langage R).
 
-**Le plus célèbre est** <span style="color:#8C001A">**ggplot2**</span>. Il permet de réaliser de très nombreux types de représentation graphique. Ce package est développé par Hadley Wickham (Rstudio) et **fonctionne avec un syntaxe particulière basée sur la** ***grammaire des graphiques***, théorisée par **Leland Wilkinson**. Exemple :
+**Le plus célèbre est** <span style="color:#4B0082">**ggplot2**</span>. Il permet de réaliser de très nombreux types de représentation graphique. Ce package est développé par Hadley Wickham (Rstudio) et **fonctionne avec un syntaxe particulière basée sur la** ***grammaire des graphiques***, théorisée par **Leland Wilkinson**. Exemple :
 
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
@@ -1655,7 +1655,7 @@ hist()
 
 ```
 
-**Représentez les valeurs de cette variable en aplat de couleur sur la géométrie de votre objet sf**.
+**Représentez les valeurs de cette variable en aplat de couleur sur la géométrie de votre objet <span style="color:#4B0082">sf</span>**.
 
 ```{r class.source="bg-danger", warning=FALSE, message=FALSE, eval=FALSE}
 
@@ -1713,7 +1713,7 @@ mon_objet_new <- readRDS("Nom_du_fichier")
 ### Exercice
 
 
-**Sauvegardez votre objet sf joint aux données de recensement dans le répertoire de votre projet Rstudio**.
+**Sauvegardez votre objet <span style="color:#4B0082">sf</span> joint aux données de recensement dans le répertoire de votre projet Rstudio**.
 
 ```{r class.source="bg-danger", warning=FALSE, message=FALSE, eval=FALSE}
 
@@ -1996,7 +1996,7 @@ Comment sont nommées les individus et les variables ?
 **Quelle est la classe de données** des différentes variables (numérique, chaîne de caractère, booléenne...) ?  
 **Quelles sont les types des variables** stockées (quantitative, qualitative...) ? 
 
-Dans un premier temps, nous utiliserons des données mises à disposition par la package <span style="color:#4B0082">questionr</span>, qui contient des variables qualitatives. **Installez** ce package, puis **chargez la librairie et les données associées** "*hdv2003*" :
+Dans un premier temps, nous utiliserons des données mises à disposition par le **package** <span style="color:#4B0082">**questionr**</span>, qui contient des variables qualitatives. **Installez** ce package, puis **chargez la librairie et les données associées** "*hdv2003*" :
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE,eval=TRUE}
 # install.packages("questionr")
@@ -2541,7 +2541,7 @@ table(hdv2003$sport, hdv2003$cuisine, hdv2003$sexe)
 
 <br/>
 
-Il est cependant difficile de comparer à partir des effectifs. **Le package** **<span style="color:#8C001A">questionr()</span>** fournit des fonctions permettant de calculer facilement les pourcentages lignes, colonnes et totaux d’un tableau croisé**. Les pourcentages en lignes ou en colonne s’obtiennent avec les fonctions** **<span style="color:#8C001A">rprop()</span>** et **<span style="color:#8C001A">cprop()</span>**. Celles-ci s’appliquent au tableau croisé généré par **<span style="color:#8C001A">table()</span>** :
+Il est cependant difficile de comparer à partir des effectifs. **Le package** **<span style="color:#4B0082">questionr</span>** fournit des fonctions permettant de calculer facilement les pourcentages lignes, colonnes et totaux d’un tableau croisé**. Les pourcentages en lignes ou en colonne s’obtiennent avec les fonctions** **<span style="color:#8C001A">rprop()</span>** et **<span style="color:#8C001A">cprop()</span>**. Celles-ci s’appliquent au tableau croisé généré par **<span style="color:#8C001A">table()</span>** :
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
@@ -2636,7 +2636,7 @@ tab.chi2$expected
 
 <br/>       
 
-Il est possible d'**affiner l’interprétation du test en déterminant dans quelle "case" l’écart à l’indépendance est le plus significatif en utilisant les résidus du test**. Ceux-ci sont notamment affichables avec la fonction **<span style="color:#8C001A">chisq.residuals()</span>** de la librairie **questionr** :
+Il est possible d'**affiner l’interprétation du test en déterminant dans quelle "case" l’écart à l’indépendance est le plus significatif en utilisant les résidus du test**. Ceux-ci sont notamment affichables avec la fonction **<span style="color:#8C001A">chisq.residuals()</span>** de la librairie **<span style="color:#4B0082">questionr</span>** :
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
@@ -2940,7 +2940,7 @@ Lorsque l'on croise deux variables quantitatives, l’idéal est de faire une re
 
 <br/>
 
-**Commencez par charger le jeu de données du recensement de la population de 2012** (***rp2012***) mis à disposition par le package *questionr*.
+**Commencez par charger le jeu de données du recensement de la population de 2012** (***rp2012***) mis à disposition par le package <span style="color:#4B0082">questionr</span>.
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 library(questionr)
