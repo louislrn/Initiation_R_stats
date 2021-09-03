@@ -35,7 +35,7 @@ options("scipen" = 10)
 <div class="alert alert-danger" role="alert">
 <center>**Objectifs de ce cours**</center> 
 <br/>
-**1) Acquérir les bases du logiciel/language R et de son environnement RStudio**<br/> 
+**1) Acquérir les bases du logiciel/langage R et de son environnement RStudio**<br/> 
 **2) Réviser les bases de la statistique descriptive univariée et bivariée en géographie**<br/>
 **3) Comprendre les atouts de R pour la gestion, l'analyse et la représentation de données**
 </div>
@@ -96,15 +96,15 @@ nb_function_base <- length(c(lsf.str("package:base"), lsf.str("package:graphics"
 **L'interface de RStudio se présente sous la forme d’une unique fenêtre découpée en quatre zones** que l’on peut redimensionner, masquer ou maximiser selon ses préférences :
 
 <li>**L’éditeur de code**</li> 
-Cette zone permet l’édition de fichiers source R (avec coloration syntaxique et autocomplétion).
+Cette zone permet l’édition de fichiers source R (avec coloration syntaxique et auto complétion).
 
 <li>**La console**</li>
-La console avec la session R en cours d’exécution. La console affiche à la fois le code exécuté, ses résultats associés, ainsi que les avertissements (warnings) et messages d'erreur éventuels (errors). 
+La console avec la session R en cours d’exécution. La console affiche à la fois le code exécuté, ses résultats associés, ainsi que les avertissements (Warning) et messages d'erreur éventuels (Error). 
 
 <li>**L’espace de travail**</li>
 Cette zone permet de lister, typer et visualiser les objets créés par l'exécution du code R.
 
-<li> **Une quatrième zone** pemettant de basculer entre :</li>
+<li> **Une quatrième zone** permettant de basculer entre :</li>
 Un explorateur de fichiers, une fenêtre graphique, une fenêtre de gestion des packages et de la documentation associée aux fonctions et packages.
 
 
@@ -120,17 +120,17 @@ Un explorateur de fichiers, une fenêtre graphique, une fenêtre de gestion des 
 <ul>
 <li>**La création de projet**</li> 
 
-RStudio dispose d’une fonctionnalité très pratique pour **organiser son travail en différents projets**. L’idée principale est de réunir tous les fichiers et documents relatifs à un même projet (que ce soit les données, les scripts, les rapports automatisés…) dans un répertoire dédié. L’onglet Projects est situé en haut à droite de l’interface.
+RStudio dispose d’une fonctionnalité très pratique pour **organiser son travail en différents projets**. L’idée principale est de réunir tous les fichiers et documents relatifs à un même projet (que ce soit les données, les scripts, les rapports automatisés…) dans un répertoire dédié. L’onglet *Projects* est situé en haut à droite de l’interface.
 
 
 <li>**Les boutons raccourcis**</li> 
 
-Plusieurs actions comme la création et le chargement de programme, l'import de données, l'installation et le chargement de packages, l'accés à la documentation, la visualisation des objets, l'export de figures... sont exécutables en un simple clic.
+Plusieurs actions comme la création et le chargement de programme, l'import de données, l'installation et le chargement de packages, l’accès à la documentation, la visualisation des objets, l'export de figures... sont exécutables en un simple clic.
 
 
-<li>**L'autocomplétion**</li>
+<li>**L’auto-complétion**</li>
 
-RStudio présente aussi la capacité de compléter automatiquement les termes en cours d’écriture.  L’autocomplétion  fonctionne  avec  la  touche ***Tab*** du  clavier. Cela aide l'utilisateur dans la saisi des noms d'objet, de fonction, de variable, et même des arguments de fonction.
+RStudio présente aussi la capacité de compléter automatiquement les termes en cours d’écriture.  L’auto-complétion  fonctionne  avec  la  touche ***Tab*** du  clavier. Cela aide l'utilisateur dans la saisi des noms d'objet, de fonction, de variable, et même des arguments de fonction.
 
 
 <li>**Raccourcis clavier**</li>
@@ -148,10 +148,10 @@ RStudio propose de nombreux raccourcis clavier intéressants, exemple :
 
 ## Paramètres généraux
 
-Pour éviter des problèmes d'encodage des scripts ou le chargement incessant de données à chaque nouvelle instance de Rstudio, **il est necessaire de modifier certains paramètres globaux**. Pour cela, cliquez sur "*tools*" puis sur "*Global Options*" pour ouvrir la fenêtre des paramètre généraux de Rstudio. 
+Pour éviter des problèmes d'encodage des scripts ou le chargement incessant de données à chaque nouvelle instance de Rstudio, **il est nécessaire de modifier certains paramètres globaux**. Pour cela, cliquez sur "*tools*" puis sur "*Global Options*" pour ouvrir la fenêtre des paramètre généraux de Rstudio. 
 
 
-Dans un premier temps, **décochez les options de restoration et de sauvegarde de données** à l'ouverture et à la fermeture de session :
+Dans un premier temps, **décochez les options de restauration et de sauvegarde de données** à l'ouverture et à la fermeture de session :
 
 <p class="center">![](figures/restore_rdata.png)
 </p>
@@ -203,7 +203,7 @@ Dans un nouveau répertoire, créez un projet vide. Indiquez le nom de votre pro
 
 Tout ce qui est créé et manipulé sous R est un objet. Ces objets permettent de stocker et de structurer les données. **Les objets peuvent stocker différents types de données**. Voici les principaux :
 
-- **La chaine de caractères** (*string*)    
+- **La chaîne de caractères** (*string*)    
 
 Il s'agit d'une suite ordonnée de caractères. Ex : *"Ma chaîne de caractères"* ou "*234*"
 
@@ -273,7 +273,7 @@ library(help = "base")
 
 ```
 
-**Pour utiliser une fonction, il suffit d'écrire son nom, puis de spécifier des arguments entre parenthése**. 
+**Pour utiliser une fonction, il suffit d'écrire son nom, puis de spécifier des arguments entre parenthèse**. 
 
 Exemple de <span style="color:#8C001A">fonctions</span> permettant d'assigner ou de modifier la classe d'un objet :
 
@@ -303,7 +303,7 @@ class(mon_objet)
 ```
 
 
-Une fonction est paramétrable, ajustable à l'aide d'**arguments**. Trés souvent, les arguments d'une fonction sont prédéfinis. Il est donc important de **se renseigner sur les différents arguments d'une fonction et ses valeurs paramétrées par défault**. Cependant, certains arguments n'ont pas toujours de valeur prédéfinie et doivent être renseignés.
+Une fonction est paramétrable, ajustable à l'aide d'**arguments**. Très souvent, les arguments d'une fonction sont prédéfinis. Il est donc important de **se renseigner sur les différents arguments d'une fonction et ses valeurs paramétrées par défaut**. Cependant, certains arguments n'ont pas toujours de valeur prédéfinie et doivent être renseignés.
 
 Exemple avec la fonction <span style="color:#8C001A">mean()</span> :
 
@@ -317,7 +317,7 @@ mean(notes)
 
 ```
 
-La fonction <span style="color:#8C001A">mean()</span> retourne NA car la série statistique présente une valeur manquante (NA). **L'arguments na.rm (= FALSE par défault) permet de ne pas prendre en compte les valeurs manquantes** :
+La fonction <span style="color:#8C001A">mean()</span> retourne NA car la série statistique présente une valeur manquante (NA). **L’argument na.rm (= FALSE par défaut) permet de ne pas prendre en compte les valeurs manquantes** :
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=TRUE}
 
@@ -358,7 +358,7 @@ carre(3)
 
 ```
 
-En plus des fonction primitives, des fonctions que vous pouvez vous même créer, **il est trés simple d'utiliser des fonctions mises à disposition par l'intermédiaire de package**. Pour cela, vous devez d'abord **installer le package et chargez la library** :
+En plus des fonction primitives, des fonctions que vous pouvez vous même créer, **il est très simple d'utiliser des fonctions mises à disposition par l'intermédiaire de package**. Pour cela, vous devez d'abord **installer le package et chargez la library** :
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE}
 
@@ -394,7 +394,7 @@ mon_vecteur <- c(1:7)
 mon_vecteur
 
 # Ajouter un element à un vecteur
-mon_vecteur_new <- c(mon_vecteur, "Un Element Supplémentaire")
+mon_vecteur_new <- c(mon_vecteur, "Un Élément Supplémentaire")
 
 # Interroger les élements d'un vecteur -> mon_vecteur[element]
 # Elément 2
@@ -515,7 +515,7 @@ colSums(ma_matrice)
 
 ### Le Simple Feature data frame 
 
-**L'objet sf est en quelque sorte une table de données géographique**. Il permet de gérer de l'information spatiale. Il s'agit tout simplement d'un dataframe qui stocke également des geométries.
+**L'objet sf est en quelque sorte une table de données géographique**. Il permet de gérer de l'information spatiale. Il s'agit tout simplement d'un dataframe qui stocke également des géométries.
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
@@ -589,7 +589,7 @@ my_factor[7:13, drop=TRUE]
 ## Les opérateurs
 
 
-### Arithémtiques
+### Arithmétiques
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
@@ -613,7 +613,7 @@ my_factor[7:13, drop=TRUE]
 <br/>
 
 
-### Relationel
+### Relationnel
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE}
 
@@ -679,14 +679,14 @@ mtcars[mtcars$mpg %in% c(21.0,14.3,22.8,19.2) | mtcars$hp != 123 | mtcars$wt >= 
 ## Les packages
 
 
-R fourni directement **un important nombre de fonctions pré-installées, stockées dans ce qui est appelé le <span style="color:#4B0082"><a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/00Index.html" onclick="window.open(this.href); return false;">R Base Package</a></span>**. Il n'est pas nécessaire de les installer ou de les charger, elles sont imédiatement utilisables. À ce jour, **`r nb_function_base` fonctions sont proposées par le le R-base**.
+R fourni directement **un important nombre de fonctions pré-installées, stockées dans ce qui est appelé le <span style="color:#4B0082"><a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/00Index.html" onclick="window.open(this.href); return false;">R Base Package</a></span>**. Il n'est pas nécessaire de les installer ou de les charger, elles sont immédiatement utilisables. À ce jour, **`r nb_function_base` fonctions sont proposées par le le R-base**.
 
 **Les fonctions du r-base permettent d'effectuer les manipulations de données les plus classiques**. Pour effectuer des traitements plus spécifiques, il est nécessaire d'installer des <span style="color:#4B0082">packages</span> mise à disposition par d'autres utilisateurs sur le <a href="https://cran.r-project.org/" onclick="window.open(this.href); return false;">CRAN</a>.     
-**Les <span style="color:#4B0082">packages</span> sont des collections de fonctions**, associées à de la documentation et parfois même à des données. **`r max(test2$cum)` <span style="color:#4B0082">packages</span> supplémentaires** étaient mis à disposition le `r format(Sys.time(), '%d %b %Y')` sur le <a href="https://cran.r-project.org/" onclick="window.open(this.href); return false;">CRAN</a>. Tous les packages disponibles sur <a href="https://cran.r-project.org/" onclick="window.open(this.href); return false;">**The Comprehensive R Archive Network**</a> ont été controlés. Leur fonctionnement technique (uniquement) est garanti, car il s'agit d'un depôt officiel de packages.
+**Les <span style="color:#4B0082">packages</span> sont des collections de fonctions**, associées à de la documentation et parfois même à des données. **`r max(test2$cum)` <span style="color:#4B0082">packages</span> supplémentaires** étaient mis à disposition le `r format(Sys.time(), '%d %b %Y')` sur le <a href="https://cran.r-project.org/" onclick="window.open(this.href); return false;">CRAN</a>. Tous les packages disponibles sur <a href="https://cran.r-project.org/" onclick="window.open(this.href); return false;">**The Comprehensive R Archive Network**</a> ont été contrôlés. Leur fonctionnement technique (uniquement) est garanti, car il s'agit d'un dépôt officiel de packages.
 
 Il est également possible d'installer des packages en cours de développement et mise à disposition sur un GIT ou d'installer un <span style="color:#4B0082">package</span> stocké en .tar.gz sur votre machine.
 
-Installer un <span style="color:#4B0082">package</span> en language R :
+Installer un <span style="color:#4B0082">package</span> en langage R :
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE,eval=FALSE}
 
@@ -785,12 +785,12 @@ Exemple de la *cheatsheet* (antisèche) du <span style="color:#4B0082">package</
 
 <br/>
 
-**Ne négligez pas le service d'autocomplétion proposé par RStudio**. C'est un véritable assistant de programmation. Il permet par exemple de s'assurer du bon orthographe d'un objet ou d'une fonction ou de connaître les différents arguments possibles d'une fonction. Pour cela **il suffit d'utiliser la touche `tab` lors de la saisie**. RStudio vous proposera alors les possibilités qui s'offrent à vous.
+**Ne négligez pas le service d’auto-complétion proposé par RStudio**. C'est un véritable assistant de programmation. Il permet par exemple de s'assurer du bon orthographe d'un objet ou d'une fonction ou de connaître les différents arguments possibles d'une fonction. Pour cela **il suffit d'utiliser la touche `tab` lors de la saisie**. RStudio vous proposera alors les possibilités qui s'offrent à vous.
 
 <p class="center">![](figures/CodeCompletion.png)
 </p>
 
-Enfin, **internet est une ressource documentaire trés riche pour R**. Vous y trouverez toujours une réponse à vos questions, et presque toujours en français !
+Enfin, **internet est une ressource documentaire très riche pour R**. Vous y trouverez toujours une réponse à vos questions, et presque toujours en français !
 
 <br/>
 
@@ -805,9 +805,9 @@ Voir par exemple :
 - [R Style Guide](http://jef.works/R-style-guide/)  
 
 
-**Troix règles font tout de même l'unanimité :** 
+**Trois règles font tout de même l'unanimité :** 
 
-- Eviter les lignes de plus de 80 charactères.    
+- Eviter les lignes de plus de 80 caractères.    
 - Utiliser un espace avant et après les opérateurs :
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE}
 
@@ -1004,7 +1004,7 @@ str(mtcars)
 
 ```
 
-Ces deux fonctions sont directement accessibles en clic-bouton depuis l'interface Rstudio. Il suffit de cliquer sur l'objet dans l'onglet *Environnement* situé en haut à droite de l'IDE Rstudio (équivalent à *View()*) ou sur la flêche à gauche du nom de l'objet (équivalent à *str()*).
+Ces deux fonctions sont directement accessibles en clic-bouton depuis l'interface Rstudio. Il suffit de cliquer sur l'objet dans l'onglet *Environnement* situé en haut à droite de l'IDE Rstudio (équivalent à *View()*) ou sur la flèche à gauche du nom de l'objet (équivalent à *str()*).
 
 <center>![](figures/mtcars.png)</center>
 
@@ -1064,7 +1064,7 @@ Mon_Objet$xxxx <- as.character(Mon_Objet$xxxx)
 
 ```
 
-**Créez une nouvelle variable contenant la part de la population agée de 0 à 14 ans en 2016** (P16_POP0014 / P16_POP * 100) :
+**Créez une nouvelle variable contenant la part de la population âgée de 0 à 14 ans en 2016** (P16_POP0014 / P16_POP * 100) :
 
 ```{r class.source="bg-danger", warning=FALSE, message=FALSE, eval=FALSE}
 
@@ -1075,7 +1075,7 @@ mon_tableau$new_var <- ... ?
 
 <br/>
 
-## Séléction par attributs
+## Sélection par attributs
 
 Comme pour toutes les opérations dans R, **il existe plusieurs solutions**. Exemple :
 
@@ -1115,7 +1115,7 @@ mtcars %>%
 ### Exercice
 
 
-**Séléctionnez les communes isolées hors influence des pôles** (CATAEU2010 == 400) **de plus de 2000 habitants** en 2016 (P16_POP).
+**Sélectionnez les communes isolées hors influence des pôles** (CATAEU2010 == 400) **de plus de 2000 habitants** en 2016 (P16_POP).
 
 ```{r class.source="bg-danger", warning=FALSE, message=FALSE, eval=FALSE}
 
@@ -1124,7 +1124,7 @@ tableau[tableau$CATAEU2010==400 & ... , ]
 
 ```
 
-**Enregistrez le résultat de votre séléction par attribut dans un nouvel objet**.
+**Enregistrez le résultat de votre sélection par attribut dans un nouvel objet**.
 
 <br/>
 
@@ -1263,7 +1263,7 @@ mtcars[order(mtcars$cyl, mtcars$disp, decreasing = TRUE), ]
 
 ```
 
-**Vous devez assigner le résultat dans un objet pour enregister le nouvel ordre !**
+**Vous devez assigner le résultat dans un objet pour enregistrer le nouvel ordre !**
 
 <br/>
 
@@ -1311,7 +1311,7 @@ if (is.character(x)){
   
   if (is.numeric(x)) {
     
-    print("x est numéric") 
+    print("x est numérique") 
     
   } else {
     
@@ -1362,7 +1362,7 @@ for (i in 1:5) {
 
 ## Fonctions apply
 
-L'utilisation d'une boucle est très fréquente en traitement de données. Une boucle peut permettre d'effectuer des traitements sur des objets de structure multidimensionnelle (data frame, matrice, array, sf...). Mais pour cela, la boucle for n'est pas la technique otpimum. Les concepteurs de R ont développé des fonctions spécialement prévu à cet effet. 
+L'utilisation d'une boucle est très fréquente en traitement de données. Une boucle peut permettre d'effectuer des traitements sur des objets de structure multidimensionnelle (data frame, matrice, array, sf...). Mais pour cela, la boucle for n'est pas la technique optimum. Les concepteurs de R ont développé des fonctions spécialement prévu à cet effet. 
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
@@ -1389,7 +1389,7 @@ Resultat_lapply[1:3]
 
 De nombreuses fonctions primitives existent pour gérer les chaînes de caractères. Quelques exemples :
 
-### Concatener
+### Concaténer
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
@@ -1481,7 +1481,7 @@ str_trim("  abc    ")
 
 Il est possible de combiner l'**utilisation des expressions régulières avec toutes ces fonctions**. 
 
-**Les expressions régulières**, ou plus communément REGEX (contraction de *regular expression*) **permettent de représenter des modèles de chaînes de caractères. Ce sont des outils très puissants et très utilisés : on peut les retrouver dans de nombreux langages comme le PHP, MySQL, Javascript...** Si cet outil est très puissant, il est relativement difficile à appréhender au début car les expressions régulières peuvent prendre des formes complexe à interpreter. Ex :
+**Les expressions régulières**, ou plus communément REGEX (contraction de *regular expression*) **permettent de représenter des modèles de chaînes de caractères. Ce sont des outils très puissants et très utilisés : on peut les retrouver dans de nombreux langages comme le PHP, MySQL, Javascript...** Si cet outil est très puissant, il est relativement difficile à appréhender au début car les expressions régulières peuvent prendre des formes complexe à interpréter. Ex :
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
@@ -1520,7 +1520,7 @@ toupper()
 
 ```
 
-## Répresentations graphiques
+## Représentations graphiques
 
 ### Fonction primitives
 
@@ -1555,7 +1555,7 @@ hist(mtcars$mpg,
 Toute **une série d'arguments permet d'ajuster les représentations**, exemple :  
 
 - **axes** : Afficher ou non les axes (TRUE ou FALSE)              
-- **log** : Mettre les axes à l'echelle logarithmique ("x", "y", "xy")               
+- **log** : Mettre les axes à l’échelle logarithmique ("x", "y", "xy")               
 - **type** : Argument qui contrôle le type d'axe produit ("p"= points, "l" = ligne, "o" = point relier par ligne...)           
 - ...      
 
@@ -1713,7 +1713,7 @@ mon_objet_new <- readRDS("Nom_du_fichier")
 ### Exercice
 
 
-**Sauvegardez votre objet sf joint aux données de recensement dans le repértoire de votre projet Rstudio**.
+**Sauvegardez votre objet sf joint aux données de recensement dans le répertoire de votre projet Rstudio**.
 
 ```{r class.source="bg-danger", warning=FALSE, message=FALSE, eval=FALSE}
 
@@ -1732,7 +1732,7 @@ rm() et ls()
 
 ```
 
-Enfin, **rechargez l'objet enregistré en dur** dans votre environnemnt Rstudio:
+Enfin, **rechargez l'objet enregistré en dur** dans votre environnement Rstudio:
 
 ```{r class.source="bg-danger", warning=FALSE, message=FALSE, eval=FALSE}
 
@@ -1748,7 +1748,7 @@ readRDS()
 
 **R est un langage très polyvalent... Voici un petit exercice pour le prouver :**
 
-1) **Trouvez où est mis à dipsosition le package** <span style="color:#4B0082">**Rcade**</span>, développé par Romain Lesur  
+1) **Trouvez où est mis à disposition le package** <span style="color:#4B0082">**Rcade**</span>, développé par Romain Lesur  
 2) **Installez-le**   
 3) **Essayer-le**... Pas plus de 2-3 minutes :-) )   
 4) **Supprimez le package**    
@@ -1866,7 +1866,7 @@ $$\bar{x}=\frac{\sum{xi}}{N}$$
 
 <p class="titre_def">Mode</p>
 
-<div class="div_def"><p class="def">le mode (ou valeur dominante) est la valeur la plus représentée d'une variable quelconque dans une population donnée. Une répartition peut être unimodale ou plurimodale (bimodale, trimodale…) si deux ou plusieurs valeurs de la variable considérée émergent également. Une distribution sans aucun mode est appelée distribution uniforme. </p></div>
+<div class="div_def"><p class="def">le mode (ou valeur dominante) est la valeur la plus représentée d'une variable quelconque dans une population donnée. Une répartition peut être uni-modale ou multimodale (bimodale, tri-modale…) si deux ou plusieurs valeurs de la variable considérée émergent également. Une distribution sans aucun mode est appelée distribution uniforme. </p></div>
 
 <br/>
 
@@ -1887,19 +1887,19 @@ Centiles : valeurs qui divisent la série statistique en cent (1% à 99%)<br/>
 
 <p class="titre_def">Intervalle interquartile</p>
 
-<div class="div_def"><p class="def">Basé sur les quantiles, l’intervalle interquartile (Q3-Q1) est un paramètre de dispersion absolue qui correspond à l’étendue d'une distribution une fois que l’on a retiré les 25% des valeurs les plus faibles et les 25% des valeurs les plus fortes.</p></div>
+<div class="div_def"><p class="def">Basé sur les quantiles, l’intervalle inter-quartile (Q3-Q1) est un paramètre de dispersion absolue qui correspond à l’étendue d'une distribution une fois que l’on a retiré les 25% des valeurs les plus faibles et les 25% des valeurs les plus fortes.</p></div>
 
 <br/>
 
 
-<p class="titre_def">Ecart absolu moyen</p>
+<p class="titre_def">Écart absolu moyen</p>
 
 <div class="div_def"><p class="def">Moyenne de la valeur absolue des écarts à la moyenne. Autrement dit, c’est la distance moyenne à la moyenne.</p></div>
 
 <br/>
 
 
-<p class="titre_def">Ecart absolu médian</p>
+<p class="titre_def">Écart absolu médian</p>
 
 <div class="div_def"><p class="def">Moyenne des écarts à la médiane.</p></div>
 
@@ -1943,12 +1943,12 @@ $$CV = \frac{\sigma }{\mu } $$
 
 <div class="div_def"><p class="def">
 
-**Discretiser revient à rendre discret des valeurs continues**. Cela consiste à classer les valeurs quantitatives d'une série statistique par intervalle de valeur selon des critères justifiables **afin d'en améliorer la lecture**. 
+**Discrétiser revient à rendre discret des valeurs continues**. Cela consiste à classer les valeurs quantitatives d'une série statistique par intervalle de valeur selon des critères justifiables **afin d'en améliorer la lecture**. 
 
 L'ensemble des classes (intervalles de valeurs) créé forme ainsi une partition de toutes les valeurs possibles de la variable.
 
 Exemple :  
-Il est par exemple possible de discrétiser les valeurs d'un variable s'échalonnant de 1 à 25, en construisant les classes suivantes :   [min à 5] - [6 à 10] - [11 à 15] - [16 à 20] - [21 à max] </p></div>
+Il est par exemple possible de discrétiser les valeurs d'un variable s’échelonnant de 1 à 25, en construisant les classes suivantes :   [min à 5] - [6 à 10] - [11 à 15] - [16 à 20] - [21 à max] </p></div>
 
 
 <br/>
@@ -1989,7 +1989,7 @@ $$Y_{i} =\frac{X_{i} - \bar{x}}{\sigma^x }$$
 
 ## Résumer une variable
 
-Avant de décrire, analyser une ou plusieurs variables statistiques, **il est indispensable de contrôler et d'explorer les données. Cela permet de détécter des incohérences et les caractèristiques des données étudiées, afin de correctement les traiter**.
+Avant de décrire, analyser une ou plusieurs variables statistiques, **il est indispensable de contrôler et d'explorer les données. Cela permet de détecter des incohérences et les caractéristiques des données étudiées, afin de correctement les traiter**.
 
 **Comment se structure la table de données** ? Est-elle correctement construite et renseignée ?   
 Comment sont nommées les individus et les variables ?   
@@ -2029,7 +2029,7 @@ colSums(is.na())
 
 ### La distribution
 
-Lorsque l'on étudie une variable, on s'intérresse rapidement à **la distribution de sa série statistique**.
+Lorsque l'on étudie une variable, on s’intéresse rapidement à **la distribution de sa série statistique**.
 Pour cela, on peut calculer la **table de fréquence** (nombre d'individus par valeur, classe de valeur ou par modalité).
 Sous R, le procédé est différent selon le type de variable étudié :
 
@@ -2088,7 +2088,7 @@ hist(mtcars$hp, breaks=12, probability = TRUE)
 
 En plus de l'histogramme, **des résumés numériques (valeurs centrales, paramètres de dispersion absolue et relative) peuvent être calculés pour les variables quantitatives**.
 
-A noter que **le mode** peut être également calculé pour les variables **qualitatives ordinales et nominales**, et **la médianne** peut être calculé pour les variables **qualitatives ordinales**.
+A noter que **le mode** peut être également calculé pour les variables **qualitatives ordinales et nominales**, et **la médiane** peut être calculé pour les variables **qualitatives ordinales**.
 
 
 #### Moyenne
@@ -2100,7 +2100,7 @@ mean(mtcars$hp)
 ```
 
 
-#### Médianne
+#### Médiane
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
@@ -2178,7 +2178,7 @@ summary(mtcars$hp)[5] - summary(mtcars$hp)[2]
 var(mtcars$hp)
 ```
 
-#### Ecart-type
+#### Écart-type
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 sd(mtcars$hp) 
@@ -2238,7 +2238,7 @@ Les classes sont établies **selon une progression arithmétique**.
 <br/>
 
 <div class="alert alert-danger" role="alert">
-**Le choix d'un méthode de discrétisation et du nombre de classes à un impact trés important sur l'interprétation de sa représentation visuelle. Cette <a href="http://mappemonde.mgm.fr/geovisu/119/" onclick="window.open(this.href); return false;"><b>application</b></a> [@geovisujegou] en est une belle demonstration**.</div>
+**Le choix d'un méthode de discrétisation et du nombre de classes à un impact très important sur l'interprétation de sa représentation visuelle. Cette <a href="http://mappemonde.mgm.fr/geovisu/119/" onclick="window.open(this.href); return false;"><b>application</b></a> [@geovisujegou] en est une belle démonstration**.</div>
 <br/>
 
 Pour discrétiser une série statistique, vous pouvez utiliser la **fonction** **<span style="color:#4B0082">mf_get_breaks()</span>**, du package **<span style="color:#4B0082">mapsf</span>** [@mapsf].
@@ -2416,7 +2416,7 @@ mf_layout(title = "Population Distribution in Martinique",
 2) **Chargez de nouveau le fichier** ***INSEE_COM_972.csv***, stocké dans le sous-répertoire 'data' de votre projet.    
 <br/>
 
-3) **Séléctionnez uniquement ces variables** et créez un nouveau dataframe :     
+3) **Sélectionnez uniquement ces variables** et créez un nouveau dataframe :     
 
     - Code insee de la commune (**CODGEO**)    
     - Nom de la commune (**LIBGEO**)    
@@ -2489,7 +2489,7 @@ mf_layout(title = "Population Distribution in Martinique",
 
 <br/>
 
-<p class="titre_def">Tableau de contigence (tableau croisé)</p>
+<p class="titre_def">Tableau de contingence (tableau croisé)</p>
 <div class="div_def"><p class="def">Pour déterminer s'il existe une relation entre deux variables étudiés, on construit un tableau de contingence.Les valeurs du tableau correspondent aux effectifs de population selon les modalités des deux variables. Ex :</p>
 
 <p class="center">![](figures/contingency.png)
@@ -2502,7 +2502,7 @@ mf_layout(title = "Population Distribution in Martinique",
 <br/>
 
 <p class="titre_def">Résidu</p>
-<div class="div_def"><p class="def">Les résidus d’une regression expriment l’écart entre les valeurs observées et les valeurs prédites par le modèle. Plus un individu aura des résidus fort (positifs ou négatif), moins sa position sera expliquée par le modèle. Il faudra alors trouver d’autres facteurs explicatifs.</p>
+<div class="div_def"><p class="def">Les résidus d’une régression expriment l’écart entre les valeurs observées et les valeurs prédites par le modèle. Plus un individu aura des résidus fort (positifs ou négatif), moins sa position sera expliquée par le modèle. Il faudra alors trouver d’autres facteurs explicatifs.</p>
 </div>
 
 </div>
@@ -2574,7 +2574,7 @@ A partir d’un tableau croisée, **on peut tester l’existence d’un lien ent
 
 <div class="alert alert-danger" role="alert">
 
-Le **test du χ² consiste à comparer la répartition observée à une répartition théorique  sous  hypothèse d’indépendance**, c’est-à-dire la répartition qu’on observerait s’il n’y avait aucun lien entre les deux variables. Cette répartition théorique consiste donc à redistribuer les effectifs conjoints tout en conservant les effectifs marginaux.   
+Le **test du χ² consiste à comparer la répartition observée à une répartition théorique  sous  hypothèse d’indépendance**, c’est-à-dire la répartition que l’on observerait s’il n’y avait aucun lien entre les deux variables. Cette répartition théorique consiste donc à redistribuer les effectifs conjoints tout en conservant les effectifs marginaux.   
 
 **Le test du χ² permet d’établir à quel seuil de probabilité on peut rejeter l’hypothèse d’indépendance** entre des effectifs observés et des effectifs théoriques. **Plus le χ² est proche de zéro, plus le tableau des effectifs théoriques et celui des effectifs observées se confondent.**
 
@@ -2652,7 +2652,7 @@ chisq.residuals(tab)
 
 ### Représentations graphiques
 
-#### Le tableau de contigence 
+#### Le tableau de contingence 
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 tab <-  table(hdv2003$sport, hdv2003$qualif)
@@ -2843,7 +2843,7 @@ boxplot(hdv2003$heures.tv ~ hdv2003$qualif,
 
 <br/>
 
-**Dans le cas où une variable qualitative ne présente que deux modalités**, la representation côte à côte des deux distributions permet  d'observer facilement leurs différences :
+**Dans le cas où une variable qualitative ne présente que deux modalités**, la représentation côte à côte des deux distributions permet  d'observer facilement leurs différences :
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
@@ -2997,7 +2997,7 @@ En plus d’une représentation graphique, on peut calculer **certains indicateu
 
 **La corrélation est une mesure du lien d’association linéaire entre deux variables quantitatives**. **Sa valeur varie entre -1 et 1**. Si la corrélation vaut -1, il s’agit d’une association linéaire négative parfaite. Si elle vaut 1, il s’agit d’une association linéaire positive parfaite. **Si elle vaut 0, il n’y a aucune association linéaire entre les variables.**
 
-**Le calcul du coéfficient linéaire peut se faire avec la fonction <span style="color:#8C001A">cor.test()</span>** :
+**Le calcul du coefficient linéaire peut se faire avec la fonction <span style="color:#8C001A">cor.test()</span>** :
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
@@ -3052,13 +3052,13 @@ lm(rp2012$cadres ~ rp2012$dipl_sup)
 **b** = **ordonnée à l’origine** (Intercept) vaut **0.92**<br/>
 **a** = **le coefficient** associé à dipl_sup vaut **1.08**<br/>        
 
-**La regression linéaire de Y en fonction de X**  ( Y = aX + b ) équivaut donc à **Y = 1.08X + 0.92**
+**La régression linéaire de Y en fonction de X**  ( Y = aX + b ) équivaut donc à **Y = 1.08X + 0.92**
 
 <br/>
 
 #### Coefficient de détermination (R2)
 
-Le coefficient de détermination (R2) est une mesure de la qualité de la prédiction d’une regression linéaire. Il donne la part de la variance expliquée par l’équation de la régression dans la variance totale du nuage de points.  
+Le coefficient de détermination (R2) est une mesure de la qualité de la prédiction d’une régression linéaire. Il donne la part de la variance expliquée par l’équation de la régression dans la variance totale du nuage de points.  
 
 **Pour calculer le R2, combinez les fonctions <span style="color:#8C001A">summary()</span> et <span style="color:#8C001A">lm()</span> :**
 
@@ -3087,7 +3087,7 @@ text(6, 55, "y = 1.08x + 0.92", col="red")
 
 ### Les résidus
 
-**Les résidus d’une regression expriment l’écart entre les valeurs observées et les valeurs prédites par le modèle**.
+**Les résidus d’une régression expriment l’écart entre les valeurs observées et les valeurs prédites par le modèle**.
 Plus un individu aura des résidus fort (positifs ou négatif), moins sa position sera expliquée par le modèle. Il faudra alors trouver d’autres facteurs explicatifs.
 
 **Calculer les résidus :**
@@ -3161,7 +3161,7 @@ head(women)
 8) **Quel serait le poids d'une femme d'1.68 m ?**       
 <br/>
 
-9) **Afficher la droite de regression** du modèle sur le graphique.   
+9) **Afficher la droite de régression** du modèle sur le graphique.   
 
 
 </div>
@@ -3173,7 +3173,7 @@ head(women)
 
 ## Langage R
 
-Il existe de **trés nombreuses ressources documentaires sur R**, disponible **en libre accès** sur le web. 
+Il existe de **très nombreuses ressources documentaires sur R**, disponible **en libre accès** sur le web. 
 De nombreuses ressources de qualité, parfois largement **utilisées pour produire ce document**, sont référencées sur le site de partage et de diffusion [**rzine.fr**](http://rzine.fr/){target="_blank"} (onglet ***ressources***).    
 <br/>
 
