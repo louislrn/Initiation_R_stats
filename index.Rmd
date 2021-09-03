@@ -120,7 +120,7 @@ Un explorateur de fichiers, une fenêtre graphique, une fenêtre de gestion des 
 <ul>
 <li>**La création de projet**</li> 
 
-RStudio dispose d’une fonctionnalité très pratique pour **organiser son travail en différents projets**. L’idée principale est de réunir tous les fichiers et documents relatifs à un même projet (que ce soit les données, les scripts, les rapports automatisés…) dans un répertoire dédié. L’onglet *Projects* est situé en haut à droite de l’interface.
+RStudio dispose d’une fonctionnalité très pratique pour **organiser son travail en différents projets**. L’idée principale est de réunir tous les fichiers et documents relatifs à un même projet (que ce soit les données, les scripts, les rapports automatisés…) dans un répertoire dédié. L’onglet "*Projects*" est situé en haut à droite de l’interface.
 
 
 <li>**Les boutons raccourcis**</li> 
@@ -1004,7 +1004,7 @@ str(mtcars)
 
 ```
 
-Ces deux fonctions sont directement accessibles en clic-bouton depuis l'interface Rstudio. Il suffit de cliquer sur l'objet dans l'onglet *Environnement* situé en haut à droite de l'IDE Rstudio (équivalent à *View()*) ou sur la flèche à gauche du nom de l'objet (équivalent à *str()*).
+Ces deux fonctions sont directement accessibles en clic-bouton depuis l'interface Rstudio. Il suffit de cliquer sur l'objet dans l'onglet *Environnement* situé en haut à droite de l'IDE Rstudio (équivalent à <span style="color:#8C001A">View()</span>) ou sur la flèche à gauche du nom de l'objet (équivalent à <span style="color:#8C001A">str()</span>).
 
 <center>![](figures/mtcars.png)</center>
 
@@ -1326,7 +1326,7 @@ if (is.character(x)){
 
 ### Exercice
 
-**Testez si votre tableau de données est bien un objet dataframe**, et **affichez le résultat dans la console** avec la fonction *print()* :
+**Testez si votre tableau de données est bien un objet dataframe**, et **affichez le résultat dans la console** avec la fonction <span style="color:#8C001A">print()</span> :
 
 ```{r class.source="bg-danger", warning=FALSE, message=FALSE, eval=FALSE}
 
@@ -1567,7 +1567,7 @@ Toute **une série d'arguments permet d'ajuster les représentations**, exemple 
 - ...  
 
 
-**Il est possible d'afficher plusieurs graphiques en même temps**, à l'aide des fonctions **par()**. Ex : 
+**Il est possible d'afficher plusieurs graphiques en même temps**, à l'aide de la fonction <span style="color:#8C001A">par()</span>. Ex : 
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
@@ -1584,7 +1584,7 @@ boxplot(mtcars$wt, main="Graph 4")
 
 ### Plot(sf)
 
-La fonction *plot()* permet l'affichage d'un objet sf (couche géographique) dans la fenêtre graphique.
+La fonction <span style="color:#8C001A">plot()</span> permet l'affichage d'un objet sf (couche géographique) dans la fenêtre graphique.
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
@@ -1597,8 +1597,8 @@ mtq <- mf_get_mtq()
 plot(mtq)
 ```
 
-Attention, le fonction *plot()* réalise par défaut une représentation pour chaque variable de l'objet sf.     
-**Pour afficher uniquement la géométrie, il est nécessaire d'utiliser la fonction** ***st_geometry()*** du <span style="color:#4B0082">package<span> sf :
+Attention, le fonction <span style="color:#8C001A">plot()</span> réalise par défaut une représentation pour chaque variable de l'objet sf.     
+**Pour afficher uniquement la géométrie, il est nécessaire d'utiliser la fonction** <span style="color:#8C001A">**st_geometry()**</span> du <span style="color:#4B0082">package<span> sf :
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
@@ -2035,7 +2035,7 @@ Sous R, le procédé est différent selon le type de variable étudié :
 
 #### Variable qualitative : fréquence des individus par modalités.
 
-Utilisez les fonctions ***table()*** ou ***prop.table()*** :
+Utilisez les fonctions <span style="color:#8C001A">**table()**</span> ou <span style="color:#8C001A">**prop.table()**</span> :
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
@@ -2070,7 +2070,7 @@ barplot(table(hdv2003$occup), col=brewer.pal(n = 9,  "Paired"), las=2 ,cex.names
 
 Pour faciliter l'exploration de la distribution d'une variable quantitative, **il est souvent nécessaire de discrétiser la série statistique** en plusieurs classes d'amplitude égale, **car (en général) aucune valeur n'est identique**.
 
-**Pour construire l'histogramme d'une distribution discrétisée en plusieurs classes d'amplitude égale, utilisez la fonction** **<span style="color:#4B0082">hist()</span>**.
+**Pour construire l'histogramme d'une distribution discrétisée en plusieurs classes d'amplitude égale, utilisez la fonction** **<span style="color:#8C001A">hist()</span>**.
 
 Dans l'exemple ci-dessous, nous utilisons la variable quantitative "*heures.tv*" :
 
@@ -2241,7 +2241,7 @@ Les classes sont établies **selon une progression arithmétique**.
 **Le choix d'un méthode de discrétisation et du nombre de classes à un impact très important sur l'interprétation de sa représentation visuelle. Cette <a href="http://mappemonde.mgm.fr/geovisu/119/" onclick="window.open(this.href); return false;"><b>application</b></a> [@geovisujegou] en est une belle démonstration**.</div>
 <br/>
 
-Pour discrétiser une série statistique, vous pouvez utiliser la **fonction** **<span style="color:#4B0082">mf_get_breaks()</span>**, du package **<span style="color:#4B0082">mapsf</span>** [@mapsf].
+Pour discrétiser une série statistique, vous pouvez utiliser la **fonction** **<span style="color:#8C001A">mf_get_breaks()</span>**, du package **<span style="color:#4B0082">mapsf</span>** [@mapsf].
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, include=FALSE }
 # install.packages("mapsf")
@@ -2445,7 +2445,7 @@ mf_layout(title = "Population Distribution in Martinique",
 
 6) **Créez une variable qualitative à partir des valeurs de la variable** ***TX_CS1_2016**. Plusieurs solutions sont possible, exemple :
 
-- Utiliser la fonction cut() 
+- Utiliser la fonction <span style="color:#8C001A">cut()</span> 
 - Utiliser un opérateur relationnel... (si TX_CS1_2016 < ..., alors CAT_CS1_2016 == "FAIBLE"...)       
 <br/>
 
@@ -2541,7 +2541,7 @@ table(hdv2003$sport, hdv2003$cuisine, hdv2003$sexe)
 
 <br/>
 
-Il est cependant difficile de comparer à partir des effectifs. **Le package** **<span style="color:#4B0082">questionr()</span>** fournit des fonctions permettant de calculer facilement les pourcentages lignes, colonnes et totaux d’un tableau croisé**. Les pourcentages en lignes ou en colonne s’obtiennent avec les fonctions** **<span style="color:#8C001A">rprop()</span>** et **<span style="color:#8C001A">cprop()</span>**. Celles-ci s’appliquent au tableau croisé généré par **<span style="color:#8C001A">table()</span>** :
+Il est cependant difficile de comparer à partir des effectifs. **Le package** **<span style="color:#8C001A">questionr()</span>** fournit des fonctions permettant de calculer facilement les pourcentages lignes, colonnes et totaux d’un tableau croisé**. Les pourcentages en lignes ou en colonne s’obtiennent avec les fonctions** **<span style="color:#8C001A">rprop()</span>** et **<span style="color:#8C001A">cprop()</span>**. Celles-ci s’appliquent au tableau croisé généré par **<span style="color:#8C001A">table()</span>** :
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
