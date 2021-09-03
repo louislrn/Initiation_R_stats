@@ -778,7 +778,7 @@ help.search("Map")
 
 ```
 
-Exemple de la *cheatsheet* (antisèche) du package <span style="color:#4B0082">**sf**</span> :
+Exemple de la *cheatsheet* (antisèche) du package <span style="color:#4B0082">**sf**</span> (page 1/2) :
 
 <p class="center">![](figures/cheatsheet.png)
 </p>
