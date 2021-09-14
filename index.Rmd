@@ -1622,7 +1622,7 @@ plot(mtq["POP"])
 
 ### ggplot2
 
-Il existe de **très nombreux** package **pour réaliser des représentations graphiques** (oint fort du langage R).
+Il existe de **très nombreux** package **pour réaliser des représentations graphiques** (point fort du langage R).
 
 **Le plus célèbre est** <span style="color:#4B0082">**ggplot2**</span>. Il permet de réaliser de très nombreux types de représentation graphique. Ce package est développé par Hadley Wickham (Rstudio) et **fonctionne avec un syntaxe particulière basée sur la** ***grammaire des graphiques***, théorisée par **Leland Wilkinson**. Exemple :
 
@@ -2502,7 +2502,7 @@ mf_layout(title = "Population Distribution in Martinique",
 <br/>
 
 <p class="titre_def">Résidu</p>
-<div class="div_def"><p class="def">Les résidus d’une régression expriment l’écart entre les valeurs observées et les valeurs prédites par le modèle. Plus un individu aura des résidus fort (positifs ou négatif), moins sa position sera expliquée par le modèle. Il faudra alors trouver d’autres facteurs explicatifs.</p>
+<div class="div_def"><p class="def">Les résidus d’une régression expriment l’écart entre les valeurs observées et les valeurs prédites par le modèle. Plus un individu aura des résidus forts (positifs ou négatif), moins sa position sera expliquée par le modèle. Il faudra alors trouver d’autres facteurs explicatifs.</p>
 </div>
 
 </div>
@@ -3088,7 +3088,7 @@ text(6, 55, "y = 1.08x + 0.92", col="red")
 ### Les résidus
 
 **Les résidus d’une régression expriment l’écart entre les valeurs observées et les valeurs prédites par le modèle**.
-Plus un individu aura des résidus fort (positifs ou négatif), moins sa position sera expliquée par le modèle. Il faudra alors trouver d’autres facteurs explicatifs.
+Plus un individu aura des résidus forts (positifs ou négatif), moins sa position sera expliquée par le modèle. Il faudra alors trouver d’autres facteurs explicatifs.
 
 **Calculer les résidus :**
 
