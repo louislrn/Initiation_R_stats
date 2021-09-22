@@ -1,10 +1,10 @@
 base
+methods
+datasets
+utils
+grDevices
+graphics
+stats
 rvest
 stringr
 plyr
-sf
-mapsf
-dplyr
-data.table
-ggplot2
-questionr
