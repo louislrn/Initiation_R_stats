@@ -20,7 +20,7 @@ bibliography: biblio.bib
 nocite: |
   @*
 link-citations: true
-licence: "[![licensebuttons by-sa](https://licensebuttons.net/l/by-sa/3.0/88x31.png)](https://creativecommons.org/licenses/by-sa/4.0)"
+# licence: "[![licensebuttons by-sa](https://licensebuttons.net/l/by-sa/3.0/88x31.png)](https://creativecommons.org/licenses/by-sa/4.0)"
 giturl: "[![Code source on GitHub](https://badgen.net/badge/Code%20source%20on%20/GitHub/blue?icon=github)](https://github.com/HuguesPecout/Initiation_R_stats)"
 #doi: "[![DOI:xxx](https://zenodo.org/badge/DOI/xxx.svg)](https://doi.org/xxx)"
 --- 
@@ -47,7 +47,7 @@ options("scipen" = 10)
 
 <center>**DIAPORAMA D'INTRODUCTION** : </center>
 <br/>
-<center>[Contextualisation et présentation de R et Rstudio](https://huguespecout.github.io/R_presentation_FR/#/) </center>  
+<center>[Contextualisation et présentation de R et Rstudio](https://elementr.gitpages.huma-num.fr/session_1/Presentation_R/#/) </center>  
 <br/>
 <center><img src="figures/diapo.png" width="170"/></center>
 <br/>
@@ -2269,11 +2269,26 @@ Pour **enregistrer l'appartenance des individus aux différentes classes en fonc
 ma_discretisation <- mf_get_breaks(mtcars$hp, breaks = "sd")
 
 # Utiliser la fonction cut()
-mtcars$hp_classe <- cut(mtcars$hp, ma_discretisation,  include.lowest = TRUE, right = TRUE)
+mtcars$hp_classe <- cut(mtcars$hp, 
+                        breaks = ma_discretisation, 
+                        include.lowest = TRUE, 
+                        right = TRUE)
+
 mtcars$hp_classe 
 
-# Changement des nom de classe
-levels(mtcars$hp_classe)<-c("A","B","C","D","E","F","G","H","I")
+
+# Préciser des nom de classe avec l'argument labels
+mtcars$hp_classe <- cut(mtcars$hp, 
+                        breaks = ma_discretisation, 
+                        labels =  c("A","B","C","D","E","F","G","H","I"), 
+                        include.lowest = TRUE, 
+                        right = TRUE)
+
+mtcars$hp_classe 
+
+
+# Pour changer les noms de classeC
+levels(mtcars$hp_classe) <- c("Aa","Bb","Cc","Dd","Ee","Ff","Gg","Hh","Ii")
 mtcars$hp_classe
 
 # Visualiser le nombre d'éléments par classe - table()
