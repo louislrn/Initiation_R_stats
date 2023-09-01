@@ -2,7 +2,7 @@
 title: "Examen"
 subtitle : "Introduction aux statistiques en géographie avec R"
 author: "H. Pecout & T. Giraud"
-date: "08/09/2021"
+date: "06/09/2023"
 output: pdf_document
 ---
 
