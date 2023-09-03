@@ -1,10 +1,10 @@
 ---
 title: "Introduction à R"
 subtitle: "Statistique descriptive univariée et bivariée"
-date: "Master G2M, 6-8 septembre 2021"
+date: "Master G2M, 4-6 septembre 2023"
 author: 
  - name: Hugues Pecout
-   affiliation: FR CIST, CNRS
+   affiliation: Géographie-Cités, CNRS
  - name: Timothée Giraud
    affiliation: UMS RIATE, CNRS
 image: "featured.png"   
