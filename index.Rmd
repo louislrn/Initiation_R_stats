@@ -1,12 +1,12 @@
 ---
 title: "Introduction à R"
 subtitle: "Statistique descriptive univariée et bivariée"
-date: "Master G2M, 4-6 septembre 2023"
+date: "Master G2M, 2-4 septembre 2024"
 author: 
- - name: Hugues Pecout
+ - name: Elina Marvaux
    affiliation: Géographie-Cités, CNRS
- - name: Timothée Giraud
-   affiliation: UMS RIATE, CNRS
+ - name: Louis Laurian
+   affiliation: UAR RIATE, CNRS
 image: "featured.png"   
 logo: "figures/rzine.png"  
 output:
@@ -205,7 +205,7 @@ Tout ce qui est créé et manipulé sous R est un objet. Ces objets permettent d
 
 - **La chaîne de caractères** (*string*)    
 
-Il s'agit d'une suite ordonnée de caractères. Ex : *"Ma chaîne de caractères"* ou "*234*"
+Il s'agit d'une suite ordonnée de caractères, mise **entre guillemets**. Ex : *"Ma chaîne de caractères"* ou "*234*"
 
 
 - **Nombre entier** (*integer*)    
@@ -215,12 +215,12 @@ Il s'agit d'un nombre sans décimale (sans virgule). Ex : *347*
 
 -  **Nombre réel** (*numeric*)   
 
-Il s'agit d'un nombre décimale. Ex : *86.6*
+Il s'agit d'un nombre décimal. Ex : *86.6*
 
 
 - **Valeur logique ou booléenne** (*logical*)   
 
-Une variable booléenne est une variable qui ne prend que deux valeurs : *true* (vrai) et *false* (faux) ou *0* et *1*
+Une variable booléenne est une variable qui ne prend que deux valeurs : *TRUE* (vrai) et *FALSE* (faux) ou *0* et *1*
 
 <br/>
 
@@ -228,7 +228,7 @@ Une variable booléenne est une variable qui ne prend que deux valeurs : *true* 
 
 ### Créer un objet
 
-Un objet peut être créé avec l'opérateur « assigner » (`<-`), une flèche composée du signe inférieur (`<`) accolé à un tiret (`-`). Si l'objet existe déjà, sa valeur précédente est remplacée par la nouvelle. La valeur renvoyée peut être le résultat d'une opération et/ou d'une fonction :
+Un objet peut être créé avec l'opérateur « assigner » (`<-`), une flèche composée du signe inférieur (`<`) accolée à un tiret (`-`). Si l'objet existe déjà, sa valeur précédente est remplacée par la nouvelle. La valeur renvoyée peut être le résultat d'une opération et/ou d'une fonction :
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 n <- "chaîne de caractères"
@@ -257,7 +257,7 @@ Mon_objet <- (10 + 2) * 5
 
 ### La fonction
 
-Le logiciel R dispose de fonctions préprogrammées appelées **fonctions primitives ou basiques** et regroupés dans le package <span style="color:#4B0082">base</span> qui est automatiquement chargé. Pour connaître toutes les fonctions primitives, utilisez la fonction <span style="color:#8C001A">library(help = "base")</span> :
+Le logiciel R dispose de fonctions préprogrammées appelées **fonctions primitives ou basiques** et regroupées dans le package <span style="color:#4B0082">base</span> qui est automatiquement chargé. Pour connaître toutes les fonctions primitives, utilisez la fonction <span style="color:#8C001A">library(help = "base")</span> :
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
@@ -317,7 +317,7 @@ mean(notes)
 
 ```
 
-La fonction <span style="color:#8C001A">mean()</span> retourne NA car la série statistique présente une valeur manquante (NA). **L’argument na.rm (= FALSE par défaut) permet de ne pas prendre en compte les valeurs manquantes** :
+La fonction <span style="color:#8C001A">mean()</span> retourne NA car la série statistique présente une valeur manquante (NA pour *Not Available*). **L’argument na.rm (= FALSE par défaut) permet de ne pas prendre en compte les valeurs manquantes** :
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=TRUE}
 
@@ -325,6 +325,10 @@ La fonction <span style="color:#8C001A">mean()</span> retourne NA car la série 
 mean(notes, na.rm = TRUE)
 
 ```
+
+
+<span style="color:#A9A9A9">Remarque : En plus des valeurs *NA*, on trouve aussi des valeurs notées **NULL** ou encore des valeurs vides. Attention à ne pas confondre les valeurs NA avec les valeurs **NaN** *(Not A Number)*. Ces valeurs peuvent apparaître à la suite d'erreurs d'encodage, de division par 0 ou bien d'oubli dans la complétion d'un vecteur.</span>
+
 
 L'utilisateur a  également la possibilité de définir ses propres fonctions. 
 Une fonction est mise dans une variable contenant un bloc d'instructions introduit par la commande <span style="color:#8C001A">function()</span>. La syntaxe générale est :
@@ -358,7 +362,7 @@ carre(3)
 
 ```
 
-En plus des fonction primitives, des fonctions que vous pouvez vous même créer, **il est très simple d'utiliser des fonctions mises à disposition par l'intermédiaire de package**. Pour cela, vous devez d'abord **installer le package et chargez la library** :
+En plus des fonction primitives, des fonctions que vous pouvez vous même créer, **il est très simple d'utiliser des fonctions mises à disposition par l'intermédiaire de packages**. Pour cela, vous devez d'abord **installer le package et charger la library** :
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval=FALSE}
 
@@ -389,14 +393,14 @@ mon_vecteur <- c("A","B","C","D","E")
 mon_vecteur <- c("nom", "prenom", 10, 20.78, TRUE)
 mon_vecteur
 
-# Créer un séquence de nombre entier
+# Créer un séquence de nombres entiers
 mon_vecteur <- c(1:7)
 mon_vecteur
 
-# Ajouter un element à un vecteur
+# Ajouter un élément à un vecteur
 mon_vecteur_new <- c(mon_vecteur, "Un Élément Supplémentaire")
 
-# Interroger les élements d'un vecteur -> mon_vecteur[element]
+# Interroger les éléments d'un vecteur -> mon_vecteur[element]
 # Elément 2
 mon_vecteur[2]
 # Eléments 2 à 4
@@ -447,7 +451,7 @@ mon_tableau$personne[4]
 
 ### La liste
 
-**Une liste est un vecteur d'objets**. Il permet de stocker différents types d'objets dans un seul objet.
+**Une liste est un vecteur d'objets**. Elle permet de stocker des valeurs de différents types dans un seul objet.
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
@@ -515,7 +519,7 @@ colSums(ma_matrice)
 
 ### Le Simple Feature data frame 
 
-**L'objet <span style="color:#4B0082">sf</span> est en quelque sorte une table de données géographiques**. Il permet de gérer de l'information spatiale. Il s'agit tout simplement d'un dataframe qui stocke également des géométries.
+**L'objet <span style="color:#4B0082">sf</span> est en quelque sorte une table de données géographiques**. Il permet de gérer de l'information spatiale. Il s'agit tout simplement d'un dataframe qui stocke également des géométries (coordonnées).
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
@@ -546,6 +550,8 @@ plot(st_geometry(mes_donnees_SF))
 
 ```
 
+<span style="color:#A9A9A9">Remarque : ici, les géométries sont de type POINT. Il existe différents types de géométries, les plus répandues étant celles de type *LINESTRING* et *MULTILINESTRING* (lignes), ainsi que *POLYGON* et *MULTYPOLYGON* (polygones).<span style="color:#A9A9A9"> 
+
 <br/>
 
 ### Le facteur
@@ -572,13 +578,13 @@ str(my_factor)
 # levels() permet d'obtenir la liste des valeurs :
 levels(my_factor)
 
-# Compte du nombre d'éléménts par level
+# Compte du nombre d'éléments par level
 summary(my_factor)
 
 # Elément 8
 my_factor[8]
 
-# Elément 7 à 13, avec uniquement les levels présents
+# Eléments 7 à 13, avec uniquement les levels présents
 my_factor[7:13, drop=TRUE]
 
 ```
@@ -599,7 +605,7 @@ my_factor[7:13, drop=TRUE]
 # Soustraction
 5 - 5
 
-# Divivion
+# Division
 5 / 5
 
 # Multiplication
@@ -625,7 +631,7 @@ my_factor[7:13, drop=TRUE]
   !=   # différent 
   %in% # Test de présence entre deux vecteurs
   
-  ```  
+```  
 
 
 
@@ -694,7 +700,7 @@ Installer un package en langage R :
 install.packages("mapsf") # Installer un package
 update.packages("mapsf")  # Mettre à jour un package
 
-# Pour obtenir le chemin de la librarie contenant les packages installés
+# Pour obtenir le chemin de la librairie contenant les packages installés
 .libPaths() 
 # Pour voir tous les packages installés
 library()   
@@ -711,17 +717,17 @@ install_github("riatelab/MTA")
 
 ```
 
-Une fois installé, **un package doit être chargé à chaque nouvelle session de R pour être utilisé**. A un package est systématiquement associée de la documentation permettant de comprendre son contenu et aider à sa prise en main. 
+Une fois installé, **un package doit être chargé à chaque nouvelle session de R pour être utilisé**. A chaque package est systématiquement associée de la documentation permettant de comprendre son contenu et aider à sa prise en main. 
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE,eval=FALSE}
 
 # Charger un package pour en utiliser ses fonctions
 library(mapsf)  
 
-# Utiliser directement une fonction d'un package
+# Utiliser directement une fonction d'un package précis
 mapsf::mf_map()
 
-# Pour charger des données implementées dans un package
+# Pour charger des données implémentées dans un package
 data(Nom_objet)
 
 ```
@@ -873,7 +879,7 @@ D) **Créez un nouveau ficher .R** (*File > New File > R Script*), puis **enregi
 
 ## Import/export de données
 
-De nombreuses de <span style="color:#8C001A">fonctions</span> (primitives ou non) peuvent être utilisées pour importer et exporter des données de différents formats.
+De nombreuses <span style="color:#8C001A">fonctions</span> (primitives ou non) peuvent être utilisées pour importer et exporter des données de différents formats.
 
 ### Import
 
@@ -1021,9 +1027,9 @@ class(mtcars)
 length(mtcars)
 
 # Pour les objets à plusieurs dimensions :
-# Nom des colonnes
+# Noms des colonnes
 colnames(mtcars)
-# Nom des lignes
+# Noms des lignes
 row.names(mtcars)
 # Dimension de l'objet
 dim(mtcars)
@@ -1362,7 +1368,7 @@ for (i in 1:5) {
 
 ## Fonctions apply
 
-L'utilisation d'une boucle est très fréquente en traitement de données. Une boucle peut permettre d'effectuer des traitements sur des objets de structure multidimensionnelle (data frame, matrice, array, sf...). Mais pour cela, la boucle for n'est pas la technique optimum. Les concepteurs de R ont développé des fonctions spécialement prévu à cet effet. 
+L'utilisation d'une boucle est très fréquente en traitement de données. Une boucle peut permettre d'effectuer des traitements sur des objets de structure multidimensionnelle (data frame, matrice, array, sf...). Mais pour cela, la boucle for n'est pas la technique optimale. Les concepteurs de R ont développé des fonctions spécialement prévues à cet effet. 
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
@@ -1372,11 +1378,11 @@ apply(mtcars,1,mean)
 # Appliquer une fonction sur les colonnes :
 apply(mtcars,2,sum)
 
-# Appliquer une fonction sur chaque items (sortie vector) :
+# Appliquer une fonction sur chaque item (sortie vector) :
 sapply(mtcars, function(x) x/100)
 
 
-# Appliquer une fonction sur chaque items (sortie list)
+# Appliquer une fonction sur chaque item (sortie list)
 Resultat_lapply <- lapply(mtcars, function(x) x/100)
 Resultat_lapply[1:3]
 
@@ -1455,7 +1461,7 @@ Si vous souhaitez réaliser des traitements complexes sur des chaînes de caract
 
 library(stringr)
 
-# Détécter la présence d'un caractère ou d'une chaîne
+# Détecter la présence d'un caractère ou d'une chaîne
 # Renvoie TRUE ou FALSE
 str_detect(text,  "E")
 
@@ -1489,11 +1495,11 @@ Il est possible de combiner l'**utilisation des expressions régulières avec to
 
 # Création d'une vecteur d'adresse mail
 # Avec des adresses mail, parfois mal orthographiées
-emails_list <- c("hugues.pecout@cnrs.fr", 
-                 "hugues@gmail", 
+emails_list <- c("louis.laurian@cnrs.fr", 
+                 "louis@gmail", 
                  "blabla.com", 
-                 "hugues.pecout@gis-cist.fr",
-                 "timothée.giraud@cnrs.fr")
+                 "louis.laurian@riate.fr",
+                 "elina.marvaux@cnrs.fr")
 
 
 # Expression regex qui répond aux adresses email
@@ -1622,7 +1628,7 @@ plot(mtq["POP"])
 
 ### ggplot2
 
-Il existe de **très nombreux** package **pour réaliser des représentations graphiques** (point fort du langage R).
+Il existe de **très nombreux** packages **pour réaliser des représentations graphiques** (point fort du langage R).
 
 **Le plus célèbre est** <span style="color:#4B0082">**ggplot2**</span>. Il permet de réaliser de très nombreux types de représentation graphique. Ce package est développé par Hadley Wickham (Rstudio) et **fonctionne avec un syntaxe particulière basée sur la** ***grammaire des graphiques***, théorisée par **Leland Wilkinson**. Exemple :
 
@@ -1750,7 +1756,7 @@ readRDS()
 
 1) **Trouvez où est mis à disposition le package** <span style="color:#4B0082">**Rcade**</span>, développé par Romain Lesur  
 2) **Installez-le**   
-3) **Essayer-le**... Pas plus de 2-3 minutes :-) )   
+3) **Essayez-le**... Pas plus de 2-3 minutes :-) )   
 4) **Supprimez le package**    
 
 
@@ -1768,7 +1774,7 @@ readRDS()
 <p class="titre_def">Statistique descriptive</p>
 
 <div class="div_def"><p class="def">Tout nombre, calculé à propos d’une population et qui contribue à décrire un aspect de cette population, est une statistique. Fréquences, médianes, quartiles, déciles, moyennes, variances, etc. sont des statistiques.  
-La statistique descriptive regroupe l'ensemble des techniques pour décrire numériquement une distribution.</p></div>
+La statistique descriptive regroupe l'ensemble des techniques pour **décrire numériquement une distribution**.</p></div>
 
 </div>
 
@@ -1908,7 +1914,7 @@ Centiles : valeurs qui divisent la série statistique en cent (1% à 99%)<br/>
 
 <p class="titre_def">Variance(σ2) et écart-type(σ)</p>
 
-<div class="div_def"><p class="def">Indicateurs de la dispersion des valeurs des individus autour de la moyenne. La variance est la moyenne des carrés des écarts à la moyenne. L’écart-type est sa racine carrée. Ce sont des paramètres de dispersion.<br/>   
+<div class="div_def"><p class="def">Indicateurs de la dispersion des valeurs des individus autour de la moyenne. La variance est la moyenne des carrés des écarts à la moyenne. L’écart-type est sa racine carrée. Ce sont des **paramètres de dispersion.**<br/>   
 
 $$\sigma^x = \sqrt{ \frac{\sum_{i=1}^{n}(x_i - \mu)^2} {n}} $$
 
@@ -2072,7 +2078,7 @@ Pour faciliter l'exploration de la distribution d'une variable quantitative, **i
 
 **Pour construire l'histogramme d'une distribution discrétisée en plusieurs classes d'amplitude égale, utilisez la fonction** **<span style="color:#8C001A">hist()</span>**.
 
-Dans l'exemple ci-dessous, nous utilisons la variable quantitative "*heures.tv*" :
+Dans l'exemple ci-dessous, nous utilisons la variable quantitative "*hp*" du dataframe *mtcars* :
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
@@ -2217,7 +2223,7 @@ Toutes **les classes ont la même amplitude**.<br/>
 Les classes sont déterminées selon une **fraction d’écart-type par rapport à la moyenne**.
 <p style="color:grey;font-size:90%;">A privilégier pour les **distributions symétriques**.</p> 
 <p class="methode">Par seuil observé</p>
-Les bornes sont **crées par observation de la distribution, de manière manuelle**.
+Les bornes sont **créées par observation de la distribution, de manière manuelle**.
 <p style="color:grey;font-size:90%;">A privilégier pour les **distributions dissymétriques et/ou bimodales**.</p>  
 <p class="methode">Effectifs égaux (quantiles)</p>
 Les bornes sont construites en réalisant des **classes d’effectifs égaux**.
@@ -2287,7 +2293,7 @@ mtcars$hp_classe <- cut(mtcars$hp,
 mtcars$hp_classe 
 
 
-# Pour changer les noms de classeC
+# Pour changer les noms de classe
 levels(mtcars$hp_classe) <- c("Aa","Bb","Cc","Dd","Ee","Ff","Gg","Hh","Ii")
 mtcars$hp_classe
 
@@ -2560,10 +2566,10 @@ Il est cependant difficile de comparer à partir des effectifs. **Le package** *
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
-# Pourcentage en ligne d'un tableau croisé table(), avec lprop() du package 'questionnr'
+# Pourcentage en ligne d'un tableau croisé table(), avec lprop() du package 'questionr'
 rprop(table(hdv2003$sport, hdv2003$cuisine))
 
-# Pourcentage en colonne d'un tableau croisé table(), avec cprop() du package 'questionnr'
+# Pourcentage en colonne d'un tableau croisé table(), avec cprop() du package 'questionr'
 cprop(table(hdv2003$sport, hdv2003$cuisine))
 
 ```
@@ -3204,6 +3210,6 @@ De nombreuses ressources de qualité, parfois largement **utilisées pour produi
 # Info session  {-}
 
 ```{r session_info, echo=FALSE}
-kableExtra::kable_styling(knitr::kable(rzine::sessionRzine()[[1]], row.names = F))
-kableExtra::kable_styling(knitr::kable(rzine::sessionRzine()[[2]], row.names = F))
+#kableExtra::kable_styling(knitr::kable(rzine::sessionRzine()[[1]], row.names = F))
+#kableExtra::kable_styling(knitr::kable(rzine::sessionRzine()[[2]], row.names = F))
 ```
