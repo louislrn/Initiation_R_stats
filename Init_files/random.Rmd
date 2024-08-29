@@ -1,0 +1,179 @@
+---
+title: "Examen"
+subtitle : "Introduction aux statistiques en géographie avec R"
+author: "E. Marvaux & L. Laurian"
+date: "04/09/2024"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+```
+
+**Durée : 1 heure**  
+**Jusqu'à deux réponses correctes par question. Noircir le cercle devant la bonne réponse.**   
+**L'accès au support https://huguespecout.github.io/Initiation_R_stats/ est autorisé.**   
+
+\vspace{20pt} 
+
+# Questions sur R (10 pts / 0.5 ou 1 pts par question)
+
+## 1) Laquelle (Lesquelles) de ces affirmations est(sont) correcte(s) ? (0.5 pts)
+
+O  R est un Environnement de Développement Intégré    
+O  R est un langage et un logiciel   
+O  Rstudio est un Environnement de Développement Intégré   
+O  RStudio est un langage et un logiciel    
+
+## 2) Qu’est-ce qu’un **package** R ? (0.5 pts)
+
+O Une fonction   
+O Une bibliothèque de fonctions   
+O Une commande   
+O Un répertoire de travail   
+
+## 3) Quel(les) fonctionnalités(s) apportent l’utilisation d’un projet Rstudio ? (0.5 pts)
+
+O Le répertoire de travail est prédéfini       
+O Tous les packages utiles sont automatiquement chargés        
+O L’échange et la portabilité de votre travail est facilité     
+O La correction des erreurs de votre programme est automatique     
+
+## 4) Quelle fonction permet d'avoir un aperçu d'un objet dans R ? (0.5 pts)
+
+O `str()`   
+O `dim()`   
+O `class()`   
+O `length()`   
+
+## 5) Quelle(s) commande(s) permet(tent) de trier les valeurs de la variable "var" du data frame nommé "df" ? (1 pt)
+
+O `order(df$var)`  
+O `sort(df$var)`  
+O `df[order(df$var), ]`  
+O `df[sort(df$var), ]`  
+
+## 6) Quelle fonction permet de joindre deux dataframes à l'aide d'un identifiant commun ? (1 pt)
+
+O `cbind()`    
+O `merge()`    
+O `rbind()`    
+O `aggregate()`    
+
+## 7) Si on exécute ce code et que l’objet x est un nombre, quel mot s’affichera dans la console : (0.5 pts)
+
+``` r
+if (is.numeric(x)){
+  print("YOUPI")
+}else{
+  print("WOW")
+} 
+```
+
+O  "YOUPI"    
+O  "WOW"    
+O  ERROR    
+O  NA
+
+
+## 8) Un objet sf...(1pt)
+
+O contient des coordonnées géographique     
+O est composé de différents *levels*  
+O est un ensemble de points     
+O est un type spécifique de data frame  
+
+## 9) La température est une variable... (0.5 pt)
+
+O Quantitative discrète       
+O Quantitative continue     
+O Qualitative nominale      
+O Qualitative ordinale  
+
+
+## 10) Quelle(s) fonction(s) permet(tent) de calculer un tableau de contingence ? (1 pt)
+
+O `table()`     
+O `rprop()`    
+O `levels()`    
+O `prop.table()`  
+
+## 11) Quelle fonction utiliser pour visualiser la distribution d'une variable quantitative en vue d'une discrétisation ? (1 pt)
+
+O `barplot()`  
+O `hist()`  
+O `summary()`  
+O `cut()` 
+
+## 12) Quelle fonction du package mapsf permet d'afficher une couche géographique ? (0.5 pts)
+
+O `plot()`    
+O `sf()`    
+O `st_geometry()`    
+O `mf_map()`    
+
+## 13) Quelle(s) fonction(s) permet(tent) de calculer un coefficient de corrélation entre deux variables quantitatives ? (1 pt)
+
+O `get.cor()`    
+O `t.test()`    
+O `lm()`    
+O `cor.test()`    
+
+## 14) Dans le cadre du calcul du Khi², laquelle de ces affirmation est fausse ? (0.5 pts)
+
+O Les deux variables doivent être qualitatives  
+O Le tableau de contingence doit avoir au moins 2 lignes et 2 colonnes    
+O Le degré de liberté doit être supérieur à 5  
+O Une p-value inférieure à 0.05 permet d'exclure l'hypothèse d'indépendance
+
+
+\vspace{50pt}
+
+# Questions de statistiques (10 pts)
+
+\vspace{15pt}
+
+## 15) Quelle est l'utilité d'une discrétisation ? Développez en donnant plusieurs exemples de méthodes de discrétisation (2pts)
+
+\vspace{200pt}    
+
+
+## 16)  Qualifiez cette forme de distribution. Quelles en sont les principales caractéristiques ? Quelles seraient des noms possibles pour les axes x et y ? (3pts)
+
+```{r, echo = FALSE}
+x <- seq(0, 11, by = .01)
+y <- dnorm(x, mean = 8, sd = 1)*100
+plot(x,y, type = 'l', col = "red", lwd = 2)
+lines(x = c(8,8), y = c(-2,40), lwd = 2)
+```
+  
+\vspace{150pt} 
+
+
+## 17) Quel test permet de vérifier l’existence d’une relation statistique entre deux variables qualitatives ? Quel indicateur permet de vérifier la significativité de ce test ?  (2pts)
+
+\vspace{150pt} 
+
+## 18)  Décrivez la relation entre x et y en vous appuyant sur le graphique. Quelle hypothèse pouvez vous formuler ? Comment modéliser cette relation et quelle fonction utiliser avec R? Que pouvez vous dire de l’individu entouré par un cercle sur le graphique ? (3pts) 
+
+```{r, echo = FALSE}
+n <- 150
+x <- runif(n)
+eps <- rnorm(n, 0, 0.04)
+y <- x * 0.9 + eps
+df <- data.frame(x,y)
+df$x <- df$x * 100
+df$y <- df$y * 100
+df$x <- 100 - df$x
+df[151, ] <- c(30,10)
+
+plot(df$x, df$y, pch = 20, col = "darkblue", cex = .8,
+     xlab = "x", ylab = "y")
+points(x = 30, y = 10, pch = 1, col = "darkred", cex = 6)
+text(x = 70, y = 80, labels = "R² = 0.97", cex = .8, col = "gray20")
+```
+
+
+\vspace{150pt} 
+
