@@ -1,7 +1,7 @@
 ---
 title: "Examen"
 subtitle : "Introduction aux statistiques en géographie avec R"
-author: "E. Marvaux & L. Laurian"
+author: "E. Marveaux & L. Laurian"
 date: "04/09/2024"
 output: pdf_document
 ---

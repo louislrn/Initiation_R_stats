@@ -3,7 +3,7 @@ title: "Introduction à R"
 subtitle: "Statistique descriptive univariée et bivariée"
 date: "Master G2M, 2-4 septembre 2024"
 author: 
- - name: Elina Marvaux
+ - name: Elina Marveaux
    affiliation: Géographie-Cités, CNRS
  - name: Louis Laurian
    affiliation: UAR RIATE, CNRS
@@ -1499,7 +1499,7 @@ emails_list <- c("louis.laurian@cnrs.fr",
                  "louis@gmail", 
                  "blabla.com", 
                  "louis.laurian@riate.fr",
-                 "elina.marvaux@cnrs.fr")
+                 "elina.marveaux@cnrs.fr")
 
 
 # Expression regex qui répond aux adresses email
