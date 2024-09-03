@@ -99,7 +99,7 @@ O `rprop()`
 O `levels()`    
 O `prop.table()`  
 
-## 11) Quelle fonction utiliser pour visualiser la distribution d'une variable quantitative en vue d'une discrétisation ? (1 pt)
+## 11) Quelle fonction utiliser pour visualiser la distribution d'une variable quantitative ? (1 pt)
 
 O `barplot()`  
 O `hist()`  
@@ -134,12 +134,12 @@ O Une p-value inférieure à 0.05 permet d'exclure l'hypothèse d'indépendance
 
 \vspace{15pt}
 
-## 15) Quelle est l'utilité d'une discrétisation ? Développez en donnant plusieurs exemples de méthodes de discrétisation (2pts)
+## 15) Qu'est ce que la discrétisation ? Développez en donnant plusieurs exemples de méthodes de discrétisation (2pts)
 
 \vspace{200pt}    
 
 
-## 16)  Qualifiez cette forme de distribution. Quelles en sont les principales caractéristiques ? Quelles seraient des noms possibles pour les axes x et y ? (3pts)
+## 16)  Qualifiez cette forme de distribution. Quelles en sont les principales caractéristiques ? Que représente chaque axe ? Nommez les (3pts)
 
 ```{r, echo = FALSE}
 x <- seq(0, 11, by = .01)

@@ -2455,7 +2455,7 @@ mf_layout(title = "Population Distribution in Martinique",
     - Quel est le taux maximum ?  
     - Quel est l'amplitude de la variable ?   
     - Quelle est la moyenne ? 
-    - Quelle indicateur divise la série statistique en deux ? Quelle est sa valeur ?   
+    - Quel indicateur divise la série statistique en deux ? Quelle est sa valeur ?   
     - Quel est son écart-type, son intervalle interquartile ?   
     - **Représentez graphiquement la distribution** ? (plusieurs solutions sont possibles)       
 <br/>
@@ -2505,7 +2505,7 @@ mf_layout(title = "Population Distribution in Martinique",
 <br/>
 
 <p class="titre_def">Corrélation</p>
-<div class="div_def"><p class="def">Mesure du lien d’association entre des phénomènes (variables) décrits par des séries statistiques. Le calcul d'une corrélation entre deux variables permet de savoir si elles sont liées.</p>
+<div class="div_def"><p class="def">Mesure du lien d’association entre des phénomènes (variables) décrits par des séries statistiques. Le calcul d'une corrélation entre deux variables permet de savoir si elles sont liées. Attention, deux variables peuvent être fortement liées sans que l'une n'explique l'autre : https://www.tylervigen.com/spurious-correlations</p>
 </div>
 
 <br/>
