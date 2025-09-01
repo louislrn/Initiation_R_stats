@@ -1,7 +1,7 @@
 ---
 title: "Introduction à R"
 subtitle: "Statistique descriptive univariée et bivariée"
-date: "Master G2M, 2-4 septembre 2024"
+date: "Master G2M, 1-3 septembre 2025"
 author: 
  - name: Elina Marveaux
    affiliation: Géographie-Cités, CNRS
@@ -485,7 +485,7 @@ ma_liste[[3]][2]
 
 ### La matrice
 
-Une matrice est un **tableau d'objet de même type, à double entrée**.
+Une matrice est un **tableau d'objet de même type, à double entrée**. Le remplissage s'effectue en colonnes.
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
@@ -675,6 +675,10 @@ mtcars[mtcars$mpg %in% c(21.0,14.3,22.8,19.2) & mtcars$hp != 123 & mtcars$wt >= 
 mtcars[mtcars$mpg %in% c(21.0,14.3,22.8,19.2) | mtcars$hp != 123 | mtcars$wt >= 3, ]
 
 # Test valeurs NA (différent de NA ?) dans la variable mtcars$mpg
+!is.na(mtcars$mpg)
+
+# Renvoie les valeurs des index correspondant à l'affirmation
+mtcars$mpg[7] <- NA
 !is.na(mtcars$mpg)
 
 ```
@@ -1145,6 +1149,8 @@ ID <- c("1", "2", "3", "4")
 Prenom <- c('John','Peter','Jolie','John')
 Nom <- c('Doe','Gynn','Hope','snow')
 
+# Dans la console, la chaîne de caractère "snow" correspond aussi à une couleur
+
 # Dataframe 1
 mon_tab_1 <- data.frame(ID, Prenom)
 
@@ -1226,6 +1232,8 @@ mtcars2 <- data.table(mtcars)
 mtcars2[, .( sum_disp=sum(disp), moy_hp=mean(hp), nb_element=length(cyl) ), by=list(cyl, vs)]
 
 ```
+
+<span style="color:#A9A9A9">Le package data.table est plutôt utilisé pour les gros volumes de données.<span style="color:#A9A9A9"> 
 
 <br/>
 
@@ -1495,11 +1503,11 @@ Il est possible de combiner l'**utilisation des expressions régulières avec to
 
 # Création d'une vecteur d'adresse mail
 # Avec des adresses mail, parfois mal orthographiées
-emails_list <- c("louis.laurian@cnrs.fr", 
+emails_list <- c("louis.laurian@cnrs.fr",
+                 "elina.marveaux@cnrs.fr",
                  "louis@gmail", 
                  "blabla.com", 
-                 "louis.laurian@riate.fr",
-                 "elina.marveaux@cnrs.fr")
+                 "louis.laurian@riate.fr")
 
 
 # Expression regex qui répond aux adresses email
@@ -1754,7 +1762,7 @@ readRDS()
 
 **R est un langage très polyvalent... Voici un petit exercice pour le prouver :**
 
-1) **Trouvez où est mis à disposition le package** <span style="color:#4B0082">**Rcade**</span>, développé par Romain Lesur  
+1) **Trouvez où est mis à disposition le package** <span style="color:#4B0082">**wordler**</span>, développé par David Smith  
 2) **Installez-le**   
 3) **Essayez-le**... Pas plus de 2-3 minutes :-) )   
 4) **Supprimez le package**    
