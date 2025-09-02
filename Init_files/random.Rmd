@@ -1,19 +1,21 @@
 ---
 title: "Examen"
-subtitle : "Introduction aux statistiques en géographie avec R"
 author: "E. Marveaux & L. Laurian"
-date: "04/09/2024"
-output: pdf_document
+date: "04/09/2025"
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+subtitle: Introduction aux statistiques en géographie avec R
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-
 ```
 
 **Durée : 1 heure**  
 **Jusqu'à deux réponses correctes par question. Noircir le cercle devant la bonne réponse.**   
-**L'accès au support https://huguespecout.github.io/Initiation_R_stats/ est autorisé.**   
+**L'accès au support https://louislrn.github.io/Initiation_R_stats/ est autorisé.**   
 
 \vspace{20pt} 
 
@@ -33,19 +35,19 @@ O Une bibliothèque de fonctions
 O Une commande   
 O Un répertoire de travail   
 
-## 3) Quel(les) fonctionnalités(s) apportent l’utilisation d’un projet Rstudio ? (0.5 pts)
+## 3) Quel(les) fonctionnalités(s) apportent l’utilisation d’un **projet Rstudio** ? (0.5 pts)
 
 O Le répertoire de travail est prédéfini       
 O Tous les packages utiles sont automatiquement chargés        
 O L’échange et la portabilité de votre travail est facilité     
 O La correction des erreurs de votre programme est automatique     
 
-## 4) Quelle fonction permet d'avoir un aperçu d'un objet dans R ? (0.5 pts)
+## 4) Quelle ligne de commande permet de sélectionner les lignes 2 et 3 d'un dataframe "df" ? (0.5 pts)
 
-O `str()`   
-O `dim()`   
-O `class()`   
-O `length()`   
+O `df[2,3]`  
+O `df[, c(2:3)]`  
+O `df[c(2,3) ,]`
+O `df[2,3,]`  
 
 ## 5) Quelle(s) commande(s) permet(tent) de trier les valeurs de la variable "var" du data frame nommé "df" ? (1 pt)
 
@@ -61,9 +63,10 @@ O `merge()`
 O `rbind()`    
 O `aggregate()`    
 
-## 7) Si on exécute ce code et que l’objet x est un nombre, quel mot s’affichera dans la console : (0.5 pts)
+## 7) Si on exécute ce code, quel mot s’affichera dans la console ? (0.5 pts)
 
 ``` r
+x <- "3"
 if (is.numeric(x)){
   print("YOUPI")
 }else{
@@ -84,7 +87,7 @@ O est composé de différents *levels*
 O est un ensemble de points     
 O est un type spécifique de data frame  
 
-## 9) La température est une variable... (0.5 pt)
+## 9) Le PIB d'un pays est une variable... (0.5 pt)
 
 O Quantitative discrète       
 O Quantitative continue     
@@ -104,7 +107,7 @@ O `prop.table()`
 O `barplot()`  
 O `hist()`  
 O `summary()`  
-O `cut()` 
+O `distr()` 
 
 ## 12) Quelle fonction du package mapsf permet d'afficher une couche géographique ? (0.5 pts)
 
@@ -115,7 +118,7 @@ O `mf_map()`
 
 ## 13) Quelle(s) fonction(s) permet(tent) de calculer un coefficient de corrélation entre deux variables quantitatives ? (1 pt)
 
-O `get.cor()`    
+O `chisq()`    
 O `t.test()`    
 O `lm()`    
 O `cor.test()`    
@@ -134,18 +137,19 @@ O Une p-value inférieure à 0.05 permet d'exclure l'hypothèse d'indépendance
 
 \vspace{15pt}
 
-## 15) Qu'est ce que la discrétisation ? Développez en donnant plusieurs exemples de méthodes de discrétisation (2pts)
+## 15) Qu'est ce que la coefficient de corrélation ? Comment le calculer et l'interpréter ? Que permet-il de comparer ? (2pts)
 
 \vspace{200pt}    
 
 
-## 16)  Qualifiez cette forme de distribution. Quelles en sont les principales caractéristiques ? Que représente chaque axe ? Nommez les (3pts)
+## 16)  Qualifiez cette forme de distribution. Quelles en sont les principales caractéristiques ? Quelle discrétisation serait appropriée ? (3pts)
 
 ```{r, echo = FALSE}
 x <- seq(0, 11, by = .01)
-y <- dnorm(x, mean = 8, sd = 1)*100
-plot(x,y, type = 'l', col = "red", lwd = 2)
-lines(x = c(8,8), y = c(-2,40), lwd = 2)
+y <- dnorm(x, mean = .5, sd = 1)*100
+plot(x,y, type = 'l', col = "red", lwd = 2, axes = F)
+axis(side = 1, at = c(0:10),labels = c(0:10))
+axis(side = 2, at = seq(0,40,10),labels = seq(0,40,10))
 ```
   
 \vspace{150pt} 
