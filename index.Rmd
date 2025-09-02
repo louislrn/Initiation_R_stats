@@ -1808,9 +1808,14 @@ La statistique descriptive regroupe l'ensemble des techniques pour **décrire nu
 
 $$N=\sum_{} i$$
 
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
+# Dans un dataframe, l'effectif correspond au nombre de lignes
+nrow(mtcars)
+```
+
+
 </p></div>
 
-<br/>
 
 <p class="titre_def">Variable (x) ou caractère </p>
 
@@ -1859,8 +1864,14 @@ Il faut bien distinguer la nature de la variable de son format de stockage (clas
 
 $$f(n)=\frac{n}{N}$$
 
-
 </p></div>
+
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
+
+# Exemple de fréquence d'un sous-effectif par rapport à l'effectif total
+nrow(mtcars[mtcars$hp <= 100 ,]) / nrow(mtcars) * 100
+
+```
 
 <br/>
 
@@ -1875,12 +1886,29 @@ $$\bar{x}=\frac{\sum{xi}}{N}$$
 
 </p></div>
 
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
+# Exemple de fréquence d'un sous-effectif par rapport à l'effectif total
+mean(mtcars$hp)
+```
+
 <br/>
 
 
 <p class="titre_def">Mode</p>
 
 <div class="div_def"><p class="def">le mode (ou valeur dominante) est la valeur la plus représentée d'une variable quelconque dans une population donnée. Une répartition peut être uni-modale ou multimodale (bimodale, tri-modale…) si deux ou plusieurs valeurs de la variable considérée émergent également. Une distribution sans aucun mode est appelée distribution uniforme. </p></div>
+
+
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
+
+# Mode = Valeurs qui a la fréquence la plus élévée
+result <- as.data.frame(table(mtcars$hp))
+
+# Trier les valeurs par leur fréquence -> order()
+result[order(result$Freq, decreasing = TRUE),]
+
+
+```
 
 <br/>
 
@@ -1896,12 +1924,32 @@ Centiles : valeurs qui divisent la série statistique en cent (1% à 99%)<br/>
 
 </p></div>
 
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval = FALSE}
+
+# Médiane
+median(mtcars$hp)
+
+# Quantiles
+quantile(mtcars$hp)
+
+# Déciles (quantiles de 10 en 10)
+quantile(mtcars$hp, probs = seq(0,1,0.1), na.rm = TRUE)
+
+
+```
+
 <br/>
 
 
 <p class="titre_def">Intervalle interquartile</p>
 
 <div class="div_def"><p class="def">Basé sur les quantiles, l’intervalle inter-quartile (Q3-Q1) est un paramètre de dispersion absolue qui correspond à l’étendue d'une distribution une fois que l’on a retiré les 25% des valeurs les plus faibles et les 25% des valeurs les plus fortes.</p></div>
+
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE, eval = FALSE}
+
+quantile(mtcars$hp)[4] - quantile(mtcars$hp)[2]
+
+```
 
 <br/>
 
@@ -1910,6 +1958,19 @@ Centiles : valeurs qui divisent la série statistique en cent (1% à 99%)<br/>
 
 <div class="div_def"><p class="def">Moyenne de la valeur absolue des écarts à la moyenne. Autrement dit, c’est la distance moyenne à la moyenne.</p></div>
 
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
+
+# 1. Calculer les écarts à la moyenne
+ecarts <- mtcars$hp - mean(mtcars$hp)
+
+# 2. Extraire la valeur absolue
+ecarts_abs <- abs(ecarts)
+
+# 3. Calculer la moyenne
+ecarts_abs_moy <- mean(ecarts_abs)
+
+```
+
 <br/>
 
 
@@ -1917,16 +1978,51 @@ Centiles : valeurs qui divisent la série statistique en cent (1% à 99%)<br/>
 
 <div class="div_def"><p class="def">Moyenne des écarts à la médiane.</p></div>
 
+
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
+
+# 1. Calculer les écarts à la médiane
+
+# 2. Extraire la valeur absolue
+
+# 3. Calculer la moyenne
+
+```
+
 <br/>
 
 
 <p class="titre_def">Variance(σ2) et écart-type(σ)</p>
 
-<div class="div_def"><p class="def">Indicateurs de la dispersion des valeurs des individus autour de la moyenne. La variance est la moyenne des carrés des écarts à la moyenne. L’écart-type est sa racine carrée. Ce sont des **paramètres de dispersion.**<br/>   
+<div class="div_def"><p class="def">Indicateurs de la dispersion des valeurs des individus autour de la moyenne. La variance est la **moyenne des carrés des écarts à la moyenne.** L’écart-type est sa racine carrée. Ce sont des **paramètres de dispersion.** Attention, R calcule la variance en prenant en compte la **correction de Bessel**, en divisant les carrés des écarts à la moyenne par n-1 plutôt que par n, afin de simuler un échantillon.<br/>   
 
 $$\sigma^x = \sqrt{ \frac{\sum_{i=1}^{n}(x_i - \mu)^2} {n}} $$
 
 </p></div>
+
+
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
+
+# Calcul de la variance et de l'écart-type
+
+# 1. Calculer les écarts à la moyenne
+ecarts <- mtcars$hp - mean(mtcars$hp)
+
+# 2. Elever ces écarts au carré
+ecarts_sq <- ecarts * ecarts
+
+# 3. Calculer la moyenne
+variance <- mean(ecarts_sq)
+
+# 4. Calculer l'écart-type
+ecart_type <- sqrt(variance)
+
+# Ou bien utiliser les fonctions de R...
+variance <- var(mtcars$hp)
+ecart_type <- sd(mtcars$hp)
+
+```
+
 
 <br/>
 <p class="titre_def">Coefficient de variation</p>
@@ -1934,21 +2030,26 @@ $$\sigma^x = \sqrt{ \frac{\sum_{i=1}^{n}(x_i - \mu)^2} {n}} $$
 
 $$CV = \frac{\sigma }{\mu } $$
 
-</p>
+</p> </div>
 
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
+# Calcul du coefficient de corrélation
+correlation <- ecart_type / mean(mtcars$hp) * 100
 
-
-
-
-</div>
-
+```
 
 <br/>
 
 <p class="titre_def">Amplitude</p>
 
 <div class="div_def"><p class="def">Longueur de l'intervalle entre la valeur minimum et maximum.</p></div>
+
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
+
+max(mtcars$hp) - min(mtcars$hp)
+
+```
 
 <br/>
 
@@ -2070,9 +2171,6 @@ Pour **représenter graphiquement votre table de fréquence** :
 # install.packages("RColorBrewer")
 library("RColorBrewer")
 
-# Diagramme circulaire (Pas optimal...)
-pie(table(hdv2003$occup), col=brewer.pal(n = 9,  "Paired"))
-
 # Histogramme
 barplot(table(hdv2003$occup), col=brewer.pal(n = 9,  "Paired"), las=2 ,cex.names=0.6)
 
@@ -2098,42 +2196,12 @@ hist(mtcars$hp, breaks=12, probability = TRUE)
 
 <br/>
 
-### Les valeurs centrales
+### Les valeurs centrales : Moyenne, Médiane, Mode
 
 En plus de l'histogramme, **des résumés numériques (valeurs centrales, paramètres de dispersion absolue et relative) peuvent être calculés pour les variables quantitatives**.
 
 A noter que **le mode** peut être également calculé pour les variables **qualitatives ordinales et nominales**, et **la médiane** peut être calculé pour les variables **qualitatives ordinales**.
 
-
-#### Moyenne
-
-```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
-
-mean(mtcars$hp)
-
-```
-
-
-#### Médiane
-
-```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
-
-median(mtcars$hp)
-
-```
-
-#### Mode
-
-```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
-
-# Mode = Valeurs qui a la fréquence la plus élévée
-result <-  as.data.frame(table(mtcars$hp))
-
-# Trier les valeurs par leur fréquence -> order()
-result[order(result$Freq, decreasing = TRUE),]
-
-
-```
 
 <br/>
 
@@ -2498,9 +2566,9 @@ mf_layout(title = "Population Distribution in Martinique",
 
 <div class="div_def"><p class="def">C'est l’étude des relations entre deux variables, quantitatives et/ou qualitatives. Les analyses bivariées consistent ainsi à étudier des variables prises en couple, via des techniques descriptives ou probabilistes. L’objectif est de **mettre en évidence un lien ou une absence de lien entre 2 variables, et d'étudier ce lien (sens, intensité)** lorsqu'il existe.</p>
 <p class="def">L’analyse d’une relation bivariée avec deux types de variables possibles se résume à trois cas :</p>  
-1- Relation entre **deux variables qualitatives** (3.2)      
-2- Relation entre **une variable qualitative et une variable quantitative** (3.3)      
-3- Relation entre **deux variables quantitatives** (3.4)  
+1- Relation entre **deux variables qualitatives** (4.2)      
+2- Relation entre **deux variables quantitatives** (4.3)  
+3- Relation entre **une variable qualitative et une variable quantitative** (4.4)      
 
 </div>
 
@@ -2735,7 +2803,7 @@ mosaicplot(qualif ~ sport,
 <br/>
 
 
-## Exercice
+### Exercice
 
 
 
@@ -2785,172 +2853,6 @@ barplot(cprop(t(as.matrix(df)))[1:2,1:2])
 
 <br/>
 
-## Qualitatif vs Quantitatif
-
-Il existe plusieurs méthodes statistiques pour mesurer la dépendance entre une variable qualitative et une variable quantitative, comme le test **t de student** ou  **l'analyse de variance (ANOVA)**. Cependant, **ces méthodes ne seront pas détaillé dans ce cours**...
-
-Exemple de calcul du test t de student avec R (<span style="color:#8C001A">t.test()</span>) :
-
-```{r class.source="bg-info", class.output="bg-warning",include=TRUE, fig.width=5, echo=TRUE, eval=TRUE}
-
-# Nécessite une variable qualitative binaire (deux modalités max)
-test.student <- t.test(age ~ sport, data = hdv2003)
-test.student
-
-```
-
-Exemple d'une analyse de variance avec R (<span style="color:#8C001A">aov()</span>) :
-
-```{r class.source="bg-info", class.output="bg-warning",include=TRUE, fig.width=5, echo=TRUE, eval=TRUE}
-
-# Nécessite une variable qualitative binaire (deux modalités max)
-anova <- aov(age ~ sport, data=hdv2003)
-anova
-
-```
-
-<br/>
-
-### Comparaison d’indicateurs
-
-**Comparer certains indicateurs (moyenne, médiane...) d’une variable quantitative selon les modalités d’une variable qualitative** permet de mesurer des différence entre plusieurs sous-population.
-
-Dans un premier temps, **ventilez votre population en autant de sous-populations qu’il y a de modalités dans la variable qualitative**. Pour cela, utilisez la fonction **<span style="color:#8C001A">subset()</span>** :
-
-```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
-
-# On crée deux tables de sous-population
-
-# Sous-population pratiquant du sport :
-hdv2003_sport <- subset(hdv2003, sport == "Oui")
-# Sous-population non-pratiquante :
-hdv2003_nonsport <- subset(hdv2003, sport == "Non")
-
-```
-
-```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
-
-# Moyenne d'age des pratiquants
-mean(hdv2003_sport$age)
-
-```
-
-```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
-
-# Moyenne d'age des non-pratiquants
-mean(hdv2003_nonsport$age)
-
-```
-
-Vous pouvez également utiliser la **fonction <span style="color:#8C001A">tapply()</span>**, qui prend en paramètre une variable quantitative, qualitative et une fonction, puis applique automatiquement la fonction aux valeurs de la variables quantitative pour chaque niveau de la variable qualitative. Ex :
-
-```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
-
-# Fonction tapply()
-tapply(hdv2003$age, hdv2003$sport, mean)
-
-```
-
-<br/>
-
-
-### Représentations graphiques
-
-Il est possible de **résumer visuellement la distribution statistique d’une variable quantitative autour de différentes mesures de centralité et de dispersion en utilisant la "boîte à moustache" (*boxplot*).**
-
-**La fonction** **<span style="color:#8C001A">boxplot()</span>** **représente la distribution de la variable quantitative pour chacune des modalités de la variable qualitative :**
-
-```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
-
-# Fonction mosaicplot()
-boxplot(hdv2003$heures.tv ~ hdv2003$qualif, 
-        col="firebrick3",
-        ylab="heures TV",
-        las=2)
-
-```
-
-<br/>
-
-**Dans le cas où une variable qualitative ne présente que deux modalités**, la représentation côte à côte des deux distributions permet  d'observer facilement leurs différences :
-
-```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
-
-# Construction du tableau croisé, en format data.frame
-tab <- as.data.frame(lprop(table(hdv2003$sport, hdv2003$age)))
-colnames(tab) <- c("sport", "age", "Freq")
-tab <-  subset(tab , !(sport %in% "Ensemble"))
-
-# Utilisation de la fonction ggplot()
-library(ggplot2)
-ggplot(tab , aes(x = age, y = Freq, fill = factor(sport))) +
-  geom_bar(stat = "identity", position = position_dodge(), las=2) +
-  ylab("Pourcentage") +
-  scale_x_discrete(breaks=seq(17,97,3), labels = seq(17,97,3)) +
-  scale_y_continuous(limit=c(0,3.3))
-```
-
-<br/>
-
-
-<!-- ### Test statistique -->
-
-<!-- Si les deux distributions sont normales, il est possible de réaliser le **test du t de Student, qui permet de tester si les moyennes de deux sous-populations peuvent être considérées comme différentes (compte tenu des fluctuations aléatoires provenant du biais d’échantillonnage)**. -->
-
-<!-- Tout d'abords, **vérifier la normalité des deux distributions avec le test de Shapiro** : -->
-
-<!-- ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE} -->
-
-<!-- # Fonction shapiro.test() -->
-<!-- shapiro.test(hdv2003_sport$age) -->
-
-<!-- # Fonction shapiro.test() -->
-<!-- shapiro.test(hdv2003_nonsport$age) -->
-
-
-<!-- ``` -->
-
-<!-- Le test est significatif à chaque fois et rejette l’hypothèse d’une normalité des deux distributions. Le test estime que les distributions ne sont pas suffisamment proches de la normalité. -->
-
-<!-- Si le teste avait validé la normalité des deux distributions. Nous aurions pu effectuer le **test du t de student à l’aide de la fonction t.test()**. Ainsi, on aurait pu tester l’hypothèse d’égalité des âges moyens selon la pratique ou non d’un sport. -->
-
-
-<!-- ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE} -->
-
-<!-- # Test du t de student -->
-<!-- t.test(hdv2003$age ~ hdv2003$sport) -->
-
-<!-- ``` -->
-
-<!-- Le résultat du test est significatif, avec un p extrêmement petit, et on peut rejeter l’hypothèse nulle d’égalité des moyennes des deux groupes. Le test nous donne même un intervalle de confiance à 95% pour la valeur de la différence entre les deux moyennes. -->
-
-<!-- Mais dans notre cas, ou les deux distributions ne sont pas normales, on doit faire appel à un test non-paramétrique, qui ne fait donc pas d’hypothèses sur les lois de distribution des variables testées. **Il s'agit du test des rangs de Wilcoxon, fonction wilcox.test()** : -->
-
-<!-- ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE} -->
-<!-- wilcox.test(hdv2003$age ~ hdv2003$sport) -->
-<!-- ``` -->
-
-<!-- La valeur p étant à nouveau extrêmement petite, on peut rejeter l’hypothèse d’indépendance et considérer que les distributions des âges dans les deux sous-populations sont différentes. -->
-
-<!-- <br/> -->
-
-<!-- ### Analyse de la variance à un facteur -->
-
-<!-- **L'analyse de la variance permet d'étudier le comportement d'une variable quantitative à expliquer en fonction d'une  variable nominales catégorielles**. Cette technique permet donc de savoir si une variable dépendante (variable à expliquer, contenant des valeurs numériques et continues) est en relation avec une variables explicative qualitative. -->
-<!-- L'analyse de la variance se nomme souvent **ANOVA** (abrégé du terme anglais * **an**alysis **o**f **v**ariance *) -->
-
-
-<!-- ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE} -->
-
-<!-- # ANOVA (Analyse de la variance) - fonction native aov() -->
-<!-- fit <- aov(age ~ sport, data=hdv2003)  -->
-<!-- fit -->
-
-<!-- plot(fit) -->
-
-<!-- ``` -->
-
-<!-- <br/> -->
 
 ## Deux variables quantitatives
 
@@ -3152,7 +3054,7 @@ text(x= 1:nrow(residus), y = residus$scaledRes, labels = residus$nom, pos = 4,
 <br/> 
 
 
-## Exercice
+### Exercice
 
 Pour cet exercice, utilisez le jeu de données ***women*** (R-base).   
 
@@ -3196,6 +3098,173 @@ head(women)
 </div>
 
 <br/>
+
+## Qualitatif vs Quantitatif
+
+Il existe plusieurs méthodes statistiques pour mesurer la dépendance entre une variable qualitative et une variable quantitative, comme le test **t de student** ou  **l'analyse de variance (ANOVA)**. Cependant, **ces méthodes ne seront pas détaillé dans ce cours**...
+
+Exemple de calcul du test t de student avec R (<span style="color:#8C001A">t.test()</span>) :
+
+```{r class.source="bg-info", class.output="bg-warning",include=TRUE, fig.width=5, echo=TRUE, eval=TRUE}
+
+# Nécessite une variable qualitative binaire (deux modalités max)
+test.student <- t.test(age ~ sport, data = hdv2003)
+test.student
+
+```
+
+Exemple d'une analyse de variance avec R (<span style="color:#8C001A">aov()</span>) :
+
+```{r class.source="bg-info", class.output="bg-warning",include=TRUE, fig.width=5, echo=TRUE, eval=TRUE}
+
+# Nécessite une variable qualitative binaire (deux modalités max)
+anova <- aov(age ~ sport, data=hdv2003)
+anova
+
+```
+
+<br/>
+
+### Comparaison d’indicateurs
+
+**Comparer certains indicateurs (moyenne, médiane...) d’une variable quantitative selon les modalités d’une variable qualitative** permet de mesurer des différence entre plusieurs sous-population.
+
+Dans un premier temps, **ventilez votre population en autant de sous-populations qu’il y a de modalités dans la variable qualitative**. Pour cela, utilisez la fonction **<span style="color:#8C001A">subset()</span>** :
+
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
+
+# On crée deux tables de sous-population
+
+# Sous-population pratiquant du sport :
+hdv2003_sport <- subset(hdv2003, sport == "Oui")
+# Sous-population non-pratiquante :
+hdv2003_nonsport <- subset(hdv2003, sport == "Non")
+
+```
+
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
+
+# Moyenne d'age des pratiquants
+mean(hdv2003_sport$age)
+
+```
+
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
+
+# Moyenne d'age des non-pratiquants
+mean(hdv2003_nonsport$age)
+
+```
+
+Vous pouvez également utiliser la **fonction <span style="color:#8C001A">tapply()</span>**, qui prend en paramètre une variable quantitative, qualitative et une fonction, puis applique automatiquement la fonction aux valeurs de la variables quantitative pour chaque niveau de la variable qualitative. Ex :
+
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
+
+# Fonction tapply()
+tapply(hdv2003$age, hdv2003$sport, mean)
+
+```
+
+<br/>
+
+
+### Représentations graphiques
+
+Il est possible de **résumer visuellement la distribution statistique d’une variable quantitative autour de différentes mesures de centralité et de dispersion en utilisant la "boîte à moustache" (*boxplot*).**
+
+**La fonction** **<span style="color:#8C001A">boxplot()</span>** **représente la distribution de la variable quantitative pour chacune des modalités de la variable qualitative :**
+
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
+
+# Fonction mosaicplot()
+boxplot(hdv2003$heures.tv ~ hdv2003$qualif, 
+        col="firebrick3",
+        ylab="heures TV",
+        las=2)
+
+```
+
+<br/>
+
+**Dans le cas où une variable qualitative ne présente que deux modalités**, la représentation côte à côte des deux distributions permet  d'observer facilement leurs différences :
+
+```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
+
+# Construction du tableau croisé, en format data.frame
+tab <- as.data.frame(lprop(table(hdv2003$sport, hdv2003$age)))
+colnames(tab) <- c("sport", "age", "Freq")
+tab <-  subset(tab , !(sport %in% "Ensemble"))
+
+# Utilisation de la fonction ggplot()
+library(ggplot2)
+ggplot(tab , aes(x = age, y = Freq, fill = factor(sport))) +
+  geom_bar(stat = "identity", position = position_dodge(), las=2) +
+  ylab("Pourcentage") +
+  scale_x_discrete(breaks=seq(17,97,3), labels = seq(17,97,3)) +
+  scale_y_continuous(limit=c(0,3.3))
+```
+
+<br/>
+
+
+<!-- ### Test statistique -->
+
+<!-- Si les deux distributions sont normales, il est possible de réaliser le **test du t de Student, qui permet de tester si les moyennes de deux sous-populations peuvent être considérées comme différentes (compte tenu des fluctuations aléatoires provenant du biais d’échantillonnage)**. -->
+
+<!-- Tout d'abords, **vérifier la normalité des deux distributions avec le test de Shapiro** : -->
+
+<!-- ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE} -->
+
+<!-- # Fonction shapiro.test() -->
+<!-- shapiro.test(hdv2003_sport$age) -->
+
+<!-- # Fonction shapiro.test() -->
+<!-- shapiro.test(hdv2003_nonsport$age) -->
+
+
+<!-- ``` -->
+
+<!-- Le test est significatif à chaque fois et rejette l’hypothèse d’une normalité des deux distributions. Le test estime que les distributions ne sont pas suffisamment proches de la normalité. -->
+
+<!-- Si le teste avait validé la normalité des deux distributions. Nous aurions pu effectuer le **test du t de student à l’aide de la fonction t.test()**. Ainsi, on aurait pu tester l’hypothèse d’égalité des âges moyens selon la pratique ou non d’un sport. -->
+
+
+<!-- ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE} -->
+
+<!-- # Test du t de student -->
+<!-- t.test(hdv2003$age ~ hdv2003$sport) -->
+
+<!-- ``` -->
+
+<!-- Le résultat du test est significatif, avec un p extrêmement petit, et on peut rejeter l’hypothèse nulle d’égalité des moyennes des deux groupes. Le test nous donne même un intervalle de confiance à 95% pour la valeur de la différence entre les deux moyennes. -->
+
+<!-- Mais dans notre cas, ou les deux distributions ne sont pas normales, on doit faire appel à un test non-paramétrique, qui ne fait donc pas d’hypothèses sur les lois de distribution des variables testées. **Il s'agit du test des rangs de Wilcoxon, fonction wilcox.test()** : -->
+
+<!-- ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE} -->
+<!-- wilcox.test(hdv2003$age ~ hdv2003$sport) -->
+<!-- ``` -->
+
+<!-- La valeur p étant à nouveau extrêmement petite, on peut rejeter l’hypothèse d’indépendance et considérer que les distributions des âges dans les deux sous-populations sont différentes. -->
+
+<!-- <br/> -->
+
+<!-- ### Analyse de la variance à un facteur -->
+
+<!-- **L'analyse de la variance permet d'étudier le comportement d'une variable quantitative à expliquer en fonction d'une  variable nominales catégorielles**. Cette technique permet donc de savoir si une variable dépendante (variable à expliquer, contenant des valeurs numériques et continues) est en relation avec une variables explicative qualitative. -->
+<!-- L'analyse de la variance se nomme souvent **ANOVA** (abrégé du terme anglais * **an**alysis **o**f **v**ariance *) -->
+
+
+<!-- ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE} -->
+
+<!-- # ANOVA (Analyse de la variance) - fonction native aov() -->
+<!-- fit <- aov(age ~ sport, data=hdv2003)  -->
+<!-- fit -->
+
+<!-- plot(fit) -->
+
+<!-- ``` -->
+
+<!-- <br/> -->
 
 
 # Sources & références
