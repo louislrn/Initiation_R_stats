@@ -1887,7 +1887,7 @@ $$\bar{x}=\frac{\sum{xi}}{N}$$
 </p></div>
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
-# Exemple de fréquence d'un sous-effectif par rapport à l'effectif total
+
 mean(mtcars$hp)
 ```
 
@@ -2034,8 +2034,8 @@ $$CV = \frac{\sigma }{\mu } $$
 
 ```{r class.source="bg-info", class.output="bg-warning", warning=FALSE, message=FALSE}
 
-# Calcul du coefficient de corrélation
-correlation <- ecart_type / mean(mtcars$hp) * 100
+# Calcul du coefficient de variation
+variation <- ecart_type / mean(mtcars$hp) * 100
 
 ```
 
@@ -2575,7 +2575,7 @@ mf_layout(title = "Population Distribution in Martinique",
 <br/>
 
 <p class="titre_def">Test statistique</p>
-<div class="div_def"><p class="def">Un test statistique est une procédure de décision entre deux hypothèses. Il s'agit d'une démarche consistant à rejeter ou à ne pas rejeter une hypothèse statistique, appelée hypothèse nulle, en fonction d'un jeu de données (échantillon).</p>
+<div class="div_def"><p class="def">Un test statistique est une procédure de décision entre deux hypothèses. Il s'agit d'une démarche consistant à rejeter ou à ne pas rejeter une hypothèse statistique, appelée hypothèse nulle et notée h0, en fonction d'un jeu de données (échantillon).</p>
 </div>
 
 <br/>
@@ -2636,7 +2636,6 @@ table(hdv2003$sport, hdv2003$cuisine, hdv2003$sexe)
 
 ```
 
-<br/>
 
 Il est cependant difficile de comparer à partir des effectifs. **Le package** **<span style="color:#4B0082">questionr</span>** fournit des fonctions permettant de calculer facilement les pourcentages lignes, colonnes et totaux d’un tableau croisé**. Les pourcentages en lignes ou en colonne s’obtiennent avec les fonctions** **<span style="color:#8C001A">rprop()</span>** et **<span style="color:#8C001A">cprop()</span>**. Celles-ci s’appliquent au tableau croisé généré par **<span style="color:#8C001A">table()</span>** :
 
@@ -2684,7 +2683,11 @@ Le **test du χ² consiste à comparer la répartition observée à une réparti
 
 </div>  
 
-<br/>
+
+**Pour correctement interpréter le résultat du test du χ², il est important de comprendre comment ces différentes valeurs sont calculées...** 
+
+--> [Le calcul du χ² et du degré de liberté ?](https://github.com/louislrn/Initiation_R_stats/raw/main/Khi2.xls)    
+--> Le calcul de la valeur p ([table de la loi du χ² ?](https://jpcmanson.wordpress.com/2015/08/13/statistiques-les-omega-3-previennent-ils-lapparition-des-troubles-psychiatriques/khi2/))   
 
 
 La fonction **<span style="color:#8C001A">chisq.test()</span>** permet de réaliser un test du du χ². Cette fonction renvoie une liste qui contient tous **les éléments nécessaires à l’analyse du χ² : effectifs théoriques, résidus bruts ou résidus relatifs** :
@@ -2703,7 +2706,7 @@ tab.chi2
 
 - la **statistique du χ2**(X-squared)   
 - le **degré de liberté** associé au  test (df)   
-- la **significativité de la relation** (p-value)   
+- la **significativité de la relation** (p-value), autrement dit le pourcentage de chances que les résultats observés ne soient pas dus au changement d’échelle (sur plusieurs simulations)
 
 <div class="alert alert-danger" role="alert">
 
@@ -2726,10 +2729,6 @@ tab.chi2$expected
 
 ```
 
-**Pour correctement interpréter le résultat du test du χ², il est important de comprendre comment ces différentes valeurs sont calculées...** 
-
---> [Le calcul du χ² et du degré de liberté ?](https://github.com/HuguesPecout/Initiation_R_stats/raw/main/Khi2.xls)    
---> Le calcul de la valeur p ([table de la loi du χ² ?](https://jpcmanson.wordpress.com/2015/08/13/statistiques-les-omega-3-previennent-ils-lapparition-des-troubles-psychiatriques/khi2/))   
 
 <br/>       
 
