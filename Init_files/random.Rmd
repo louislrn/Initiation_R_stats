@@ -102,12 +102,12 @@ O `rprop()`
 O `levels()`    
 O `prop.table()`  
 
-## 11) Quelle fonction utiliser pour visualiser la distribution d'une variable quantitative ? (1 pt)
+## 11) Quelle fonction utiliser pour visualiser la distribution d'une variable qualitative ? (1 pt)
 
 O `barplot()`  
+O `distr()` 
 O `hist()`  
 O `summary()`  
-O `distr()` 
 
 ## 12) Quelle fonction du package mapsf permet d'afficher une couche géographique ? (0.5 pts)
 
@@ -137,7 +137,7 @@ O Une p-value inférieure à 0.05 permet d'exclure l'hypothèse d'indépendance
 
 \vspace{15pt}
 
-## 15) Qu'est ce que la coefficient de corrélation ? Comment le calculer et l'interpréter ? Que permet-il de comparer ? (2pts)
+## 15) Qu'est ce que la coefficient de variation ? Comment le calculer et l'interpréter ? Que permet-il de comparer ? (2pts)
 
 \vspace{200pt}    
 
